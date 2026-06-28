@@ -3,74 +3,227 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>News <title>News – MrRhinoConnect</title> Insights | MrRhinoConnect – South Florida Tech</title>
-  <meta name="description" content="Stay up to date with MrRhinoConnect news, insights, and industry articles covering South Florida real estate technology, EV charging, fiber optic, smart buildings, and more." />
+  <title>News & Insights | South Florida Real Estate Technology | MrRhinoConnect</title>
+  <meta name="description" content="Expert insights on smart building technology, EV charging, fiber optic, managed WiFi, LED lighting, solar, and CCTV for South Florida commercial and multi-family properties." />
+  <link rel="canonical" href="https://mrrhinoconnect.com/news.html" />
   <link rel="icon" type="image/png" href="/assets/images/mrrhinoconnect-favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/css/style.0cba38c1.css" />
+  <style>
+    .news-filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(3,22,36,.08)}
+    .filter-btn{padding:.45rem 1.1rem;border-radius:50px;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:2px solid rgba(3,22,36,.12);color:var(--text-muted);background:#fff;cursor:pointer;transition:all .2s}
+    .filter-btn:hover,.filter-btn.active{background:var(--pink);border-color:var(--pink);color:#fff}
+    .news-featured{display:grid;grid-template-columns:1.5fr 1fr;gap:1.5rem;margin-bottom:2.5rem}
+    .news-card-featured{background:#fff;border-radius:var(--r-lg);overflow:hidden;border:1px solid rgba(3,22,36,.08);transition:all var(--t)}
+    .news-card-featured:hover{box-shadow:var(--sh-lg);transform:translateY(-3px)}
+    .news-card-featured .news-card-img{height:280px}
+    .news-card-featured .news-card-body{padding:2rem}
+    .news-card-featured h3{font-size:1.1rem;line-height:1.35;margin-bottom:.75rem}
+    .news-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:1.5rem}
+    @media(max-width:1024px){.news-featured{grid-template-columns:1fr}.news-grid-3{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.news-grid-3{grid-template-columns:1fr}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"MrRhinoConnect News & Insights","url":"https://mrrhinoconnect.com/news.html","publisher":{"@type":"Organization","name":"MrRhinoConnect","logo":{"@type":"ImageObject","url":"https://mrrhinoconnect.com/assets/images/mrrhinoconnect-logo-v3.png"}},"description":"Expert insights on smart building technology and real estate tech for South Florida property owners."}</script>
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
 <div id="site-nav"></div>
 
-<section class="page-hero has-photo" style="background-image:url('/assets/images/mrrhinoconnect-commercial-building-technology-solutions-south-florida.jpg')">
-  <div class="breadcrumb"><a href="/">Home</a><span>›</span><span>News</span></div>
-  <h1>Latest News &amp; Articles</h1>
-  <p>Stay Informed with Cutting-Edge Insights on South Florida Real Estate Technology</p>
+<section class="page-hero has-photo" style="background-image:url('/assets/images/mrrhinoconnect-commercial-building-technology-solutions-south-florida.jpg')" id="main-content">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Home</a><span>›</span><span>News</span></div>
+    <h1>News &amp; Insights</h1>
+    <p>Expert perspectives on smart building technology, connectivity, and energy solutions for South Florida properties</p>
+  </div>
 </section>
 
 <section class="section section-white">
   <div class="container">
-    <div class="news-grid">
 
-      <article class="news-card">
-        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-condo-complex-ev-charging-solar-south-florida.jpg');background-size:cover;background-position:center;">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        </div>
+    <div class="news-filter-bar" role="navigation" aria-label="Filter articles by category">
+      <button class="filter-btn active" data-cat="all">All Topics</button>
+      <button class="filter-btn" data-cat="Smart Buildings">Smart Buildings</button>
+      <button class="filter-btn" data-cat="Connectivity">Connectivity</button>
+      <button class="filter-btn" data-cat="Security">Security</button>
+      <button class="filter-btn" data-cat="Energy">Energy</button>
+      <button class="filter-btn" data-cat="EV Charging">EV Charging</button>
+    </div>
+
+    <!-- Featured row -->
+    <div class="news-featured" data-grid="featured">
+
+      <article class="news-card-featured" data-cat="EV Charging">
+        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-ev-charging-condo-south-florida-article.jpg');background-size:cover;background-position:center;height:280px;overflow:hidden;"></div>
         <div class="news-card-body">
-          <div class="news-card-cat">Uncategorized</div>
+          <div class="news-card-cat">EV Charging</div>
+          <h3>EV Charging for South Florida Condos &amp; HOAs: A Property Manager's Complete Guide</h3>
+          <p>Florida law now requires associations to accommodate EV charging requests. Learn the right infrastructure approach, available incentives, and how to avoid the most common mistakes.</p>
+          <a href="/news/ev-charging-south-florida-condos-hoa.html" class="read-more">Read Article →</a>
+        </div>
+      </article>
+
+      <article class="news-card-featured" data-cat="Smart Buildings">
+        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-smart-building-automation-south-florida-article.jpg');background-size:cover;background-position:center;height:280px;overflow:hidden;"></div>
+        <div class="news-card-body">
+          <div class="news-card-cat">Smart Buildings</div>
+          <h3>Smart Building Technology in South Florida: From Nice-to-Have to Competitive Necessity</h3>
+          <p>South Florida's real estate market is bifurcating between tech-enabled buildings and legacy properties. Here's what the data says and how to compete.</p>
+          <a href="/news/smart-building-technology-south-florida-competitive-advantage.html" class="read-more">Read Article →</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Row 1 -->
+    <div class="news-grid-3">
+
+      <article class="news-card" data-cat="Security">
+        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-cctv-surveillance-miami-commercial-article.jpg');background-size:cover;background-position:center;height:190px;"></div>
+        <div class="news-card-body">
+          <div class="news-card-cat">Security</div>
+          <h3>IP Security Cameras vs. Analog CCTV: What Miami Property Owners Need to Know in 2025</h3>
+          <p>4K resolution, AI analytics, and cloud NVR are making the case for IP camera upgrades across South Florida commercial properties.</p>
+          <a href="/news/cctv-security-cameras-miami-commercial-property.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+      <article class="news-card" data-cat="Connectivity">
+        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-fiber-optic-gigabit-internet-south-florida-article.jpg');background-size:cover;background-position:center;height:190px;"></div>
+        <div class="news-card-body">
+          <div class="news-card-cat">Connectivity</div>
+          <h3>Dedicated Fiber vs. Shared Cable: Why South Florida Commercial Properties Are Making the Switch</h3>
+          <p>Shared cable infrastructure can't handle modern commercial bandwidth demands. Learn what dedicated fiber delivers and how to procure it.</p>
+          <a href="/news/fiber-optic-internet-south-florida-commercial-buildings.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+      <article class="news-card" data-cat="Connectivity">
+        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-managed-wifi-hotel-south-florida-article.jpg');background-size:cover;background-position:center;height:190px;"></div>
+        <div class="news-card-body">
+          <div class="news-card-cat">Connectivity</div>
+          <h3>How South Florida Properties Are Turning WiFi Into a Competitive Amenity</h3>
+          <p>WiFi quality is now a leasing and booking decision factor. Enterprise managed WiFi is the difference between a complaint and a compliment.</p>
+          <a href="/news/managed-wifi-south-florida-hotels-apartments.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Row 2 -->
+    <div class="news-grid-3">
+
+      <article class="news-card" data-cat="Smart Buildings">
+        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-hvac-air-quality-commercial-south-florida-article.jpg');background-size:cover;background-position:center;height:190px;"></div>
+        <div class="news-card-body">
+          <div class="news-card-cat">Smart Buildings</div>
+          <h3>South Florida HVAC &amp; Indoor Air Quality: A Commercial Property Manager's Guide</h3>
+          <p>South Florida's heat and humidity create unique HVAC challenges. Learn how smart controls and IAQ monitoring reduce costs and improve tenant health.</p>
+          <a href="/news/hvac-air-quality-south-florida-commercial-buildings.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+      <article class="news-card" data-cat="Smart Buildings">
+        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-smart-home-iot-miami-technology-article.jpg');background-size:cover;background-position:center;height:190px;"></div>
+        <div class="news-card-body">
+          <div class="news-card-cat">Smart Buildings</div>
+          <h3>IoT in Miami Real Estate: How Smart Building Technology Is Reshaping Property Operations</h3>
+          <p>From occupancy sensors to predictive maintenance — here's how South Florida properties are deploying IoT at scale and what it delivers.</p>
+          <a href="/news/iot-smart-building-technology-miami-real-estate.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+      <article class="news-card" data-cat="Energy">
+        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-solar-panels-residential-south-florida-article.jpg');background-size:cover;background-position:center;height:190px;"></div>
+        <div class="news-card-body">
+          <div class="news-card-cat">Energy</div>
+          <h3>Why South Florida Commercial Solar Investments Are Paying Back Faster Than Ever</h3>
+          <p>2,800 sun hours, 30% federal ITC, and FPL net metering — the financial case for commercial solar in South Florida has never been stronger.</p>
+          <a href="/news/solar-panels-south-florida-commercial-properties-roi.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Row 3 -->
+    <div class="news-grid-3">
+
+      <article class="news-card" data-cat="Energy">
+        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-led-lighting-commercial-building-south-florida-article.jpg');background-size:cover;background-position:center;height:190px;"></div>
+        <div class="news-card-body">
+          <div class="news-card-cat">Energy</div>
+          <h3>The Numbers Behind Commercial LED Upgrades in South Florida — FPL Rebates Included</h3>
+          <p>We walk through the real payback math on a South Florida parking structure LED retrofit — including FPL rebate amounts and maintenance savings.</p>
+          <a href="/news/led-lighting-upgrade-south-florida-commercial-fpl-rebates.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+      <article class="news-card" data-cat="Connectivity">
+        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-low-voltage-wiring-installation-south-florida-article.jpg');background-size:cover;background-position:center;height:190px;"></div>
+        <div class="news-card-body">
+          <div class="news-card-cat">Connectivity</div>
+          <h3>Low Voltage Wiring in South Florida New Construction: Developer's Guide to Getting It Right</h3>
+          <p>Low voltage mistakes cost developers 3–5× more to fix after drywall. Here's what to spec before construction begins and how to coordinate with your GC.</p>
+          <a href="/news/low-voltage-wiring-south-florida-new-construction.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+      <article class="news-card" data-cat="Connectivity">
+        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-pots-line-replacement-voip-south-florida-article.jpg');background-size:cover;background-position:center;height:190px;"></div>
+        <div class="news-card-body">
+          <div class="news-card-cat">Connectivity</div>
+          <h3>South Florida POTS Line Costs Are Exploding — Your Exit Options Explained</h3>
+          <p>AT&amp;T and others are raising POTS rates 200–500% across South Florida. Here's how to migrate your elevator phones, fire alarm dialers, and gate systems.</p>
+          <a href="/news/pots-line-replacement-south-florida-buildings.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Row 4 — original 3 articles kept -->
+    <div class="news-grid-3">
+
+      <article class="news-card" data-cat="Connectivity">
+        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-das-cellular-coverage-miami-buildings-article.jpg');background-size:cover;background-position:center;height:190px;"></div>
+        <div class="news-card-body">
+          <div class="news-card-cat">Connectivity</div>
+          <h3>Dead Zones in the Sky: Why Miami's High-Rises Have Poor Cell Signal and How DAS Fixes It</h3>
+          <p>Concrete, glass, and height combine to kill cellular coverage in Miami's towers. Learn how Distributed Antenna Systems restore full 4G/5G on every floor.</p>
+          <a href="/news/das-cellular-coverage-miami-high-rise-buildings.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+      <article class="news-card" data-cat="EV Charging">
+        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-condo-complex-ev-charging-solar-south-florida.jpg');background-size:cover;background-position:center;height:190px;"></div>
+        <div class="news-card-body">
+          <div class="news-card-cat">EV Charging</div>
           <h3>EV Charging Stations: Driving the Green Revolution in South Florida's Real Estate Market</h3>
-          <p>Powering Progress: Integrating EV Charging Stations into South Florida Developments. The landscape of South Florida's real estate market is rapidly evolving...</p>
+          <p>The landscape of South Florida's real estate market is rapidly evolving with the rise of electric vehicles. Discover how properties are leading the charge.</p>
           <a href="/news/ev-charging-stations-green-revolution.html" class="read-more">Read More →</a>
         </div>
       </article>
 
-      <article class="news-card">
-        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-smart-building-cctv-security-south-florida.jpg');background-size:cover;background-position:center;">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
+      <article class="news-card" data-cat="Connectivity">
+        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-fiber-optic-tech-installation-south-florida.jpg');background-size:cover;background-position:center;height:190px;"></div>
         <div class="news-card-body">
-          <div class="news-card-cat">Security</div>
-          <h3>Innovative Parking Solutions for South Florida Real Estate: Embracing Smart Parking Technologies</h3>
-          <p>Revolutionizing Parking: Smart Solutions for South Florida's Urban Landscape. In South Florida's bustling urban landscape, where space is at a premium...</p>
-          <a href="/news/innovative-parking-solutions.html" class="read-more">Read More →</a>
-        </div>
-      </article>
-
-      <article class="news-card">
-        <div class="news-card-img" style="background-image:url('/assets/images/mrrhinoconnect-fiber-optic-tech-installation-south-florida.jpg');background-size:cover;background-position:center;">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <div class="news-card-body">
-          <div class="news-card-cat">Uncategorized</div>
+          <div class="news-card-cat">Connectivity</div>
           <h3>Fiber Optic Revolution: The Key to Unlocking High-Speed Connectivity in Commercial Developments</h3>
-          <p>Lighting the Path to Connectivity: Fiber Optic Solutions in South Florida. In the heart of South Florida's rapidly expanding commercial real estate sector...</p>
+          <p>Fiber optic solutions are becoming the backbone of modern commercial real estate in South Florida. Here's what the transition looks like in practice.</p>
           <a href="/news/fiber-optic-revolution.html" class="read-more">Read More →</a>
         </div>
       </article>
 
     </div>
+
   </div>
 </section>
 
 <div class="cta-band">
   <div class="container">
-    <h2>Ready to Transform Your Property?</h2>
-    <p>Contact MrRhinoConnect to learn how our technology solutions can future-proof your investment.</p>
-    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-      <a href="tel:+13052491084" class="btn btn-outline">📞 305.249.1084</a>
+    <h2>Ready to Transform Your South Florida Property?</h2>
+    <p>Contact MrRhinoConnect for a free technology consultation — Miami-Dade, Broward, and Palm Beach County.</p>
+    <div class="cta-actions">
+      <a href="tel:+13052491084" class="btn btn-outline">305.249.1084</a>
       <a href="/contact.html" class="btn btn-white">Get a Free Quote</a>
     </div>
   </div>
@@ -79,5 +232,20 @@
 <div id="site-footer"></div>
 <script src="/assets/js/components.adea4af5.js" defer></script>
 <script src="/assets/js/main.51e90cbf.js" defer></script>
+<script>
+  // Category filter
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      document.querySelectorAll('[data-cat]').forEach(card => {
+        if (card.dataset.grid) return; // skip grid containers
+        const show = cat === 'all' || card.dataset.cat === cat;
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>
 </body>
 </html>
