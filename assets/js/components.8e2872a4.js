@@ -1,12 +1,4 @@
-/* MrRhinoConnect — Nav + Footer + ADA Widget + Consent
-   ThatsKrispy Agency Build — WCAG 2.1 AA Compliant */
-(function () {
-  'use strict';
-
-  const LOGO = '/assets/images/mrrhinoconnect-logo-v3.png';
-
-  /* ── NAV ─────────────────────────────────────────── */
-  const NAV_HTML = `
+(function(){'use strict';const LOGO='/assets/images/mrrhinoconnect-logo-v3.png';const NAV_HTML=`
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="site-header" role="banner">
   <div class="nav-wrapper">
@@ -65,10 +57,7 @@
       <a href="/contact.html" class="nav-call-btn">Get Started</a>
     </div>
   </div>
-</header>`;
-
-  /* ── FOOTER ──────────────────────────────────────── */
-  const FOOTER_HTML = `
+</header>`;const FOOTER_HTML=`
 <div class="newsletter-strip" role="complementary" aria-label="Newsletter signup">
   <div class="newsletter-inner">
     <h3>Get the Latest News &amp; Updates</h3>
@@ -145,10 +134,7 @@
     <span>Copyright &copy; 2025 MrRhinoConnect. All rights reserved.</span>
     <span>Built by <a href="https://thatskrispy.com" target="_blank" rel="noopener noreferrer">@ThatsKrispy</a></span>
   </div>
-</footer>`;
-
-  /* ── CONSENT BANNER ──────────────────────────────── */
-  const CONSENT_HTML = `
+</footer>`;const CONSENT_HTML=`
 <div class="consent-banner" id="consent-banner" role="dialog" aria-modal="true" aria-label="Cookie consent" aria-describedby="consent-desc">
   <div class="consent-inner">
     <div class="consent-text">
@@ -159,10 +145,7 @@
       <button class="consent-decline" id="consent-decline">Decline</button>
     </div>
   </div>
-</div>`;
-
-  /* ── ADA ACCESSIBILITY WIDGET ────────────────────── */
-  const A11Y_HTML = `
+</div>`;const A11Y_HTML=`
 <div id="ada-widget-wrap">
   <button
     id="ada-trigger"
@@ -315,239 +298,14 @@
       <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener noreferrer">WCAG 2.1 AA</a> accessibility tools
     </div>
   </div>
-</div>`;
-
-  /* ── INJECT ──────────────────────────────────────── */
-  const navEl = document.getElementById('site-nav');
-  if (navEl) navEl.innerHTML = NAV_HTML;
-
-  const footEl = document.getElementById('site-footer');
-  if (footEl) footEl.innerHTML = FOOTER_HTML;
-
-  document.body.insertAdjacentHTML('beforeend', CONSENT_HTML);
-  document.body.insertAdjacentHTML('beforeend', A11Y_HTML);
-
-  /* ── ACTIVE NAV ──────────────────────────────────── */
-  const path = window.location.pathname.replace(/\/$/, '') || '/';
-  document.querySelectorAll('.nav-link').forEach(link => {
-    const href = (link.getAttribute('href') || '').replace(/\/$/, '');
-    const isHome = (href === '/' || href === '/index.html') && path === '/';
-    const isMatch = href !== '/' && href !== '' && path.startsWith(href.replace('.html',''));
-    if (isHome || isMatch) link.classList.add('active');
-  });
-
-  /* ── CONSENT ─────────────────────────────────────── */
-  const banner = document.getElementById('consent-banner');
-  if (banner && !localStorage.getItem('mrrhino_consent')) {
-    banner.classList.add('visible');
-    const firstBtn = banner.querySelector('button');
-    if (firstBtn) setTimeout(() => firstBtn.focus(), 400);
-  }
-  document.getElementById('consent-accept')?.addEventListener('click', () => {
-    localStorage.setItem('mrrhino_consent','accepted');
-    banner.classList.remove('visible');
-  });
-  document.getElementById('consent-decline')?.addEventListener('click', () => {
-    localStorage.setItem('mrrhino_consent','declined');
-    banner.classList.remove('visible');
-  });
-
-  /* ── ADA WIDGET LOGIC ────────────────────────────── */
-  const trigger   = document.getElementById('ada-trigger');
-  const panel     = document.getElementById('ada-panel');
-  const closeBtn  = document.getElementById('ada-close');
-  const resetBtn  = document.getElementById('ada-reset');
-  if (!trigger || !panel) return;
-
-  const STORAGE_KEY = 'mrrhino_ada_v2';
-
-  // State
-  let state = {
-    fontSize:    100,   // percent: 100–150 in steps of 10
-    letterSpace: 0,     // steps: 0–4 → 0 / 0.05 / 0.1 / 0.15 / 0.2em
-    dyslexia:    false,
-    lineSpacing: false,
-    contrast:    false,
-    invert:      false,
-    grayscale:   false,
-    saturation:  false,
-    links:       false,
-    focus:       false,
-    animations:  false,
-  };
-
-  // Load saved
-  try { Object.assign(state, JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}')); } catch(e) {}
-
-  // Dyslexia font — inject @font-face only once
-  function loadDyslexiaFont() {
-    if (document.getElementById('ada-dyslexia-style')) return;
-    const st = document.createElement('style');
-    st.id = 'ada-dyslexia-style';
-    // Use system font stack that approximates open-dyslexic spacing
-    st.textContent = `body.ada-dyslexia, body.ada-dyslexia *{
+</div>`;const navEl=document.getElementById('site-nav');if(navEl)navEl.innerHTML=NAV_HTML;const footEl=document.getElementById('site-footer');if(footEl)footEl.innerHTML=FOOTER_HTML;document.body.insertAdjacentHTML('beforeend',CONSENT_HTML);document.body.insertAdjacentHTML('beforeend',A11Y_HTML);const path=window.location.pathname.replace(/\/$/,'')||'/';document.querySelectorAll('.nav-link').forEach(link=>{const href=(link.getAttribute('href')||'').replace(/\/$/,'');const isHome=(href==='/'||href==='/index.html')&&path==='/';const isMatch=href!=='/'&&href!==''&&path.startsWith(href.replace('.html',''));if(isHome||isMatch)link.classList.add('active');});const banner=document.getElementById('consent-banner');if(banner&&!localStorage.getItem('mrrhino_consent')){banner.classList.add('visible');const firstBtn=banner.querySelector('button');if(firstBtn)setTimeout(()=>firstBtn.focus(),400);}
+document.getElementById('consent-accept')?.addEventListener('click',()=>{localStorage.setItem('mrrhino_consent','accepted');banner.classList.remove('visible');});document.getElementById('consent-decline')?.addEventListener('click',()=>{localStorage.setItem('mrrhino_consent','declined');banner.classList.remove('visible');});const trigger=document.getElementById('ada-trigger');const panel=document.getElementById('ada-panel');const closeBtn=document.getElementById('ada-close');const resetBtn=document.getElementById('ada-reset');if(!trigger||!panel)return;const STORAGE_KEY='mrrhino_ada_v2';let state={fontSize:100,letterSpace:0,dyslexia:false,lineSpacing:false,contrast:false,invert:false,grayscale:false,saturation:false,links:false,focus:false,animations:false,};try{Object.assign(state,JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}'));}catch(e){}
+function loadDyslexiaFont(){if(document.getElementById('ada-dyslexia-style'))return;const st=document.createElement('style');st.id='ada-dyslexia-style';st.textContent=`body.ada-dyslexia, body.ada-dyslexia *{
       font-family: "Comic Sans MS","Comic Sans",cursive !important;
       word-spacing: 0.16em !important;
-    }`;
-    document.head.appendChild(st);
-  }
-
-  // Apply state to DOM
-  function applyState() {
-    const b = document.body;
-    const html = document.documentElement;
-
-    // Font size
-    html.style.fontSize = state.fontSize === 100 ? '' : (state.fontSize / 100) * 16 + 'px';
-    document.getElementById('ada-font-val').textContent = state.fontSize + '%';
-
-    // Letter spacing
-    const spacingLabels = ['Normal','Wide','Wider','Widest','Maximum'];
-    const spacingVals   = [0, 0.05, 0.1, 0.15, 0.2];
-    const spStyle = document.getElementById('ada-spacing-style') || (() => {
-      const s = document.createElement('style'); s.id = 'ada-spacing-style'; document.head.appendChild(s); return s;
-    })();
-    spStyle.textContent = state.letterSpace > 0
-      ? `body, body *{letter-spacing:${spacingVals[state.letterSpace]}em !important}`
-      : '';
-    document.getElementById('ada-space-val').textContent = spacingLabels[state.letterSpace];
-
-    // Toggle classes
-    b.classList.toggle('ada-dyslexia',    state.dyslexia);
-    b.classList.toggle('ada-linespacing', state.lineSpacing);
-    b.classList.toggle('ada-contrast',    state.contrast);
-    b.classList.toggle('ada-invert',      state.invert);
-    b.classList.toggle('ada-grayscale',   state.grayscale);
-    b.classList.toggle('ada-saturation',  state.saturation);
-    b.classList.toggle('ada-links',       state.links);
-    b.classList.toggle('ada-focus',       state.focus);
-    b.classList.toggle('ada-noanimation', state.animations);
-
-    if (state.dyslexia) loadDyslexiaFont();
-
-    // Sync toggle button states
-    const map = {
-      'ada-dyslexia': state.dyslexia,
-      'ada-linespacing': state.lineSpacing,
-      'ada-contrast':  state.contrast,
-      'ada-invert':    state.invert,
-      'ada-grayscale': state.grayscale,
-      'ada-saturation': state.saturation,
-      'ada-links':     state.links,
-      'ada-focus':     state.focus,
-      'ada-animations': state.animations,
-    };
-    Object.entries(map).forEach(([id, active]) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.setAttribute('aria-pressed', String(active));
-      el.classList.toggle('ada-on', active);
-      const label = el.querySelector('.ada-toggle-status');
-      if (label) label.textContent = active ? 'On' : 'Off';
-    });
-
-    // Stepper bounds
-    document.getElementById('ada-font-dec').disabled = state.fontSize <= 100;
-    document.getElementById('ada-font-inc').disabled = state.fontSize >= 150;
-    document.getElementById('ada-space-dec').disabled = state.letterSpace <= 0;
-    document.getElementById('ada-space-inc').disabled = state.letterSpace >= 4;
-
-    // Persist
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  }
-
-  // Open / close panel
-  function openPanel() {
-    panel.hidden = false;
-    trigger.setAttribute('aria-expanded','true');
-    // Focus first interactive element
-    setTimeout(() => {
-      const first = panel.querySelector('button:not([disabled])');
-      if (first) first.focus();
-    }, 50);
-  }
-  function closePanel() {
-    panel.hidden = true;
-    trigger.setAttribute('aria-expanded','false');
-    trigger.focus();
-  }
-
-  trigger.addEventListener('click', () => {
-    panel.hidden ? openPanel() : closePanel();
-  });
-  closeBtn.addEventListener('click', closePanel);
-
-  // Keyboard trap within panel
-  panel.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { closePanel(); return; }
-    if (e.key !== 'Tab') return;
-    const focusable = Array.from(panel.querySelectorAll(
-      'button:not([disabled]),a[href],input,select,textarea,[tabindex]:not([tabindex="-1"])'
-    )).filter(el => !el.hidden && el.offsetParent !== null);
-    if (!focusable.length) return;
-    const first = focusable[0], last = focusable[focusable.length - 1];
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault(); last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault(); first.focus();
-    }
-  });
-
-  // Outside click
-  document.addEventListener('click', e => {
-    if (!panel.hidden && !panel.contains(e.target) && !trigger.contains(e.target)) {
-      closePanel();
-    }
-  });
-
-  // Stepper buttons
-  document.getElementById('ada-font-inc').addEventListener('click', () => {
-    if (state.fontSize < 150) { state.fontSize += 10; applyState(); }
-  });
-  document.getElementById('ada-font-dec').addEventListener('click', () => {
-    if (state.fontSize > 100) { state.fontSize -= 10; applyState(); }
-  });
-  document.getElementById('ada-space-inc').addEventListener('click', () => {
-    if (state.letterSpace < 4) { state.letterSpace++; applyState(); }
-  });
-  document.getElementById('ada-space-dec').addEventListener('click', () => {
-    if (state.letterSpace > 0) { state.letterSpace--; applyState(); }
-  });
-
-  // Toggle buttons
-  [
-    ['ada-dyslexia',   'dyslexia'],
-    ['ada-linespacing','lineSpacing'],
-    ['ada-contrast',   'contrast'],
-    ['ada-invert',     'invert'],
-    ['ada-grayscale',  'grayscale'],
-    ['ada-saturation', 'saturation'],
-    ['ada-links',      'links'],
-    ['ada-focus',      'focus'],
-    ['ada-animations', 'animations'],
-  ].forEach(([id, key]) => {
-    document.getElementById(id)?.addEventListener('click', () => {
-      state[key] = !state[key];
-      applyState();
-    });
-  });
-
-  // Reset
-  resetBtn.addEventListener('click', () => {
-    state = { fontSize:100, letterSpace:0, dyslexia:false, lineSpacing:false,
-      contrast:false, invert:false, grayscale:false, saturation:false,
-      links:false, focus:false, animations:false };
-    applyState();
-    const ann = document.createElement('div');
-    ann.setAttribute('role','status');
-    ann.setAttribute('aria-live','polite');
-    ann.className = 'sr-only';
-    ann.textContent = 'All accessibility settings have been reset.';
-    document.body.appendChild(ann);
-    setTimeout(() => ann.remove(), 2000);
-  });
-
-  // Apply on load
-  applyState();
-
-})();
+    }`;document.head.appendChild(st);}
+function applyState(){const b=document.body;const html=document.documentElement;html.style.fontSize=state.fontSize===100?'':(state.fontSize/100)*16+'px';document.getElementById('ada-font-val').textContent=state.fontSize+'%';const spacingLabels=['Normal','Wide','Wider','Widest','Maximum'];const spacingVals=[0,0.05,0.1,0.15,0.2];const spStyle=document.getElementById('ada-spacing-style')||(()=>{const s=document.createElement('style');s.id='ada-spacing-style';document.head.appendChild(s);return s;})();spStyle.textContent=state.letterSpace>0?`body, body *{letter-spacing:${spacingVals[state.letterSpace]}em !important}`:'';document.getElementById('ada-space-val').textContent=spacingLabels[state.letterSpace];b.classList.toggle('ada-dyslexia',state.dyslexia);b.classList.toggle('ada-linespacing',state.lineSpacing);b.classList.toggle('ada-contrast',state.contrast);b.classList.toggle('ada-invert',state.invert);b.classList.toggle('ada-grayscale',state.grayscale);b.classList.toggle('ada-saturation',state.saturation);b.classList.toggle('ada-links',state.links);b.classList.toggle('ada-focus',state.focus);b.classList.toggle('ada-noanimation',state.animations);if(state.dyslexia)loadDyslexiaFont();const map={'ada-dyslexia':state.dyslexia,'ada-linespacing':state.lineSpacing,'ada-contrast':state.contrast,'ada-invert':state.invert,'ada-grayscale':state.grayscale,'ada-saturation':state.saturation,'ada-links':state.links,'ada-focus':state.focus,'ada-animations':state.animations,};Object.entries(map).forEach(([id,active])=>{const el=document.getElementById(id);if(!el)return;el.setAttribute('aria-pressed',String(active));el.classList.toggle('ada-on',active);const label=el.querySelector('.ada-toggle-status');if(label)label.textContent=active?'On':'Off';});document.getElementById('ada-font-dec').disabled=state.fontSize<=100;document.getElementById('ada-font-inc').disabled=state.fontSize>=150;document.getElementById('ada-space-dec').disabled=state.letterSpace<=0;document.getElementById('ada-space-inc').disabled=state.letterSpace>=4;localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}
+function openPanel(){panel.hidden=false;trigger.setAttribute('aria-expanded','true');setTimeout(()=>{const first=panel.querySelector('button:not([disabled])');if(first)first.focus();},50);}
+function closePanel(){panel.hidden=true;trigger.setAttribute('aria-expanded','false');trigger.focus();}
+trigger.addEventListener('click',()=>{panel.hidden?openPanel():closePanel();});closeBtn.addEventListener('click',closePanel);panel.addEventListener('keydown',e=>{if(e.key==='Escape'){closePanel();return;}
+if(e.key!=='Tab')return;const focusable=Array.from(panel.querySelectorAll('button:not([disabled]),a[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')).filter(el=>!el.hidden&&el.offsetParent!==null);if(!focusable.length)return;const first=focusable[0],last=focusable[focusable.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});document.addEventListener('click',e=>{if(!panel.hidden&&!panel.contains(e.target)&&!trigger.contains(e.target)){closePanel();}});document.getElementById('ada-font-inc').addEventListener('click',()=>{if(state.fontSize<150){state.fontSize+=10;applyState();}});document.getElementById('ada-font-dec').addEventListener('click',()=>{if(state.fontSize>100){state.fontSize-=10;applyState();}});document.getElementById('ada-space-inc').addEventListener('click',()=>{if(state.letterSpace<4){state.letterSpace++;applyState();}});document.getElementById('ada-space-dec').addEventListener('click',()=>{if(state.letterSpace>0){state.letterSpace--;applyState();}});[['ada-dyslexia','dyslexia'],['ada-linespacing','lineSpacing'],['ada-contrast','contrast'],['ada-invert','invert'],['ada-grayscale','grayscale'],['ada-saturation','saturation'],['ada-links','links'],['ada-focus','focus'],['ada-animations','animations'],].forEach(([id,key])=>{document.getElementById(id)?.addEventListener('click',()=>{state[key]=!state[key];applyState();});});resetBtn.addEventListener('click',()=>{state={fontSize:100,letterSpace:0,dyslexia:false,lineSpacing:false,contrast:false,invert:false,grayscale:false,saturation:false,links:false,focus:false,animations:false};applyState();const ann=document.createElement('div');ann.setAttribute('role','status');ann.setAttribute('aria-live','polite');ann.className='sr-only';ann.textContent='All accessibility settings have been reset.';document.body.appendChild(ann);setTimeout(()=>ann.remove(),2000);});applyState();})();

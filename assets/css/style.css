@@ -602,41 +602,24 @@ textarea{resize:vertical;min-height:105px}
 .consent-decline:hover{color:#fff;border-color:rgba(255,255,255,.4)}
 
 /* ── A11Y WIDGET ─────────────────────────── */
-.a11y-btn{
   position:fixed;bottom:1.5rem;right:1.5rem;width:46px;height:46px;
   border-radius:50%;background:var(--pink);color:#fff;border:none;
   cursor:pointer;z-index:8900;display:flex;align-items:center;justify-content:center;
   box-shadow:0 4px 16px rgba(200,104,143,.38);transition:all var(--t)
 }
-.a11y-btn:hover{background:var(--pink-dark);transform:scale(1.08)}
-.a11y-btn svg{width:22px;height:22px;display:block}
-.a11y-panel{
   position:fixed;bottom:5.5rem;right:1.5rem;width:255px;
   background:#fff;border:1px solid rgba(3,22,36,.1);border-radius:12px;
   box-shadow:var(--sh-lg);z-index:8900;overflow:hidden;display:none
 }
-.a11y-panel.open{display:block}
-.a11y-header{background:var(--pink);color:#fff;padding:.85rem 1.1rem;font-family:var(--font-display);font-size:.88rem;font-weight:700}
-.a11y-options{padding:.7rem;display:flex;flex-direction:column;gap:.35rem}
-.a11y-option{
   display:flex;align-items:center;justify-content:space-between;
   padding:.55rem .7rem;border-radius:6px;cursor:pointer;
   border:1px solid rgba(3,22,36,.09);font-size:.8rem;color:var(--dark);
   font-weight:600;transition:all var(--t);background:#fff;width:100%;text-align:left
 }
-.a11y-option:hover,.a11y-option.active{background:var(--pink-light);border-color:var(--pink);color:var(--pink)}
-.a11y-option svg{width:15px;height:15px;color:var(--pink);display:block}
-.a11y-reset{
   margin:0 .7rem .7rem;width:calc(100% - 1.4rem);padding:.45rem;
   background:var(--light);border:1px solid rgba(3,22,36,.09);
   border-radius:6px;font-size:.75rem;cursor:pointer;color:var(--text-muted);transition:all var(--t)
 }
-.a11y-reset:hover{background:rgba(3,22,36,.08)}
-body.a11y-large-text{font-size:19px!important}
-body.a11y-large-text p,body.a11y-large-text li{font-size:1.15rem!important}
-body.a11y-high-contrast{filter:contrast(1.5)}
-body.a11y-grayscale{filter:grayscale(100%)}
-body.a11y-links a:not(.btn):not(.nav-link):not(.footer-social){text-decoration:underline!important;text-decoration-color:var(--pink)!important}
 
 /* ── REVEAL ANIMATION ────────────────────── */
 @media (prefers-reduced-motion:no-preference){
@@ -1194,4 +1177,258 @@ body.a11y-links a:not(.btn):not(.nav-link):not(.footer-social){text-decoration:u
   .hero-scroll{display:none}
   .smart-section::after{width:300px;height:300px}
   .cta-band::after{display:none}
+}
+
+/* ═══════════════════════════════════════════════════════
+   ADA ACCESSIBILITY WIDGET — WCAG 2.1 AA
+   MrRhinoConnect | ThatsKrispy
+═══════════════════════════════════════════════════════ */
+
+/* ── Screen-reader only utility ─────────────────────── */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ── Skip link ──────────────────────────────────────── */
+.skip-link{
+  position:fixed;top:-100px;left:1rem;z-index:99999;
+  background:var(--dark);color:#fff;
+  padding:.75rem 1.5rem;border-radius:0 0 8px 8px;
+  font-weight:700;font-size:.9rem;
+  transition:top .15s ease;
+  border:2px solid var(--pink);
+  text-decoration:none;
+}
+.skip-link:focus{top:0}
+
+/* ── Widget wrap ────────────────────────────────────── */
+#ada-widget-wrap{
+  position:fixed;
+  bottom:1.5rem;right:1.5rem;
+  z-index:9998;
+  display:flex;flex-direction:column;align-items:flex-end;gap:.65rem;
+}
+
+/* ── Trigger button ─────────────────────────────────── */
+#ada-trigger{
+  display:flex;flex-direction:column;align-items:center;gap:.25rem;
+  width:60px;padding:.55rem .4rem .45rem;
+  background:var(--dark);
+  border:2px solid rgba(200,104,143,.35);
+  border-radius:14px;
+  color:#fff;cursor:pointer;
+  box-shadow:0 4px 20px rgba(3,22,36,.35),0 0 0 0 rgba(200,104,143,0);
+  transition:all .25s ease;
+  font-size:0;/* hide text visually but keep for AT */
+}
+#ada-trigger svg{width:26px;height:26px;display:block;flex-shrink:0}
+.ada-trigger-label{
+  font-size:.55rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:rgba(255,255,255,.65);
+  line-height:1;
+}
+#ada-trigger:hover,#ada-trigger:focus-visible{
+  background:var(--pink);border-color:var(--pink);
+  box-shadow:0 6px 24px rgba(200,104,143,.45);
+  transform:translateY(-2px);
+}
+#ada-trigger:focus-visible{
+  outline:3px solid var(--pink);outline-offset:3px;
+}
+#ada-trigger[aria-expanded="true"]{
+  background:var(--pink);border-color:var(--pink);
+}
+
+/* ── Panel ──────────────────────────────────────────── */
+#ada-panel{
+  width:300px;
+  background:#fff;
+  border:1px solid rgba(3,22,36,.1);
+  border-radius:16px;
+  box-shadow:0 16px 56px rgba(3,22,36,.2),0 4px 16px rgba(3,22,36,.1);
+  overflow:hidden;
+  /* hidden attr handles display — no JS class needed */
+}
+#ada-panel[hidden]{display:none}
+
+/* Panel header */
+.ada-panel-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.85rem 1.1rem;
+  background:linear-gradient(135deg,var(--dark),#1a3048);
+  color:#fff;
+  font-family:var(--font-display);
+  font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+}
+#ada-close{
+  background:none;border:none;color:rgba(255,255,255,.65);cursor:pointer;
+  padding:.2rem;border-radius:4px;line-height:0;
+  transition:color .15s;
+}
+#ada-close svg{width:16px;height:16px;display:block}
+#ada-close:hover{color:#fff}
+#ada-close:focus-visible{outline:2px solid var(--pink);outline-offset:2px;color:#fff}
+
+/* Section labels */
+.ada-section-label{
+  font-size:.67rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--text-muted);
+  padding:.65rem 1.1rem .3rem;
+  background:var(--light);
+  border-top:1px solid rgba(3,22,36,.07);
+  border-bottom:1px solid rgba(3,22,36,.07);
+  margin-top:.25rem;
+}
+
+/* Options group */
+.ada-options{padding:.5rem .75rem;display:flex;flex-direction:column;gap:.3rem}
+
+/* Stepper row */
+.ada-option-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.5rem .35rem;border-radius:8px;
+}
+.ada-option-label{
+  font-size:.82rem;font-weight:600;color:var(--dark);flex:1
+}
+.ada-stepper{display:flex;align-items:center;gap:.4rem}
+.ada-step-btn{
+  width:28px;height:28px;
+  border-radius:7px;border:1.5px solid rgba(3,22,36,.15);
+  background:#fff;cursor:pointer;color:var(--dark);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .15s;flex-shrink:0;
+}
+.ada-step-btn svg{width:14px;height:14px;display:block}
+.ada-step-btn:hover:not(:disabled){background:var(--pink);border-color:var(--pink);color:#fff}
+.ada-step-btn:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+.ada-step-btn:disabled{opacity:.3;cursor:not-allowed}
+.ada-step-val{
+  font-size:.78rem;font-weight:700;color:var(--dark);
+  min-width:3.5rem;text-align:center;
+}
+
+/* Toggle buttons */
+.ada-toggle-btn{
+  display:flex;align-items:center;gap:.7rem;
+  width:100%;padding:.55rem .5rem;
+  background:none;border:1.5px solid rgba(3,22,36,.09);
+  border-radius:9px;cursor:pointer;color:var(--dark);
+  text-align:left;transition:all .18s;
+  font-size:.82rem;font-weight:600;font-family:var(--font-body);
+}
+.ada-toggle-icon{
+  width:32px;height:32px;min-width:32px;
+  background:rgba(3,22,36,.06);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .18s;
+}
+.ada-toggle-icon svg{width:16px;height:16px;display:block}
+.ada-toggle-btn .ada-toggle-status{
+  margin-left:auto;font-size:.7rem;font-weight:700;
+  color:var(--text-muted);letter-spacing:.05em;
+  text-transform:uppercase;flex-shrink:0;
+}
+.ada-toggle-btn:hover{
+  border-color:var(--pink);background:rgba(200,104,143,.04)
+}
+.ada-toggle-btn:focus-visible{
+  outline:2px solid var(--pink);outline-offset:2px
+}
+.ada-toggle-btn.ada-on{
+  border-color:var(--pink);
+  background:rgba(200,104,143,.07);
+}
+.ada-toggle-btn.ada-on .ada-toggle-icon{
+  background:var(--pink);
+}
+.ada-toggle-btn.ada-on .ada-toggle-icon svg{stroke:#fff}
+.ada-toggle-btn.ada-on .ada-toggle-status{color:var(--pink)}
+
+/* Reset button */
+.ada-reset-btn{
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  width:calc(100% - 1.5rem);margin:.5rem .75rem .25rem;
+  padding:.6rem;border-radius:9px;
+  border:1.5px solid rgba(3,22,36,.12);
+  background:#fff;cursor:pointer;
+  font-size:.78rem;font-weight:700;color:var(--text-muted);
+  font-family:var(--font-body);transition:all .18s;
+}
+.ada-reset-btn svg{width:14px;height:14px;display:block}
+.ada-reset-btn:hover{border-color:var(--pink);color:var(--pink);background:rgba(200,104,143,.05)}
+.ada-reset-btn:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+
+/* Footer note */
+.ada-footer-note{
+  text-align:center;padding:.55rem .75rem .75rem;
+  font-size:.68rem;color:var(--text-muted);
+}
+.ada-footer-note a{color:var(--pink);text-decoration:underline}
+.ada-footer-note a:hover{color:var(--pink-dark)}
+.ada-footer-note a:focus-visible{outline:2px solid var(--pink);outline-offset:2px;border-radius:2px}
+
+/* ── Applied state CSS ──────────────────────────────── */
+/* Font size — applied to html element via JS inline style */
+
+/* Line spacing */
+body.ada-linespacing,
+body.ada-linespacing *{line-height:1.9 !important}
+
+/* High contrast — pure black/white */
+body.ada-contrast{
+  filter:contrast(2) !important;
+}
+body.ada-contrast *{
+  text-shadow:none !important;
+  box-shadow:none !important;
+}
+
+/* Invert */
+body.ada-invert{filter:invert(1) hue-rotate(180deg) !important}
+body.ada-invert img,
+body.ada-invert video,
+body.ada-invert canvas,
+body.ada-invert svg:not([aria-hidden="true"]){
+  filter:invert(1) hue-rotate(180deg)
+}
+
+/* Grayscale */
+body.ada-grayscale{filter:grayscale(100%) !important}
+
+/* Low saturation */
+body.ada-saturation{filter:saturate(0.3) !important}
+
+/* Highlight links */
+body.ada-links a:not(.btn):not(.nav-call-btn):not(.footer-social){
+  text-decoration:underline !important;
+  text-decoration-style:solid !important;
+  text-decoration-color:var(--pink) !important;
+  text-decoration-thickness:2px !important;
+  text-underline-offset:3px !important;
+  background:rgba(200,104,143,.08) !important;
+  padding:0 .15em !important;
+  border-radius:2px !important;
+}
+
+/* Enhanced focus ring */
+body.ada-focus *:focus{
+  outline:3px solid var(--pink) !important;
+  outline-offset:3px !important;
+  border-radius:4px !important;
+  box-shadow:0 0 0 6px rgba(200,104,143,.2) !important;
+}
+
+/* Pause animations */
+body.ada-noanimation *,
+body.ada-noanimation *::before,
+body.ada-noanimation *::after{
+  animation-duration:.001ms !important;
+  animation-iteration-count:1 !important;
+  transition-duration:.001ms !important;
+  scroll-behavior:auto !important;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media(max-width:480px){
+  #ada-widget-wrap{bottom:1rem;right:1rem}
+  #ada-panel{width:calc(100vw - 2rem)}
 }
