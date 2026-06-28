@@ -28,3 +28,5 @@
 /ev-charging                  /services/ev-charging-stations        301
 /low-voltage-wiring           /services/electrical-low-voltage-wiring 301
 /distributed-antenna-system   /services/das                         301
+
+/privacy-policy     /privacy-policy.html   200

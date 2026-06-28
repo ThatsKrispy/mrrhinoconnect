@@ -1,114 +1,139 @@
-// MrRhinoConnect — main.js
-// ThatsKrispy Agency Build
+/* MrRhinoConnect — main.js
+   Mobile nav · FAQ accordion · Scroll reveal · Form handling */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── Mobile Nav Toggle ──────────────────────
-  const toggle = document.querySelector('.nav-toggle');
-  const menu   = document.querySelector('.nav-menu');
+  /* ── MOBILE NAV ────────────────────────────────────── */
+  document.addEventListener('click', e => {
+    const toggle = e.target.closest('.nav-toggle');
+    const menu   = document.querySelector('.nav-menu');
+    if (!toggle || !menu) return;
+    const open = menu.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
 
-  if (toggle && menu) {
-    toggle.addEventListener('click', () => {
-      const open = menu.classList.toggle('open');
-      toggle.classList.toggle('open', open);
-      document.body.style.overflow = open ? 'hidden' : '';
-    });
-
-    // Close on outside click
-    document.addEventListener('click', (e) => {
-      if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-        menu.classList.remove('open');
-        toggle.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-    });
-  }
-
-  // ── Active Nav Link ────────────────────────
-  const path = window.location.pathname.replace(/\/$/, '');
-  document.querySelectorAll('.nav-link').forEach(link => {
-    const href = link.getAttribute('href').replace(/\/$/, '');
-    if (href === path || (path === '' && href === '/index.html')) {
-      link.classList.add('active');
+  // Close on outside click
+  document.addEventListener('click', e => {
+    const menu = document.querySelector('.nav-menu');
+    const toggle = document.querySelector('.nav-toggle');
+    if (!menu?.classList.contains('open')) return;
+    if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+      menu.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
     }
   });
 
-  // ── FAQ Accordion ──────────────────────────
-  document.querySelectorAll('.faq-question').forEach(question => {
-    question.addEventListener('click', () => {
-      const item   = question.closest('.faq-item');
-      const answer = item.querySelector('.faq-answer');
-      const isOpen = question.classList.contains('open');
+  // Close on resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      const menu = document.querySelector('.nav-menu');
+      const toggle = document.querySelector('.nav-toggle');
+      menu?.classList.remove('open');
+      toggle?.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
 
+  /* ── FAQ ACCORDION ─────────────────────────────────── */
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isOpen = btn.classList.contains('open');
       // Close all
-      document.querySelectorAll('.faq-question.open').forEach(q => {
+      document.querySelectorAll('.faq-question').forEach(q => {
         q.classList.remove('open');
-        q.closest('.faq-item').querySelector('.faq-answer').classList.remove('open');
+        q.setAttribute('aria-expanded', 'false');
+        q.nextElementSibling?.classList.remove('open');
       });
-
-      // Toggle current
+      // Toggle clicked
       if (!isOpen) {
-        question.classList.add('open');
-        answer.classList.add('open');
+        btn.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.nextElementSibling?.classList.add('open');
       }
+    });
+
+    // Keyboard support
+    btn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
     });
   });
 
-  // ── Scroll Reveal ──────────────────────────
+  /* ── SCROLL REVEAL ─────────────────────────────────── */
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+          observer.unobserve(el.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   } else {
+    // Fallback — show all
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
   }
 
-  // ── Sticky Header Shadow ───────────────────
+  /* ── STICKY HEADER SHADOW ──────────────────────────── */
   const header = document.querySelector('.site-header');
   if (header) {
     window.addEventListener('scroll', () => {
-      header.style.boxShadow = window.scrollY > 10
-        ? '0 4px 20px rgba(0,0,0,0.12)'
-        : '0 2px 12px rgba(0,0,0,0.06)';
+      header.style.boxShadow = window.scrollY > 20
+        ? '0 4px 24px rgba(0,0,0,0.10)'
+        : '0 2px 12px rgba(0,0,0,0.05)';
     }, { passive: true });
   }
 
-  // ── Contact Form Submit ────────────────────
-  const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+  /* ── CONTACT FORM ──────────────────────────────────── */
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', async e => {
       e.preventDefault();
-      const btn = contactForm.querySelector('button[type=submit]');
-      const originalText = btn.textContent;
+      const btn = form.querySelector('button[type="submit"]');
+      const success = document.getElementById('form-success');
+      const original = btn.textContent;
       btn.textContent = 'Sending…';
       btn.disabled = true;
 
-      // Simulate — in production hook to Formspree/Cloudflare Workers
-      setTimeout(() => {
-        const msg = document.getElementById('form-success');
-        if (msg) msg.style.display = 'block';
-        contactForm.reset();
-        btn.textContent = originalText;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.reset();
+          if (success) success.style.display = 'block';
+          btn.textContent = 'Sent!';
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.disabled = false;
+            if (success) success.style.display = 'none';
+          }, 5000);
+        } else {
+          throw new Error('Server error');
+        }
+      } catch {
+        btn.textContent = 'Error — try again';
         btn.disabled = false;
-        msg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 1200);
+        setTimeout(() => { btn.textContent = original; }, 3000);
+      }
     });
   }
 
-  // ── Newsletter Form ────────────────────────
-  document.querySelectorAll('.newsletter-form').forEach(form => {
-    form.addEventListener('submit', (e) => {
+  /* ── NEWSLETTER FORM ───────────────────────────────── */
+  document.querySelectorAll('.newsletter-form').forEach(nf => {
+    nf.addEventListener('submit', e => {
       e.preventDefault();
-      const btn = form.querySelector('button');
-      btn.textContent = 'Subscribed!';
-      setTimeout(() => { btn.textContent = 'Subscribe'; form.reset(); }, 3000);
+      const btn = nf.querySelector('button');
+      btn.textContent = '✓ Subscribed!';
+      btn.disabled = true;
+      setTimeout(() => { btn.textContent = 'Subscribe'; btn.disabled = false; nf.reset(); }, 3000);
     });
   });
 
