@@ -1350,3 +1350,17 @@ body.a11y-links a:not(.btn):not(.nav-link):not(.footer-social) {
   transition: top 0.2s;
 }
 .skip-link:focus { top: 0; }
+
+/* ── Photo-backed heroes (page-hero + article-hero) ── */
+.page-hero.has-photo,
+.article-hero.has-photo {
+  background-size: cover;
+  background-position: center;
+}
+.page-hero.has-photo::before,
+.article-hero.has-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26,26,46,0.82) 0%, rgba(22,33,62,0.68) 100%);
+}
