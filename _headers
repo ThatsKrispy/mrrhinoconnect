@@ -5,17 +5,29 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
-/assets/css/*
+# Hashed assets — truly immutable (content hash in filename = safe forever)
+/assets/css/style.*.css
   Cache-Control: public, max-age=31536000, immutable
 
-/assets/js/*
+/assets/js/main.*.js
   Cache-Control: public, max-age=31536000, immutable
 
+/assets/js/components.*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images — 30 day cache (reasonable for images)
 /assets/images/*
   Cache-Control: public, max-age=2592000
 
+# HTML pages — always revalidate (so updates show immediately)
 /*.html
-  Cache-Control: public, max-age=3600, must-revalidate
+  Cache-Control: no-cache, must-revalidate
 
 /
-  Cache-Control: public, max-age=3600, must-revalidate
+  Cache-Control: no-cache, must-revalidate
+
+/services/*.html
+  Cache-Control: no-cache, must-revalidate
+
+/news/*.html
+  Cache-Control: no-cache, must-revalidate
