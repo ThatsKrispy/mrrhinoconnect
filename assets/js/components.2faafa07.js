@@ -1,11 +1,4 @@
-/* MrRhinoConnect — Shared Nav + Footer + A11y + Consent
-   ThatsKrispy Agency Build */
-(function () {
-
-  const LOGO = '/assets/images/mrrhinoconnect-logo-v3.png';
-
-  /* ── NAV ─────────────────────────────────────────────── */
-  const NAV_HTML = `
+(function(){const LOGO='/assets/images/mrrhinoconnect-logo-v3.png';const NAV_HTML=`
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="site-header" role="banner">
   <div class="nav-wrapper">
@@ -67,10 +60,7 @@
       <a href="/contact.html" class="nav-call-btn">Get Started</a>
     </div>
   </div>
-</header>`;
-
-  /* ── FOOTER ──────────────────────────────────────────── */
-  const FOOTER_HTML = `
+</header>`;const FOOTER_HTML=`
 <div class="newsletter-strip" role="complementary" aria-label="Newsletter signup">
   <div class="newsletter-inner">
     <h3>Get the Latest News &amp; Updates</h3>
@@ -153,10 +143,7 @@
     <span>Copyright &copy; 2025 MrRhinoConnect. All rights reserved.</span>
     <span>Built by <a href="https://thatskrispy.com" target="_blank" rel="noopener noreferrer">@ThatsKrispy</a></span>
   </div>
-</footer>`;
-
-  /* ── CONSENT BANNER ──────────────────────────────────── */
-  const CONSENT_HTML = `
+</footer>`;const CONSENT_HTML=`
 <div class="consent-banner" id="consent-banner" role="dialog" aria-modal="false" aria-label="Cookie consent">
   <div class="consent-inner">
     <div class="consent-text">
@@ -167,10 +154,7 @@
       <button class="consent-decline" id="consent-decline" aria-label="Decline non-essential cookies">Decline</button>
     </div>
   </div>
-</div>`;
-
-  /* ── ACCESSIBILITY WIDGET ────────────────────────────── */
-  const A11Y_HTML = `
+</div>`;const A11Y_HTML=`
 <button class="a11y-btn" id="a11y-toggle" aria-label="Open accessibility options" aria-expanded="false" aria-controls="a11y-panel">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
     <circle cx="12" cy="12" r="10"/>
@@ -199,114 +183,7 @@
     </button>
   </div>
   <button class="a11y-reset" id="a11y-reset" aria-label="Reset all accessibility settings">Reset All Settings</button>
-</div>`;
-
-  /* ── INJECT ──────────────────────────────────────────── */
-  const navEl = document.getElementById('site-nav');
-  if (navEl) navEl.innerHTML = NAV_HTML;
-
-  const footEl = document.getElementById('site-footer');
-  if (footEl) footEl.innerHTML = FOOTER_HTML;
-
-  // Append consent + a11y to body
-  const consentWrap = document.createElement('div');
-  consentWrap.innerHTML = CONSENT_HTML;
-  document.body.appendChild(consentWrap.firstElementChild);
-
-  const a11yWrap = document.createElement('div');
-  a11yWrap.innerHTML = A11Y_HTML;
-  while (a11yWrap.firstChild) document.body.appendChild(a11yWrap.firstChild);
-
-  /* ── ACTIVE NAV ──────────────────────────────────────── */
-  const path = window.location.pathname.replace(/\/$/, '') || '/';
-  document.querySelectorAll('.nav-link').forEach(link => {
-    const href = (link.getAttribute('href') || '').replace(/\/$/, '');
-    const isHome = (href === '/' || href === '/index.html') && path === '/';
-    const isMatch = href !== '/' && href !== '' && path.startsWith(href.replace('.html', ''));
-    if (isHome || isMatch) link.classList.add('active');
-  });
-
-  /* ── CONSENT LOGIC ───────────────────────────────────── */
-  const banner = document.getElementById('consent-banner');
-  if (banner) {
-    const stored = localStorage.getItem('mrrhino_consent');
-    if (!stored) banner.classList.add('visible');
-
-    document.getElementById('consent-accept').addEventListener('click', () => {
-      localStorage.setItem('mrrhino_consent', 'accepted');
-      banner.classList.remove('visible');
-    });
-    document.getElementById('consent-decline').addEventListener('click', () => {
-      localStorage.setItem('mrrhino_consent', 'declined');
-      banner.classList.remove('visible');
-    });
-  }
-
-  /* ── ACCESSIBILITY LOGIC ─────────────────────────────── */
-  const a11yToggle = document.getElementById('a11y-toggle');
-  const a11yPanel  = document.getElementById('a11y-panel');
-  const a11yReset  = document.getElementById('a11y-reset');
-
-  const A11Y_CLASSES = ['a11y-large-text', 'a11y-high-contrast', 'a11y-grayscale', 'a11y-links'];
-  const stored = JSON.parse(localStorage.getItem('mrrhino_a11y') || '{}');
-
-  // Restore saved states
-  Object.keys(stored).forEach(k => {
-    if (stored[k]) {
-      document.body.classList.add('a11y-' + k);
-      const btn = document.querySelector(`[data-a11y="${k}"]`);
-      if (btn) { btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true'); }
-    }
-  });
-
-  if (a11yToggle) {
-    a11yToggle.addEventListener('click', () => {
-      const open = a11yPanel.classList.toggle('open');
-      a11yToggle.setAttribute('aria-expanded', open);
-    });
-  }
-
-  document.querySelectorAll('.a11y-option').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const key = btn.dataset.a11y;
-      const cls = 'a11y-' + key;
-      const isActive = document.body.classList.toggle(cls);
-      btn.classList.toggle('active', isActive);
-      btn.setAttribute('aria-pressed', isActive);
-      const pref = JSON.parse(localStorage.getItem('mrrhino_a11y') || '{}');
-      pref[key] = isActive;
-      localStorage.setItem('mrrhino_a11y', JSON.stringify(pref));
-    });
-  });
-
-  if (a11yReset) {
-    a11yReset.addEventListener('click', () => {
-      A11Y_CLASSES.forEach(c => document.body.classList.remove(c));
-      document.querySelectorAll('.a11y-option').forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-pressed', 'false');
-      });
-      localStorage.removeItem('mrrhino_a11y');
-    });
-  }
-
-  // Close a11y panel on outside click
-  document.addEventListener('click', e => {
-    if (a11yPanel && a11yPanel.classList.contains('open')) {
-      if (!a11yPanel.contains(e.target) && !a11yToggle.contains(e.target)) {
-        a11yPanel.classList.remove('open');
-        a11yToggle.setAttribute('aria-expanded', 'false');
-      }
-    }
-  });
-
-  // Escape key closes panel
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && a11yPanel?.classList.contains('open')) {
-      a11yPanel.classList.remove('open');
-      a11yToggle.setAttribute('aria-expanded', 'false');
-      a11yToggle.focus();
-    }
-  });
-
-})();
+</div>`;const navEl=document.getElementById('site-nav');if(navEl)navEl.innerHTML=NAV_HTML;const footEl=document.getElementById('site-footer');if(footEl)footEl.innerHTML=FOOTER_HTML;const consentWrap=document.createElement('div');consentWrap.innerHTML=CONSENT_HTML;document.body.appendChild(consentWrap.firstElementChild);const a11yWrap=document.createElement('div');a11yWrap.innerHTML=A11Y_HTML;while(a11yWrap.firstChild)document.body.appendChild(a11yWrap.firstChild);const path=window.location.pathname.replace(/\/$/,'')||'/';document.querySelectorAll('.nav-link').forEach(link=>{const href=(link.getAttribute('href')||'').replace(/\/$/,'');const isHome=(href==='/'||href==='/index.html')&&path==='/';const isMatch=href!=='/'&&href!==''&&path.startsWith(href.replace('.html',''));if(isHome||isMatch)link.classList.add('active');});const banner=document.getElementById('consent-banner');if(banner){const stored=localStorage.getItem('mrrhino_consent');if(!stored)banner.classList.add('visible');document.getElementById('consent-accept').addEventListener('click',()=>{localStorage.setItem('mrrhino_consent','accepted');banner.classList.remove('visible');});document.getElementById('consent-decline').addEventListener('click',()=>{localStorage.setItem('mrrhino_consent','declined');banner.classList.remove('visible');});}
+const a11yToggle=document.getElementById('a11y-toggle');const a11yPanel=document.getElementById('a11y-panel');const a11yReset=document.getElementById('a11y-reset');const A11Y_CLASSES=['a11y-large-text','a11y-high-contrast','a11y-grayscale','a11y-links'];const stored=JSON.parse(localStorage.getItem('mrrhino_a11y')||'{}');Object.keys(stored).forEach(k=>{if(stored[k]){document.body.classList.add('a11y-'+k);const btn=document.querySelector(`[data-a11y="${k}"]`);if(btn){btn.classList.add('active');btn.setAttribute('aria-pressed','true');}}});if(a11yToggle){a11yToggle.addEventListener('click',()=>{const open=a11yPanel.classList.toggle('open');a11yToggle.setAttribute('aria-expanded',open);});}
+document.querySelectorAll('.a11y-option').forEach(btn=>{btn.addEventListener('click',()=>{const key=btn.dataset.a11y;const cls='a11y-'+key;const isActive=document.body.classList.toggle(cls);btn.classList.toggle('active',isActive);btn.setAttribute('aria-pressed',isActive);const pref=JSON.parse(localStorage.getItem('mrrhino_a11y')||'{}');pref[key]=isActive;localStorage.setItem('mrrhino_a11y',JSON.stringify(pref));});});if(a11yReset){a11yReset.addEventListener('click',()=>{A11Y_CLASSES.forEach(c=>document.body.classList.remove(c));document.querySelectorAll('.a11y-option').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});localStorage.removeItem('mrrhino_a11y');});}
+document.addEventListener('click',e=>{if(a11yPanel&&a11yPanel.classList.contains('open')){if(!a11yPanel.contains(e.target)&&!a11yToggle.contains(e.target)){a11yPanel.classList.remove('open');a11yToggle.setAttribute('aria-expanded','false');}}});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&a11yPanel?.classList.contains('open')){a11yPanel.classList.remove('open');a11yToggle.setAttribute('aria-expanded','false');a11yToggle.focus();}});})();
