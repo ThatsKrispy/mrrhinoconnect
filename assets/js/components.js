@@ -8,50 +8,50 @@
     <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
     <nav class="nav-menu" role="navigation">
       <div class="nav-item"><a href="/" class="nav-link">Home</a></div>
-      <div class="nav-item"><a href="/about" class="nav-link">About Us</a></div>
+      <div class="nav-item"><a href="/about.html" class="nav-link">About Us</a></div>
       <div class="nav-item">
-        <a href="/services" class="nav-link">Services <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+        <a href="/services.html" class="nav-link">Services <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
         <div class="dropdown">
           <div class="dropdown-group">
             <span class="dropdown-label">Networking &amp; Connectivity</span>
-            <a href="/services/electrical-low-voltage-wiring">Electrical &amp; Low Voltage Wiring</a>
-            <a href="/services/managed-wifi">Managed WiFi for Common Areas</a>
-            <a href="/services/fiber-optic">Fiber Optic Circuit</a>
-            <a href="/services/pots-line-replacements">POTS Line Replacements</a>
-            <a href="/services/iptv">Internet Protocol TV (IPTV)</a>
-            <a href="/services/electrical-cabling">Electrical Cabling</a>
-            <a href="/services/das">Distributed Antenna System</a>
+            <a href="/services/electrical-low-voltage-wiring.html">Electrical &amp; Low Voltage Wiring</a>
+            <a href="/services/managed-wifi.html">Managed WiFi for Common Areas</a>
+            <a href="/services/fiber-optic.html">Fiber Optic Circuit</a>
+            <a href="/services/pots-line-replacements.html">POTS Line Replacements</a>
+            <a href="/services/iptv.html">Internet Protocol TV (IPTV)</a>
+            <a href="/services/electrical-cabling.html">Electrical Cabling</a>
+            <a href="/services/das.html">Distributed Antenna System</a>
           </div>
           <div class="dropdown-divider"></div>
           <div class="dropdown-group">
             <span class="dropdown-label">Surveillance &amp; Security</span>
-            <a href="/services/cctv-security-cameras">CCTV &amp; Security Cameras</a>
-            <a href="/services/mobile-security-trailer">Mobile Security Trailer</a>
-            <a href="/services/iot-sensors-beacons">IoT Sensors and Beacons</a>
+            <a href="/services/cctv-security-cameras.html">CCTV &amp; Security Cameras</a>
+            <a href="/services/mobile-security-trailer.html">Mobile Security Trailer</a>
+            <a href="/services/iot-sensors-beacons.html">IoT Sensors and Beacons</a>
           </div>
           <div class="dropdown-divider"></div>
           <div class="dropdown-group">
             <span class="dropdown-label">Smart Building Systems</span>
-            <a href="/services/smart-buildings">Smart Buildings</a>
-            <a href="/services/solar-panels">Solar Panels</a>
-            <a href="/services/hvac">HVAC</a>
-            <a href="/services/ev-charging-stations">EV Charging Stations</a>
-            <a href="/services/digital-signage">Digital Signage</a>
-            <a href="/services/led-lighting">LED Lighting</a>
-            <a href="/services/air-quality-control">Air Quality Control</a>
+            <a href="/services/smart-buildings.html">Smart Buildings</a>
+            <a href="/services/solar-panels.html">Solar Panels</a>
+            <a href="/services/hvac.html">HVAC</a>
+            <a href="/services/ev-charging-stations.html">EV Charging Stations</a>
+            <a href="/services/digital-signage.html">Digital Signage</a>
+            <a href="/services/led-lighting.html">LED Lighting</a>
+            <a href="/services/air-quality-control.html">Air Quality Control</a>
           </div>
         </div>
       </div>
-      <div class="nav-item"><a href="/faq" class="nav-link">FAQ</a></div>
-      <div class="nav-item"><a href="/news" class="nav-link">News</a></div>
-      <div class="nav-item"><a href="/contact" class="nav-link">Contact</a></div>
+      <div class="nav-item"><a href="/faq.html" class="nav-link">FAQ</a></div>
+      <div class="nav-item"><a href="/news.html" class="nav-link">News</a></div>
+      <div class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></div>
     </nav>
     <div class="nav-cta">
       <a href="tel:+13052491084" class="nav-phone">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
         305.249.1084
       </a>
-      <a href="/contact" class="btn btn-primary">Get Started</a>
+      <a href="/contact.html" class="btn btn-primary">Get Started</a>
     </div>
   </div>
 </header>`;
@@ -83,23 +83,23 @@
       <h4>Quick Links</h4>
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/faq">FAQ</a></li>
-        <li><a href="/news">News</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="/about.html">About Us</a></li>
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/contact.html">Contact</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Services</h4>
       <ul>
-        <li><a href="/services/fiber-optic">Fiber Optic</a></li>
-        <li><a href="/services/managed-wifi">Managed WiFi</a></li>
-        <li><a href="/services/cctv-security-cameras">CCTV Security</a></li>
-        <li><a href="/services/solar-panels">Solar Panels</a></li>
-        <li><a href="/services/ev-charging-stations">EV Charging</a></li>
-        <li><a href="/services/iptv">IPTV</a></li>
-        <li><a href="/services/smart-buildings">Smart Buildings</a></li>
+        <li><a href="/services/fiber-optic.html">Fiber Optic</a></li>
+        <li><a href="/services/managed-wifi.html">Managed WiFi</a></li>
+        <li><a href="/services/cctv-security-cameras.html">CCTV Security</a></li>
+        <li><a href="/services/solar-panels.html">Solar Panels</a></li>
+        <li><a href="/services/ev-charging-stations.html">EV Charging</a></li>
+        <li><a href="/services/iptv.html">IPTV</a></li>
+        <li><a href="/services/smart-buildings.html">Smart Buildings</a></li>
       </ul>
     </div>
     <div class="footer-col">
