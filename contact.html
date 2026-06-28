@@ -3,161 +3,380 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | MrRhinoConnect – Free Technology Consultation</title>
-  <meta name="description" content="Contact MrRhinoConnect for a free technology consultation. South Florida's premier real estate technology partner — call 305.249.1084 or email Hello@MrRhinoConnect.com." />
+  <title>Contact Us | Free Technology Consultation | MrRhinoConnect</title>
+  <meta name="description" content="Contact MrRhinoConnect for a free technology consultation. Serving Miami-Dade, Broward, and Palm Beach counties. Call 305.249.1084 or email Hello@MrRhinoConnect.com." />
+  <link rel="canonical" href="https://mrrhinoconnect.com/contact.html" />
   <link rel="icon" type="image/png" href="/assets/images/mrrhinoconnect-favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/css/style.0cba38c1.css" />
+  <style>
+    /* ── Contact page layout ──────────────────── */
+    .contact-page-grid{
+      display:grid;
+      grid-template-columns:1fr 1.4fr;
+      gap:4rem;
+      align-items:start;
+    }
+    /* Info column */
+    .contact-info-col{}
+    .contact-info-col .eyebrow{margin-bottom:.5rem}
+    .contact-info-col h2{margin-bottom:1rem}
+    .contact-info-col>p{margin-bottom:2.5rem;font-size:.95rem}
+
+    .contact-methods{display:flex;flex-direction:column;gap:0}
+    .contact-method{
+      display:flex;align-items:flex-start;gap:1.25rem;
+      padding:1.5rem 0;
+      border-bottom:1px solid rgba(3,22,36,.07);
+    }
+    .contact-method:last-child{border-bottom:none}
+    .contact-method-icon{
+      width:48px;height:48px;min-width:48px;
+      border-radius:12px;
+      background:var(--pink-light);
+      border:1px solid rgba(200,104,143,.2);
+      display:flex;align-items:center;justify-content:center;
+      color:var(--pink);flex-shrink:0;
+    }
+    .contact-method-icon svg{width:22px;height:22px;display:block}
+    .contact-method-body h3{
+      font-size:.9rem;color:var(--dark);
+      margin-bottom:.3rem;font-weight:700;
+    }
+    .contact-method-body a{
+      color:var(--pink);font-weight:700;font-size:1rem;
+      display:block;margin-bottom:.2rem;
+      transition:color var(--t);
+    }
+    .contact-method-body a:hover{color:var(--pink-dark)}
+    .contact-method-body p{font-size:.8rem;margin:0;line-height:1.55}
+
+    .contact-socials{display:flex;gap:.5rem;margin-top:.5rem;flex-wrap:wrap}
+    .contact-social-btn{
+      display:inline-flex;align-items:center;gap:.4rem;
+      padding:.35rem .85rem;border-radius:50px;
+      border:1.5px solid rgba(3,22,36,.12);
+      font-size:.75rem;font-weight:700;color:var(--dark);
+      transition:all var(--t);text-transform:uppercase;letter-spacing:.05em;
+    }
+    .contact-social-btn:hover{border-color:var(--pink);color:var(--pink);background:var(--pink-light)}
+    .contact-social-btn svg{width:13px;height:13px}
+
+    /* Form column */
+    .contact-form-col{
+      background:#fff;
+      border:1px solid rgba(3,22,36,.09);
+      border-radius:var(--r-lg);
+      padding:2.5rem;
+      box-shadow:var(--sh);
+    }
+    .contact-form-col h2{margin-bottom:.5rem;font-size:clamp(1.3rem,2.5vw,1.75rem)}
+    .contact-form-col>p{font-size:.88rem;margin-bottom:1.75rem}
+
+    .mailto-btn{
+      display:flex;align-items:center;justify-content:center;gap:.6rem;
+      width:100%;padding:1rem;border-radius:var(--r);
+      background:linear-gradient(135deg,var(--pink),var(--pink-dark));
+      color:#fff;font-family:var(--font-display);font-size:1rem;
+      font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+      border:none;cursor:pointer;transition:all var(--t);
+      text-decoration:none;margin-top:.5rem;
+    }
+    .mailto-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,104,143,.35)}
+    .mailto-btn svg{width:20px;height:20px}
+
+    .form-divider{
+      display:flex;align-items:center;gap:1rem;
+      margin:1.5rem 0;color:var(--text-muted);font-size:.8rem;
+    }
+    .form-divider::before,.form-divider::after{
+      content:'';flex:1;height:1px;background:rgba(3,22,36,.1)
+    }
+
+    .contact-form-inline label{font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:.3rem;display:block}
+    .contact-form-inline input,
+    .contact-form-inline select,
+    .contact-form-inline textarea{
+      width:100%;padding:.7rem .9rem;
+      border:1.5px solid rgba(3,22,36,.12);border-radius:6px;
+      font-family:var(--font-body);font-size:.88rem;color:var(--dark);
+      background:#fff;transition:border-color var(--t);
+      margin-bottom:1rem;
+    }
+    .contact-form-inline input:focus,
+    .contact-form-inline select:focus,
+    .contact-form-inline textarea:focus{
+      outline:none;border-color:var(--pink);
+      box-shadow:0 0 0 3px rgba(200,104,143,.09)
+    }
+    .contact-form-inline textarea{resize:vertical;min-height:100px}
+    .contact-form-inline .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .contact-form-inline .form-row input{margin-bottom:0}
+    .form-submit-note{font-size:.75rem;color:var(--text-muted);margin-top:.85rem;text-align:center;line-height:1.5}
+
+    /* Stats strip below hero */
+    .contact-stats{
+      background:var(--dark);padding:2rem 1.5rem;
+    }
+    .contact-stats-inner{
+      max-width:var(--max);margin:0 auto;
+      display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
+      text-align:center;
+    }
+    .contact-stat-num{
+      font-family:var(--font-display);font-size:2rem;font-weight:700;
+      color:var(--pink);display:block;line-height:1
+    }
+    .contact-stat-label{font-size:.75rem;color:rgba(255,255,255,.55);margin-top:.3rem;display:block;text-transform:uppercase;letter-spacing:.08em}
+
+    /* Responsive */
+    @media(max-width:1024px){
+      .contact-page-grid{grid-template-columns:1fr;gap:2.5rem}
+      .contact-stats-inner{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:600px){
+      .contact-form-col{padding:1.75rem 1.25rem}
+      .contact-form-inline .form-row{grid-template-columns:1fr}
+      .contact-form-inline .form-row input{margin-bottom:1rem}
+      .contact-stats-inner{grid-template-columns:repeat(2,1fr);gap:1rem}
+    }
+  </style>
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
 <div id="site-nav"></div>
 
-<section class="page-hero has-photo" style="background-image:url('/assets/images/mrrhinoconnect-residential-community-hvac-technology-south-florida.jpg')">
-  <div class="breadcrumb"><a href="/">Home</a><span>›</span><span>Contact</span></div>
-  <h1>Contact Us</h1>
-  <p>We'd Love To Hear From You</p>
+<section class="page-hero has-photo" style="background-image:url('/assets/images/mrrhinoconnect-residential-community-hvac-technology-south-florida.jpg')" id="main-content">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Home</a><span>›</span><span>Contact</span></div>
+    <h1>Get a Free Consultation</h1>
+    <p>South Florida's premier property technology partner — Miami-Dade, Broward &amp; Palm Beach</p>
+  </div>
 </section>
+
+<!-- Quick stats -->
+<div class="contact-stats">
+  <div class="contact-stats-inner">
+    <div>
+      <span class="contact-stat-num">16+</span>
+      <span class="contact-stat-label">Technology Services</span>
+    </div>
+    <div>
+      <span class="contact-stat-num">3</span>
+      <span class="contact-stat-label">Counties Served</span>
+    </div>
+    <div>
+      <span class="contact-stat-num">24h</span>
+      <span class="contact-stat-label">Response Time</span>
+    </div>
+    <div>
+      <span class="contact-stat-num">Free</span>
+      <span class="contact-stat-label">Site Assessment</span>
+    </div>
+  </div>
+</div>
 
 <section class="section section-light">
   <div class="container">
-    <div class="contact-grid">
+    <div class="contact-page-grid">
 
-      <!-- Contact Info -->
-      <div class="contact-info">
-        <div>
-          <span class="eyebrow">Get In Touch</span>
-          <h2 style="margin-bottom:1rem;">We'd Love To Hear From You</h2>
-          <p>Reach out to us today to explore innovative solutions tailored for your needs and elevate your property's potential with cutting-edge technology.</p>
-        </div>
+      <!-- ── LEFT: Contact Info ─────────────────────── -->
+      <div class="contact-info-col">
+        <span class="eyebrow">Get In Touch</span>
+        <h2>We'd Love to Hear From You</h2>
+        <p>Reach out to explore technology solutions tailored to your South Florida property — from a quick question to a full site assessment, we're here to help.</p>
 
-        <div class="contact-method reveal">
-          <div class="contact-method-icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-          </div>
-          <div>
-            <h3>Call Us</h3>
-            <a href="tel:+13052491084" style="font-size:1.1rem;font-weight:700;color:var(--pink);">305.249.1084</a>
-            <p style="margin-top:0.5rem;font-size:0.8rem;">By texting "Join" to 305.249.1084, you consent to receive text messages from MrRhinoConnect. Msg &amp; data rates may apply. Unsubscribe anytime by replying STOP.</p>
-          </div>
-        </div>
+        <div class="contact-methods">
 
-        <div class="contact-method reveal">
-          <div class="contact-method-icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <div>
-            <h3>Email Us</h3>
-            <a href="mailto:info@mrrhinoconnect.com" style="color:var(--pink);font-weight:600;">info@mrrhinoconnect.com</a>
-            <p style="margin-top:0.25rem;">We typically respond within 1 business day.</p>
-          </div>
-        </div>
-
-        <div class="contact-method reveal">
-          <div class="contact-method-icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div>
-            <h3>Service Area</h3>
-            <p style="font-weight:600;color:var(--dark);">Miami-Dade, Broward &amp; Palm Beach Counties</p>
-            <p>South Florida's premier technology solutions provider</p>
-          </div>
-        </div>
-
-        <div class="contact-method reveal">
-          <div class="contact-method-icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </div>
-          <div>
-            <h3>Follow Us</h3>
-            <div style="display:flex;gap:0.75rem;margin-top:0.5rem;">
-              <a href="https://www.facebook.com/MrRhinoConnect" target="_blank" rel="noopener" style="color:var(--pink);font-size:0.85rem;font-weight:600;">Facebook</a>
-              <a href="https://twitter.com/MrRhinoConnect1" target="_blank" rel="noopener" style="color:var(--pink);font-size:0.85rem;font-weight:600;">Twitter</a>
-              <a href="https://www.instagram.com/MrRhinoConnect/" target="_blank" rel="noopener" style="color:var(--pink);font-size:0.85rem;font-weight:600;">Instagram</a>
-              <a href="https://www.linkedin.com/in/mr-rhino-connect-5b058223a" target="_blank" rel="noopener" style="color:var(--pink);font-size:0.85rem;font-weight:600;">LinkedIn</a>
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <div class="contact-method-body">
+              <h3>Call or Text</h3>
+              <a href="tel:+13052491084">305.249.1084</a>
+              <p>Mon–Fri 8am–6pm EST. Text "JOIN" to opt in to updates.<br><span style="font-size:.74rem;opacity:.75">Msg &amp; data rates may apply. Reply STOP to unsubscribe.</span></p>
             </div>
           </div>
+
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="contact-method-body">
+              <h3>Email Us</h3>
+              <a href="mailto:Hello@MrRhinoConnect.com">Hello@MrRhinoConnect.com</a>
+              <p>We typically respond within 1 business day.</p>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="contact-method-body">
+              <h3>Service Area</h3>
+              <p style="font-weight:700;color:var(--dark);font-size:.92rem;margin-bottom:.2rem">Miami-Dade · Broward · Palm Beach</p>
+              <p>Serving properties from Homestead to Jupiter — including Miami, Fort Lauderdale, Boca Raton, and West Palm Beach.</p>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                <path d="M16 3.13a4 4 0 010 7.75"/>
+              </svg>
+            </div>
+            <div class="contact-method-body">
+              <h3>Follow Us</h3>
+              <p style="margin-bottom:.6rem">Stay current on South Florida property tech.</p>
+              <div class="contact-socials">
+                <a href="https://www.facebook.com/MrRhinoConnect" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="MrRhinoConnect on Facebook">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                  Facebook
+                </a>
+                <a href="https://www.instagram.com/MrRhinoConnect/" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="MrRhinoConnect on Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  Instagram
+                </a>
+                <a href="https://www.linkedin.com/in/mr-rhino-connect-5b058223a" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="MrRhinoConnect on LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  LinkedIn
+                </a>
+                <a href="https://twitter.com/MrRhinoConnect1" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="MrRhinoConnect on Twitter">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+                  Twitter
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <!-- Contact Form -->
-      <div class="contact-form reveal">
+      <!-- ── RIGHT: Message Form ──────────────────── -->
+      <div class="contact-form-col">
         <h2>Send Us a Message</h2>
-        <p>Fill out the form below and a member of our team will reach out to discuss your project.</p>
+        <p>Fill out the form below and we'll open your email client pre-filled and ready to send — no account required.</p>
 
-        <div id="form-success" id="form-success" class="form-success">
-          ✅ Message sent! We'll be in touch within 1 business day.
+        <!-- Primary CTA: direct email -->
+        <a href="mailto:Hello@MrRhinoConnect.com?subject=Free%20Consultation%20Request&body=Hi%20MrRhinoConnect%2C%0A%0AI%20am%20interested%20in%20a%20free%20consultation.%0A%0AName%3A%20%0APhone%3A%20%0AService%20of%20Interest%3A%20%0AProperty%20Type%3A%20%0AProperty%20Address%2FCity%3A%20%0A%0AMessage%3A%20" class="mailto-btn" id="mailto-quick">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          Email Us Directly
+        </a>
+
+        <div class="form-divider">or fill in your details below</div>
+
+        <!-- Detailed form → composes email via mailto -->
+        <div class="contact-form-inline">
+          <div class="form-row">
+            <div>
+              <label for="cf-fname">First Name</label>
+              <input type="text" id="cf-fname" placeholder="John" />
+            </div>
+            <div>
+              <label for="cf-lname">Last Name</label>
+              <input type="text" id="cf-lname" placeholder="Smith" />
+            </div>
+          </div>
+
+          <label for="cf-phone">Phone Number</label>
+          <input type="tel" id="cf-phone" placeholder="305-000-0000" />
+
+          <label for="cf-service">Service of Interest</label>
+          <select id="cf-service">
+            <option value="">Select a service...</option>
+            <option>Fiber Optic Circuit</option>
+            <option>Managed WiFi</option>
+            <option>CCTV &amp; Security Cameras</option>
+            <option>EV Charging Stations</option>
+            <option>Solar Panels</option>
+            <option>HVAC</option>
+            <option>Smart Buildings</option>
+            <option>LED Lighting</option>
+            <option>Air Quality Control</option>
+            <option>IoT Sensors &amp; Beacons</option>
+            <option>IPTV</option>
+            <option>Digital Signage</option>
+            <option>Distributed Antenna System (DAS)</option>
+            <option>Mobile Security Trailer</option>
+            <option>POTS Line Replacement</option>
+            <option>Electrical Cabling</option>
+            <option>Low Voltage Wiring</option>
+            <option>Multiple Services</option>
+          </select>
+
+          <label for="cf-property">Property Type</label>
+          <select id="cf-property">
+            <option value="">Select property type...</option>
+            <option>Apartment / Condo Community</option>
+            <option>Commercial Office</option>
+            <option>Retail Center</option>
+            <option>Hotel / Hospitality</option>
+            <option>HOA / Gated Community</option>
+            <option>New Construction</option>
+            <option>Industrial / Warehouse</option>
+            <option>Mixed-Use Development</option>
+            <option>Other</option>
+          </select>
+
+          <label for="cf-message">Tell Us About Your Project</label>
+          <textarea id="cf-message" rows="4" placeholder="Property size, location, current setup, and what you're looking to achieve..."></textarea>
+
+          <button class="mailto-btn" id="send-btn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+            Send Message
+          </button>
+
+          <p class="form-submit-note">Clicking "Send Message" opens your email client with your details pre-filled.<br>Your email goes directly to <strong>Hello@MrRhinoConnect.com</strong> — no middleman.</p>
         </div>
-
-        <form id="contact-form" action="https://formspree.io/f/mrrhinoconnect" method="POST">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">First Name *</label>
-              <input type="text" id="fname" name="firstName" placeholder="John" required />
-            </div>
-            <div class="form-group">
-              <label for="lname">Last Name *</label>
-              <input type="text" id="lname" name="lastName" placeholder="Smith" required />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email Address *</label>
-              <input type="email" id="email" name="email" placeholder="john@company.com" required />
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" placeholder="305-000-0000" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="service">Service of Interest</label>
-            <select id="service" name="service">
-              <option value="">Select a service...</option>
-              <option>Fiber Optic Circuit</option>
-              <option>Managed WiFi</option>
-              <option>CCTV &amp; Security Cameras</option>
-              <option>IoT Sensors &amp; Beacons</option>
-              <option>Solar Panels</option>
-              <option>EV Charging Stations</option>
-              <option>IPTV</option>
-              <option>Smart Buildings</option>
-              <option>LED Lighting</option>
-              <option>HVAC</option>
-              <option>Digital Signage</option>
-              <option>Air Quality Control</option>
-              <option>Mobile Security Trailer</option>
-              <option>DAS / Radio Boost</option>
-              <option>POTS Line Replacement</option>
-              <option>Electrical Cabling</option>
-              <option>Other / Multiple Services</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="property">Property Type</label>
-            <select id="property" name="propertyType">
-              <option value="">Select property type...</option>
-              <option>Apartment Complex</option>
-              <option>Commercial Office</option>
-              <option>Retail Center</option>
-              <option>Hotel / Hospitality</option>
-              <option>Construction Site</option>
-              <option>Industrial / Warehouse</option>
-              <option>HOA / Community</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Message *</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project, property size, current setup, and what you're looking to achieve..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
-          <p class="form-note" style="margin-top:1rem;">By submitting this form, you agree to be contacted by MrRhinoConnect regarding your inquiry. We respect your privacy and will never share your information.</p>
-        </form>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- Map / service area visual -->
+<section class="section section-dark" style="padding:3.5rem 1.5rem">
+  <div class="container" style="text-align:center">
+    <span class="eyebrow" style="color:rgba(255,255,255,.45)">Service Area</span>
+    <h2 style="color:#fff;margin-bottom:.75rem">Serving South Florida's Premier Properties</h2>
+    <p style="color:rgba(255,255,255,.55);max-width:560px;margin:0 auto 2.5rem">From Homestead to Jupiter — we serve commercial and multi-family properties throughout Miami-Dade, Broward, and Palm Beach counties.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center;max-width:760px;margin:0 auto">
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">Miami</span>
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">Miami Beach</span>
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">Brickell</span>
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">Coral Gables</span>
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">Hialeah</span>
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">Doral</span>
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">Aventura</span>
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">North Miami</span>
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">Fort Lauderdale</span>
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">Hollywood</span>
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">Hallandale Beach</span>
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">Pompano Beach</span>
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">Boca Raton</span>
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">Delray Beach</span>
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">West Palm Beach</span>
+      <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:rgba(255,255,255,.7)">Palm Beach Gardens</span>
     </div>
   </div>
 </section>
@@ -165,13 +384,47 @@
 <div class="cta-band">
   <div class="container">
     <h2>Ready to Transform Your Property?</h2>
-    <p>Reach out to us today to explore innovative solutions tailored for your needs.</p>
-    <a href="tel:+13052491084" class="btn btn-outline">📞 Call Now: 305.249.1084</a>
+    <p>Call us now or send a message — free site assessments for all South Florida properties.</p>
+    <div class="cta-actions">
+      <a href="tel:+13052491084" class="btn btn-outline">305.249.1084</a>
+      <a href="mailto:Hello@MrRhinoConnect.com" class="btn btn-white">Email Us</a>
+    </div>
   </div>
 </div>
 
 <div id="site-footer"></div>
 <script src="/assets/js/components.adea4af5.js" defer></script>
 <script src="/assets/js/main.51e90cbf.js" defer></script>
+<script>
+  // Build mailto from form fields and open email client
+  document.getElementById('send-btn').addEventListener('click', function() {
+    var fname   = document.getElementById('cf-fname').value.trim();
+    var lname   = document.getElementById('cf-lname').value.trim();
+    var phone   = document.getElementById('cf-phone').value.trim();
+    var service = document.getElementById('cf-service').value;
+    var propType= document.getElementById('cf-property').value;
+    var message = document.getElementById('cf-message').value.trim();
+
+    var name = [fname, lname].filter(Boolean).join(' ') || 'Not provided';
+    var subject = service
+      ? 'Consultation Request: ' + service
+      : 'Free Consultation Request — MrRhinoConnect';
+
+    var body = 'Hi MrRhinoConnect,\n\n'
+      + 'I would like to request a free consultation.\n\n'
+      + 'Name: ' + name + '\n'
+      + 'Phone: ' + (phone || 'Not provided') + '\n'
+      + 'Service of Interest: ' + (service || 'Not specified') + '\n'
+      + 'Property Type: ' + (propType || 'Not specified') + '\n\n'
+      + 'Message:\n' + (message || '(no message provided)') + '\n\n'
+      + 'Looking forward to hearing from you!';
+
+    var mailto = 'mailto:Hello@MrRhinoConnect.com'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+
+    window.location.href = mailto;
+  });
+</script>
 </body>
 </html>
