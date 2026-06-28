@@ -1,129 +1,88 @@
 # MrRhinoConnect — Cloudflare Pages Redirects
-# WordPress → Static Site URL Mappings
 
-# WordPress default URLs → clean URLs
+# ─── Clean URL rewrites (200 = serve file, URL stays clean) ───
+/about                              /about.html                 200
+/services                           /services.html              200
+/faq                                /faq.html                   200
+/contact                            /contact.html               200
+/news                               /news.html                  200
+
+# Service pages — clean URLs
+/services/fiber-optic               /services/fiber-optic.html                      200
+/services/managed-wifi              /services/managed-wifi.html                     200
+/services/cctv-security-cameras     /services/cctv-security-cameras.html            200
+/services/iot-sensors-beacons       /services/iot-sensors-beacons.html              200
+/services/ev-charging-stations      /services/ev-charging-stations.html             200
+/services/solar-panels              /services/solar-panels.html                     200
+/services/iptv                      /services/iptv.html                             200
+/services/led-lighting              /services/led-lighting.html                     200
+/services/digital-signage           /services/digital-signage.html                  200
+/services/smart-buildings           /services/smart-buildings.html                  200
+/services/hvac                      /services/hvac.html                             200
+/services/air-quality-control       /services/air-quality-control.html              200
+/services/pots-line-replacements    /services/pots-line-replacements.html           200
+/services/electrical-low-voltage-wiring /services/electrical-low-voltage-wiring.html 200
+/services/electrical-cabling        /services/electrical-cabling.html               200
+/services/das                       /services/das.html                              200
+/services/mobile-security-trailer   /services/mobile-security-trailer.html          200
+
+# News articles — clean URLs
+/news/ev-charging-stations-green-revolution /news/ev-charging-stations-green-revolution.html 200
+/news/innovative-parking-solutions  /news/innovative-parking-solutions.html         200
+/news/fiber-optic-revolution        /news/fiber-optic-revolution.html               200
+
+# ─── WordPress legacy redirects (301 = permanent redirect) ────
 /index.php                          /                           301
 /wp-admin                           /                           301
 /wp-login.php                       /                           301
 /wp-content/*                       /                           301
 /wp-includes/*                      /                           301
+/wp-json/*                          /                           301
 /feed                               /                           301
 /feed/                              /                           301
-/comments/feed                      /                           301
 
-# Page slug redirects (WordPress ?page_id= style)
-/?page_id=2                         /about.html                 301
-/?page_id=3                         /services.html              301
-/?page_id=4                         /contact.html               301
-/?page_id=5                         /faq.html                   301
-/?page_id=6                         /news.html                  301
+# Old WP page IDs
+/?page_id=2                         /about                      301
+/?page_id=3                         /services                   301
+/?page_id=4                         /contact                    301
+/?page_id=5                         /faq                        301
+/?page_id=6                         /news                       301
 
-# About page variants
-/about                              /about.html                 301
-/about/                             /about.html                 301
-/about-us                           /about.html                 301
-/about-us/                          /about.html                 301
+# Slug aliases → canonical clean URLs
+/about/                             /about                      301
+/about-us                           /about                      301
+/about-us/                          /about                      301
+/services/                          /services                   301
+/our-services                       /services                   301
+/our-services/                      /services                   301
+/faq/                               /faq                        301
+/frequently-asked-questions         /faq                        301
+/contact/                           /contact                    301
+/contact-us                         /contact                    301
+/contact-us/                        /contact                    301
+/news/                              /news                       301
+/blog                               /news                       301
+/blog/                              /news                       301
 
-# Services page variants
-/services                           /services.html              301
-/services/                          /services.html              301
-/our-services                       /services.html              301
-/our-services/                      /services.html              301
+# Old WP service slugs → canonical clean service URLs
+/fiber-optic-circuit                /services/fiber-optic       301
+/fiber-optic-circuit/               /services/fiber-optic       301
+/fiber-optic                        /services/fiber-optic       301
+/fiber-optic/                       /services/fiber-optic       301
+/managed-wifi-for-common-areas      /services/managed-wifi      301
+/managed-wifi-for-common-areas/     /services/managed-wifi      301
+/security-cameras                   /services/cctv-security-cameras 301
+/iot-sensors                        /services/iot-sensors-beacons 301
+/iot-sensors-and-beacons            /services/iot-sensors-beacons 301
+/ev-charging                        /services/ev-charging-stations 301
+/solar                              /services/solar-panels      301
+/low-voltage-wiring                 /services/electrical-low-voltage-wiring 301
+/distributed-antenna-system         /services/das               301
 
-# FAQ page variants
-/faq                                /faq.html                   301
-/faq/                               /faq.html                   301
-/frequently-asked-questions         /faq.html                   301
-/frequently-asked-questions/        /faq.html                   301
-
-# Contact page variants
-/contact                            /contact.html               301
-/contact/                           /contact.html               301
-/contact-us                         /contact.html               301
-/contact-us/                        /contact.html               301
-
-# News / Blog variants
-/news                               /news.html                  301
-/news/                              /news.html                  301
-/blog                               /news.html                  301
-/blog/                              /news.html                  301
-
-# Individual service pages (WordPress slug → static paths)
-/fiber-optic-circuit                /services/fiber-optic.html              301
-/fiber-optic-circuit/               /services/fiber-optic.html              301
-/fiber-optic                        /services/fiber-optic.html              301
-/fiber-optic/                       /services/fiber-optic.html              301
-
-/managed-wifi                       /services/managed-wifi.html             301
-/managed-wifi/                      /services/managed-wifi.html             301
-/managed-wifi-for-common-areas      /services/managed-wifi.html             301
-/managed-wifi-for-common-areas/     /services/managed-wifi.html             301
-
-/cctv-security-cameras              /services/cctv-security-cameras.html    301
-/cctv-security-cameras/             /services/cctv-security-cameras.html    301
-/security-cameras                   /services/cctv-security-cameras.html    301
-/security-cameras/                  /services/cctv-security-cameras.html    301
-
-/iot-sensors                        /services/iot-sensors-beacons.html      301
-/iot-sensors/                       /services/iot-sensors-beacons.html      301
-/iot-sensors-and-beacons            /services/iot-sensors-beacons.html      301
-/iot-sensors-and-beacons/           /services/iot-sensors-beacons.html      301
-
-/ev-charging                        /services/ev-charging-stations.html     301
-/ev-charging/                       /services/ev-charging-stations.html     301
-/ev-charging-stations               /services/ev-charging-stations.html     301
-/ev-charging-stations/              /services/ev-charging-stations.html     301
-
-/solar-panels                       /services/solar-panels.html             301
-/solar-panels/                      /services/solar-panels.html             301
-/solar                              /services/solar-panels.html             301
-/solar/                             /services/solar-panels.html             301
-
-/iptv                               /services/iptv.html                     301
-/iptv/                              /services/iptv.html                     301
-
-/led-lighting                       /services/led-lighting.html             301
-/led-lighting/                      /services/led-lighting.html             301
-
-/digital-signage                    /services/digital-signage.html          301
-/digital-signage/                   /services/digital-signage.html          301
-
-/smart-buildings                    /services/smart-buildings.html          301
-/smart-buildings/                   /services/smart-buildings.html          301
-
-/hvac                               /services/hvac.html                     301
-/hvac/                              /services/hvac.html                     301
-
-/air-quality-control                /services/air-quality-control.html      301
-/air-quality-control/               /services/air-quality-control.html      301
-
-/pots-line-replacements             /services/pots-line-replacements.html   301
-/pots-line-replacements/            /services/pots-line-replacements.html   301
-
-/electrical-low-voltage-wiring      /services/electrical-low-voltage-wiring.html  301
-/electrical-low-voltage-wiring/     /services/electrical-low-voltage-wiring.html  301
-/low-voltage-wiring                 /services/electrical-low-voltage-wiring.html  301
-/low-voltage-wiring/                /services/electrical-low-voltage-wiring.html  301
-
-/electrical-cabling                 /services/electrical-cabling.html       301
-/electrical-cabling/                /services/electrical-cabling.html       301
-
-/distributed-antenna-system         /services/das.html                      301
-/distributed-antenna-system/        /services/das.html                      301
-/das                                /services/das.html                      301
-/das/                               /services/das.html                      301
-
-/mobile-security-trailer            /services/mobile-security-trailer.html  301
-/mobile-security-trailer/           /services/mobile-security-trailer.html  301
-
-# News article WordPress slug patterns
-/ev-charging-stations-green-revolution    /news/ev-charging-stations-green-revolution.html  301
-/ev-charging-stations-green-revolution/   /news/ev-charging-stations-green-revolution.html  301
-/innovative-parking-solutions             /news/innovative-parking-solutions.html            301
-/innovative-parking-solutions/            /news/innovative-parking-solutions.html            301
-/fiber-optic-revolution                   /news/fiber-optic-revolution.html                 301
-/fiber-optic-revolution/                  /news/fiber-optic-revolution.html                 301
-
-# Catch-all: unknown WordPress paths → home
-/wp-json/*                          /                           301
-/?*                                 /                           301
+# Old WP news slugs → clean news URLs
+/ev-charging-stations-green-revolution   /news/ev-charging-stations-green-revolution 301
+/ev-charging-stations-green-revolution/  /news/ev-charging-stations-green-revolution 301
+/innovative-parking-solutions            /news/innovative-parking-solutions 301
+/innovative-parking-solutions/           /news/innovative-parking-solutions 301
+/fiber-optic-revolution                  /news/fiber-optic-revolution 301
+/fiber-optic-revolution/                 /news/fiber-optic-revolution 301

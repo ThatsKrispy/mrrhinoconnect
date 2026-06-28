@@ -8,131 +8,131 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/about.html</loc>
+    <loc>https://mrrhinoconnect.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services.html</loc>
+    <loc>https://mrrhinoconnect.com/services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/faq.html</loc>
+    <loc>https://mrrhinoconnect.com/faq</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/contact.html</loc>
+    <loc>https://mrrhinoconnect.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/news.html</loc>
+    <loc>https://mrrhinoconnect.com/news</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Service Pages -->
   <url>
-    <loc>https://mrrhinoconnect.com/services/fiber-optic.html</loc>
+    <loc>https://mrrhinoconnect.com/services/fiber-optic</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/managed-wifi.html</loc>
+    <loc>https://mrrhinoconnect.com/services/managed-wifi</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/cctv-security-cameras.html</loc>
+    <loc>https://mrrhinoconnect.com/services/cctv-security-cameras</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/iot-sensors-beacons.html</loc>
+    <loc>https://mrrhinoconnect.com/services/iot-sensors-beacons</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/ev-charging-stations.html</loc>
+    <loc>https://mrrhinoconnect.com/services/ev-charging-stations</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/solar-panels.html</loc>
+    <loc>https://mrrhinoconnect.com/services/solar-panels</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/iptv.html</loc>
+    <loc>https://mrrhinoconnect.com/services/iptv</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/led-lighting.html</loc>
+    <loc>https://mrrhinoconnect.com/services/led-lighting</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/digital-signage.html</loc>
+    <loc>https://mrrhinoconnect.com/services/digital-signage</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/smart-buildings.html</loc>
+    <loc>https://mrrhinoconnect.com/services/smart-buildings</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/hvac.html</loc>
+    <loc>https://mrrhinoconnect.com/services/hvac</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/air-quality-control.html</loc>
+    <loc>https://mrrhinoconnect.com/services/air-quality-control</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/pots-line-replacements.html</loc>
+    <loc>https://mrrhinoconnect.com/services/pots-line-replacements</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/electrical-low-voltage-wiring.html</loc>
+    <loc>https://mrrhinoconnect.com/services/electrical-low-voltage-wiring</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/electrical-cabling.html</loc>
+    <loc>https://mrrhinoconnect.com/services/electrical-cabling</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/das.html</loc>
+    <loc>https://mrrhinoconnect.com/services/das</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/services/mobile-security-trailer.html</loc>
+    <loc>https://mrrhinoconnect.com/services/mobile-security-trailer</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- News Articles -->
   <url>
-    <loc>https://mrrhinoconnect.com/news/ev-charging-stations-green-revolution.html</loc>
+    <loc>https://mrrhinoconnect.com/news/ev-charging-stations-green-revolution</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/news/innovative-parking-solutions.html</loc>
+    <loc>https://mrrhinoconnect.com/news/innovative-parking-solutions</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mrrhinoconnect.com/news/fiber-optic-revolution.html</loc>
+    <loc>https://mrrhinoconnect.com/news/fiber-optic-revolution</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
