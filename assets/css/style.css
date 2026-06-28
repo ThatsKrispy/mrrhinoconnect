@@ -291,7 +291,8 @@ p { font-size: 1rem; color: var(--gray); line-height: 1.75; }
 }
 .hero.has-photo {
   background-size: cover;
-  background-position: center;
+  background-position: center 38%;
+  background-repeat: no-repeat;
 }
 .hero.has-photo::before {
   content: '';
@@ -556,8 +557,14 @@ p { font-size: 1rem; color: var(--gray); line-height: 1.75; }
 .why-card h4 { color: var(--white); font-size: 0.9rem; margin-bottom: 0.25rem; }
 .why-card p { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
 
-/* Why grid used on other pages (white background) */
-.why-grid-white {
+/* Why grid — 6 cards inside dark panel (3×2) */
+.why-grid-6 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.why-grid-6 .why-card { /* inherits from .why-card */ }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
@@ -695,6 +702,7 @@ p { font-size: 1rem; color: var(--gray); line-height: 1.75; }
 .page-hero.has-photo {
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 .page-hero.has-photo::before {
   content: '';
@@ -1210,8 +1218,6 @@ body.a11y-links a:not(.btn):not(.nav-link):not(.footer-social) {
 @media (max-width: 1024px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .mission-grid { grid-template-columns: repeat(2, 1fr); }
-  .smart-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .smart-photo { height: 320px; order: -1; }
   .elevating-grid { grid-template-columns: 1fr; }
   .elevating-photo { height: 300px; }
   .why-section { grid-template-columns: 1fr; }
@@ -1224,6 +1230,12 @@ body.a11y-links a:not(.btn):not(.nav-link):not(.footer-social) {
   .contact-cards { grid-template-columns: 1fr 1fr; }
   .dropdown { min-width: 480px; }
   .why-grid-white { grid-template-columns: repeat(2, 1fr); }
+  .why-grid-6 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .smart-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .smart-photo { height: 320px; order: -1; }
 }
 
 @media (max-width: 768px) {
@@ -1251,6 +1263,7 @@ body.a11y-links a:not(.btn):not(.nav-link):not(.footer-social) {
 
   .section { padding: 3.5rem 1.25rem; }
   .services-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .smart-features { grid-template-columns: 1fr; }
   .mission-grid { grid-template-columns: 1fr 1fr; }
   .news-grid { grid-template-columns: 1fr; }
   .contact-cards { grid-template-columns: 1fr; max-width: 360px; }
@@ -1259,7 +1272,8 @@ body.a11y-links a:not(.btn):not(.nav-link):not(.footer-social) {
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .smart-features { grid-template-columns: 1fr; }
-  .why-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .why-grid-6 { grid-template-columns: repeat(2, 1fr); }
   .why-grid-white { grid-template-columns: 1fr; }
   .consent-inner { flex-direction: column; align-items: flex-start; }
   .a11y-panel { right: 1rem; width: 240px; }
@@ -1269,6 +1283,8 @@ body.a11y-links a:not(.btn):not(.nav-link):not(.footer-social) {
 @media (max-width: 480px) {
   .services-grid { grid-template-columns: 1fr; }
   .mission-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .why-grid-6 { grid-template-columns: 1fr; }
   h1 { font-size: 1.85rem; }
   h2 { font-size: 1.5rem; }
 }
@@ -1278,10 +1294,18 @@ body.a11y-links a:not(.btn):not(.nav-link):not(.footer-social) {
    ========================================== */
 @media (prefers-reduced-motion: no-preference) {
   .reveal {
-    opacity: 0; transform: translateY(22px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
+}
+
+/* Safety net: if JS hasn't run yet, cards should never be permanently invisible */
+.mission-card, .why-card, .service-card, .why-item, .news-card,
+.smart-feature, .about-stat, .services-list-item {
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 :focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; border-radius: 4px; }
