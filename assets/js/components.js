@@ -2,7 +2,7 @@
    ThatsKrispy Agency Build */
 (function () {
 
-  const LOGO = '/assets/images/mrrhinoconnect-logo.png';
+  const LOGO = '/assets/images/mrrhinoconnect-logo-v3.png';
 
   /* ── NAV ─────────────────────────────────────────────── */
   const NAV_HTML = `
@@ -10,7 +10,7 @@
 <header class="site-header" role="banner">
   <div class="nav-wrapper">
     <a href="/" class="nav-logo" aria-label="MrRhinoConnect Home">
-      <img src="${LOGO}" alt="MrRhinoConnect — South Florida Real Estate Technology Solutions" width="180" height="46" loading="eager" />
+      <img src="${LOGO}" alt="MrRhinoConnect — South Florida Real Estate Technology Solutions" width="160" height="85" loading="eager" />
     </a>
 
     <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
@@ -85,7 +85,7 @@
 <footer class="site-footer" role="contentinfo">
   <div class="footer-grid">
     <div class="footer-brand">
-      <img src="/assets/images/mrrhinoconnect-logo.png"
+      <img src="/assets/images/mrrhinoconnect-logo-v3.png"
            alt="MrRhinoConnect Logo"
            width="160" height="42" loading="lazy" />
       <p>Reach out to us today to explore innovative solutions tailored for your needs and elevate your property's potential with cutting-edge technology.</p>

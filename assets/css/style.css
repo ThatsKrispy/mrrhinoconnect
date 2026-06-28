@@ -253,10 +253,10 @@ p{font-size:1rem;color:var(--text-muted);line-height:1.75}
 }
 .smart-feature{display:flex;gap:.8rem;align-items:flex-start}
 .smart-feature-icon{
-  width:38px;height:38px;min-width:38px;border-radius:9px;
-  background:rgba(242,41,91,.14);border:1px solid rgba(242,41,91,.22);
+  width:40px;height:40px;min-width:40px;min-height:40px;border-radius:10px;
+  background:rgba(242,41,91,.15);border:1px solid rgba(242,41,91,.25);
   display:flex;align-items:center;justify-content:center;
-  color:var(--pink);flex-shrink:0
+  color:var(--pink);flex-shrink:0;overflow:hidden
 }
 .smart-feature-icon svg{width:17px;height:17px;display:block}
 .smart-feature h4{color:#fff;font-size:.88rem;margin-bottom:.2rem}
@@ -644,7 +644,7 @@ body.a11y-links a:not(.btn):not(.nav-link):not(.footer-social){text-decoration:u
   .reveal.visible{opacity:1;transform:translateY(0)}
 }
 /* Safety: key card elements never permanently invisible */
-.mission-card,.why-card,.service-card,.why-item,.news-card,.smart-feature,
+.mission-card,.why-card,.service-card,.why-item,.news-card,
 .about-stat,.services-list-item{opacity:1!important;transform:none!important}
 
 /* ── FOCUS ────────────────────────────────── */
@@ -661,7 +661,8 @@ body.a11y-links a:not(.btn):not(.nav-link):not(.footer-social){text-decoration:u
   .elevating-grid{grid-template-columns:1fr}
   .elevating-photo{height:300px}
   .why-section{grid-template-columns:1fr}
-  .why-photo{height:300px;position:relative}
+  .why-photo{height:320px;position:relative}
+  .why-content{padding:3.5rem 2rem}
   .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
   .faq-layout{grid-template-columns:1fr}
   .faq-image{display:none}
@@ -673,9 +674,18 @@ body.a11y-links a:not(.btn):not(.nav-link):not(.footer-social){text-decoration:u
   .why-grid-6{grid-template-columns:repeat(2,1fr)}
   .dropdown{min-width:460px}
 }
-@media(max-width:900px){
+/* At tablet where why-section is still 2-col, why-content is ~50% width
+   so why-grid (2-col) cards need to fit comfortably */
+@media(min-width:1025px) and (max-width:1300px){
+  .why-content{padding:3rem 2rem}
+  .why-grid{grid-template-columns:1fr 1fr;gap:.65rem}
+  .why-grid-6{grid-template-columns:repeat(2,1fr);gap:.65rem}
+  .why-card{padding:.9rem}
+  .why-card h4{font-size:.8rem}
+  .why-card p{font-size:.74rem}
+}
   .smart-grid{grid-template-columns:1fr;gap:3rem}
-  .smart-photo{height:300px;order:-1}
+  .smart-photo{height:320px;order:-1}
   .smart-features{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
