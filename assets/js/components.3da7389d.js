@@ -22,6 +22,7 @@
 .nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-6px);width:600px;background:#fff;border:1px solid rgba(3,22,36,.09);border-radius:14px;box-shadow:0 20px 60px rgba(3,22,36,.14);opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:1100;display:grid;grid-template-columns:1fr 1fr 1fr;padding:1.25rem;gap:.25rem}
 .nav-dropdown::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}
 .nav-item:hover>.nav-dropdown{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.dropdown-viewall{grid-column:1/-1}
 .dropdown-group{padding:.4rem .6rem}
 .dropdown-label{display:block;padding:0 0 .4rem;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C8688F;border-bottom:1px solid rgba(3,22,36,.07);margin-bottom:.4rem}
 .nav-dropdown a{display:flex;align-items:center;gap:.35rem;padding:.32rem .2rem;font-size:.79rem;color:rgba(3,22,36,.72);border-radius:4px;transition:color .12s,padding-left .12s;text-decoration:none}
@@ -83,6 +84,9 @@
       <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
     </button>
     <div class="drawer-sub" id="drawer-sub-re">
+      <div class="drawer-sub-group" style="border-bottom:1px solid rgba(3,22,36,.08)">
+        <a href="/real-estate.html" style="display:block;padding:.7rem 1.5rem;font-size:.83rem;font-weight:700;color:#031624;text-decoration:none">View All Real Estate Solutions →</a>
+      </div>
       <div class="drawer-sub-group">
         <span class="drawer-sub-label">Networking &amp; Connectivity</span>
         <a href="/services/electrical-low-voltage-wiring.html">Low Voltage Wiring</a>
@@ -117,6 +121,9 @@
       <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
     </button>
     <div class="drawer-sub" id="drawer-sub-edu">
+      <div class="drawer-sub-group" style="border-bottom:1px solid rgba(3,22,36,.08)">
+        <a href="/education.html" style="display:block;padding:.7rem 1.5rem;font-size:.83rem;font-weight:700;color:#031624;text-decoration:none">View All Education Solutions →</a>
+      </div>
       <div class="drawer-sub-group">
         <span class="drawer-sub-label">Cybersecurity</span>
         <a href="/services/cybersecurity.html">Cybersecurity Solutions</a>
@@ -147,11 +154,14 @@
       <div class="nav-item"><a href="/" class="nav-link">Home</a></div>
       <div class="nav-item"><a href="/about.html" class="nav-link">About Us</a></div>
       <div class="nav-item">
-        <button class="nav-link" aria-haspopup="true" aria-expanded="false">
+        <a href="/real-estate.html" class="nav-link" aria-haspopup="true">
           Real Estate
           <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
+        </a>
         <div class="nav-dropdown" role="menu" aria-label="Real Estate submenu" style="width:640px">
+          <div class="dropdown-group dropdown-viewall" style="border-bottom:1px solid rgba(3,22,36,.07);margin-bottom:.5rem;padding-bottom:.75rem">
+            <a href="/real-estate.html" role="menuitem" style="font-weight:700;color:#031624;font-size:.82rem">View All Real Estate Solutions →</a>
+          </div>
           <div class="dropdown-group">
             <span class="dropdown-label">Networking &amp; Connectivity</span>
             <a href="/services/electrical-low-voltage-wiring.html" role="menuitem">Low Voltage Wiring</a>
@@ -181,11 +191,14 @@
         </div>
       </div>
       <div class="nav-item">
-        <button class="nav-link" aria-haspopup="true" aria-expanded="false">
+        <a href="/education.html" class="nav-link" aria-haspopup="true">
           Education
           <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
+        </a>
         <div class="nav-dropdown" role="menu" aria-label="Education submenu" style="width:420px;grid-template-columns:1fr 1fr">
+          <div class="dropdown-group dropdown-viewall" style="border-bottom:1px solid rgba(3,22,36,.07);margin-bottom:.5rem;padding-bottom:.75rem">
+            <a href="/education.html" role="menuitem" style="font-weight:700;color:#031624;font-size:.82rem">View All Education Solutions →</a>
+          </div>
           <div class="dropdown-group">
             <span class="dropdown-label">Cybersecurity</span>
             <a href="/services/cybersecurity.html" role="menuitem">Cybersecurity Solutions</a>
