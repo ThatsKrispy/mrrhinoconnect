@@ -1,22 +1,23 @@
 (function(){'use strict';const LOGO='/assets/images/mrrhinoconnect-logo-v3.png';const NAV_HTML=`
 <a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
 <header class="site-header" role="banner">
   <div class="nav-wrapper">
+
     <a href="/" class="nav-logo" aria-label="MrRhinoConnect — Return to homepage">
-      <img src="${LOGO}" alt="MrRhinoConnect logo" width="160" height="85" loading="eager" fetchpriority="high" />
+      <img src="${LOGO}" alt="MrRhinoConnect logo" width="160" height="42" loading="eager" fetchpriority="high" />
     </a>
-    <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
-      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-    </button>
+
     <nav class="nav-menu" id="nav-menu" role="navigation" aria-label="Main navigation">
       <div class="nav-item"><a href="/" class="nav-link">Home</a></div>
       <div class="nav-item"><a href="/about.html" class="nav-link">About Us</a></div>
-      <div class="nav-item">
-        <a href="/services.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+
+      <div class="nav-item nav-item--services" id="nav-services">
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false" aria-controls="nav-dropdown">
           Services
-          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </a>
-        <div class="dropdown" role="menu" aria-label="Services submenu">
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="dropdown" id="nav-dropdown" role="menu" aria-label="Services submenu">
           <div class="dropdown-group">
             <span class="dropdown-label">Networking &amp; Connectivity</span>
             <a href="/services/electrical-low-voltage-wiring.html" role="menuitem">Electrical &amp; Low Voltage Wiring</a>
@@ -45,17 +46,34 @@
           </div>
         </div>
       </div>
+
       <div class="nav-item"><a href="/faq.html" class="nav-link">FAQ</a></div>
       <div class="nav-item"><a href="/news.html" class="nav-link">News</a></div>
       <div class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></div>
+
+      <div class="nav-cta">
+        <a href="tel:+13052491084" class="nav-phone" aria-label="Call MrRhinoConnect at 305.249.1084">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          305.249.1084
+        </a>
+        <a href="/contact.html" class="nav-call-btn">Get Started</a>
+      </div>
     </nav>
-    <div class="nav-cta">
+
+    <div class="nav-cta" id="nav-cta-desktop">
       <a href="tel:+13052491084" class="nav-phone" aria-label="Call MrRhinoConnect at 305.249.1084">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
         305.249.1084
       </a>
       <a href="/contact.html" class="nav-call-btn">Get Started</a>
     </div>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+
   </div>
 </header>`;const FOOTER_HTML=`
 <div class="newsletter-strip" role="complementary" aria-label="Newsletter signup">
@@ -298,7 +316,11 @@
       <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener noreferrer">WCAG 2.1 AA</a> accessibility tools
     </div>
   </div>
-</div>`;const navEl=document.getElementById('site-nav');if(navEl)navEl.innerHTML=NAV_HTML;const footEl=document.getElementById('site-footer');if(footEl)footEl.innerHTML=FOOTER_HTML;document.body.insertAdjacentHTML('beforeend',CONSENT_HTML);document.body.insertAdjacentHTML('beforeend',A11Y_HTML);const path=window.location.pathname.replace(/\/$/,'')||'/';document.querySelectorAll('.nav-link').forEach(link=>{const href=(link.getAttribute('href')||'').replace(/\/$/,'');const isHome=(href==='/'||href==='/index.html')&&path==='/';const isMatch=href!=='/'&&href!==''&&path.startsWith(href.replace('.html',''));if(isHome||isMatch)link.classList.add('active');});const banner=document.getElementById('consent-banner');if(banner&&!localStorage.getItem('mrrhino_consent')){banner.classList.add('visible');const firstBtn=banner.querySelector('button');if(firstBtn)setTimeout(()=>firstBtn.focus(),400);}
+</div>`;const navEl=document.getElementById('site-nav');if(navEl)navEl.innerHTML=NAV_HTML;const footEl=document.getElementById('site-footer');if(footEl)footEl.innerHTML=FOOTER_HTML;document.body.insertAdjacentHTML('beforeend',CONSENT_HTML);document.body.insertAdjacentHTML('beforeend',A11Y_HTML);const path=window.location.pathname.replace(/\/$/,'')||'/';document.querySelectorAll('.nav-link').forEach(link=>{const href=(link.getAttribute('href')||'').replace(/\/$/,'');const isHome=(href==='/'||href==='/index.html')&&path==='/';const isMatch=href!=='/'&&href!==''&&path.startsWith(href.replace('.html',''));if(isHome||isMatch)link.classList.add('active');});const toggle=document.getElementById('nav-toggle');const navMenu=document.getElementById('nav-menu');const overlay=document.getElementById('nav-overlay');const servItem=document.getElementById('nav-services');const servBtn=servItem?servItem.querySelector('.nav-link'):null;function openDrawer(){navMenu.classList.add('mobile-open');toggle.setAttribute('aria-expanded','true');toggle.setAttribute('aria-label','Close navigation menu');overlay.classList.add('active');document.body.style.overflow='hidden';}
+function closeDrawer(){navMenu.classList.remove('mobile-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation menu');overlay.classList.remove('active');document.body.style.overflow='';if(servItem){servItem.classList.remove('open');if(servBtn)servBtn.setAttribute('aria-expanded','false');}}
+if(toggle){toggle.addEventListener('click',()=>{navMenu.classList.contains('mobile-open')?closeDrawer():openDrawer();});}
+if(overlay)overlay.addEventListener('click',closeDrawer);document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(navMenu&&navMenu.classList.contains('mobile-open')){closeDrawer();if(toggle)toggle.focus();}}});if(servBtn){servBtn.addEventListener('click',e=>{if(window.innerWidth>860)return;e.preventDefault();const isOpen=servItem.classList.toggle('open');servBtn.setAttribute('aria-expanded',String(isOpen));});}
+document.querySelectorAll('.nav-menu a').forEach(a=>{a.addEventListener('click',()=>{if(window.innerWidth<=860)closeDrawer();});});window.addEventListener('resize',()=>{if(window.innerWidth>860)closeDrawer();});const banner=document.getElementById('consent-banner');if(banner&&!localStorage.getItem('mrrhino_consent')){banner.classList.add('visible');const firstBtn=banner.querySelector('button');if(firstBtn)setTimeout(()=>firstBtn.focus(),400);}
 document.getElementById('consent-accept')?.addEventListener('click',()=>{localStorage.setItem('mrrhino_consent','accepted');banner.classList.remove('visible');});document.getElementById('consent-decline')?.addEventListener('click',()=>{localStorage.setItem('mrrhino_consent','declined');banner.classList.remove('visible');});const trigger=document.getElementById('ada-trigger');const panel=document.getElementById('ada-panel');const closeBtn=document.getElementById('ada-close');const resetBtn=document.getElementById('ada-reset');if(!trigger||!panel)return;const STORAGE_KEY='mrrhino_ada_v2';let state={fontSize:100,letterSpace:0,dyslexia:false,lineSpacing:false,contrast:false,invert:false,grayscale:false,saturation:false,links:false,focus:false,animations:false,};try{Object.assign(state,JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}'));}catch(e){}
 function loadDyslexiaFont(){if(document.getElementById('ada-dyslexia-style'))return;const st=document.createElement('style');st.id='ada-dyslexia-style';st.textContent=`body.ada-dyslexia, body.ada-dyslexia *{
       font-family: "Comic Sans MS","Comic Sans",cursive !important;
