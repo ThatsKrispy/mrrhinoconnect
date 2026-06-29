@@ -242,97 +242,156 @@ p{font-size:1rem;color:var(--text-muted);line-height:1.75}
   /* desktop: flex row */
 }
 
-/* Mobile drawer — hidden by default, shown via class */
+/* ── Mobile drawer ───────────────────────────────────────
+   KEY: never use display:none/flex toggle on the drawer —
+   it kills CSS transitions. Use visibility + pointer-events
+   so transform can animate while element stays in layout.
+──────────────────────────────────────────────────────── */
 @media(max-width:860px){
-  .nav-phone{display:none}/* phone number hidden on mobile — in drawer */
+
+  /* Hide desktop-only phone link and standalone CTA */
+  #nav-cta-desktop{display:none !important}
+
+  /* The drawer — always in layout, off-screen by default */
   .nav-menu{
-    display:none;/* overridden when .mobile-open */
     position:fixed;
-    top:68px;right:0;bottom:0;
-    width:min(320px, 85vw);
+    top:0;                        /* stretch from very top */
+    right:0;
+    bottom:0;
+    width:min(300px,85vw);
+    padding-top:68px;             /* offset below header */
     background:#fff;
-    box-shadow:-4px 0 32px rgba(3,22,36,.18);
+    box-shadow:-6px 0 40px rgba(3,22,36,.22);
     flex-direction:column;
     align-items:stretch;
     gap:0;
     overflow-y:auto;
     overflow-x:hidden;
     z-index:999;
-    padding:1rem 0 2rem;
+    /* Off-screen by default — visibility hidden keeps it from
+       receiving focus or being announced by screen readers */
     transform:translateX(100%);
-    transition:transform .28s cubic-bezier(.4,0,.2,1);
-    justify-content:flex-start
+    visibility:hidden;
+    transition:transform .28s cubic-bezier(.4,0,.2,1),
+               visibility 0s linear .28s;  /* delay hides after slide-out */
   }
+
+  /* Open state — slide in, immediately become visible */
   .nav-menu.mobile-open{
-    display:flex;
-    transform:translateX(0)
+    transform:translateX(0);
+    visibility:visible;
+    transition:transform .28s cubic-bezier(.4,0,.2,1),
+               visibility 0s linear 0s;
   }
+
+  /* Show hamburger */
   .nav-toggle{display:flex}
 
-  /* Mobile nav items */
-  .nav-item{width:100%;border-bottom:1px solid rgba(3,22,36,.06)}
-  .nav-item:last-of-type{border-bottom:none}
+  /* ── Drawer items ─────────────────────────── */
+  .nav-item{
+    width:100%;
+    border-bottom:1px solid rgba(3,22,36,.06);
+    flex-shrink:0
+  }
+  .nav-item:last-child{border-bottom:none}
 
   .nav-link{
-    width:100%;padding:.9rem 1.25rem;
-    font-size:.82rem;justify-content:space-between;
+    width:100%;
+    display:flex;
+    padding:.95rem 1.25rem;
+    font-size:.84rem;
+    justify-content:space-between;
     border-radius:0;
-    box-sizing:border-box
+    box-sizing:border-box;
+    text-align:left
   }
-  .nav-link:hover{background:rgba(3,22,36,.03);color:var(--pink)}
+  .nav-link:hover,.nav-link:focus-visible{
+    background:rgba(3,22,36,.04);color:var(--pink)
+  }
   .nav-link.active{color:var(--pink)}
 
-  /* Services accordion trigger */
-  .nav-item--services>.nav-link{
-    justify-content:space-between
-  }
-  .nav-item--services>.nav-link .chevron{
-    transition:transform .22s
-  }
+  /* Services chevron */
+  .nav-item--services>.nav-link .chevron{transition:transform .22s}
   .nav-item--services.open>.nav-link .chevron{transform:rotate(180deg)}
 
-  /* Mobile dropdown — accordion */
+  /* ── Services accordion ───────────────────── */
   .dropdown{
     position:static;
     width:100%;
+    /* Reset desktop positioning */
     transform:none;
-    opacity:1;pointer-events:auto;
-    box-shadow:none;border:none;border-radius:0;
-    background:var(--light);
-    display:none;/* shown when parent.open */
+    left:auto;
+    opacity:1;
+    pointer-events:auto;
+    box-shadow:none;
+    border:none;
+    border-radius:0;
+    background:rgba(3,22,36,.025);
+    /* Accordion: hidden when closed */
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+    display:block;          /* always block — height controls visibility */
     grid-template-columns:1fr;
-    padding:.5rem 0;gap:0
+    padding:0;
+    gap:0
   }
-  .nav-item--services.open .dropdown{display:block}
+  .nav-item--services.open .dropdown{
+    max-height:600px;       /* large enough for all 17 links */
+  }
 
-  .dropdown-group{padding:.6rem 0}
-  .dropdown-label{
-    padding:.15rem 1.5rem .45rem;
-    font-size:.6rem
+  .dropdown-group{
+    padding:.5rem 0;
+    border-bottom:1px solid rgba(3,22,36,.05)
   }
+  .dropdown-group:last-child{border-bottom:none}
+
+  .dropdown-label{
+    display:block;
+    padding:.5rem 1.5rem .35rem;
+    font-size:.6rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--pink);
+    font-weight:700
+  }
+
   .dropdown a{
-    padding:.55rem 1.75rem;
+    display:block;
+    padding:.6rem 1.75rem;
     font-size:.83rem;
+    color:rgba(3,22,36,.75)
   }
   .dropdown a::before{display:none}
-  .dropdown a:hover{padding-left:2rem}
+  .dropdown a:hover,.dropdown a:focus-visible{
+    color:var(--pink);
+    background:rgba(200,104,143,.06);
+    padding-left:2rem
+  }
 
-  /* CTA at bottom of drawer */
-  .nav-cta{
+  /* ── In-drawer CTA ───────────────────────── */
+  .nav-menu .nav-cta{
     display:flex;
     flex-direction:column;
     align-items:stretch;
-    gap:.65rem;
-    padding:1.25rem 1.25rem 0;
-    margin-top:.5rem;
-    border-top:1px solid rgba(3,22,36,.07)
+    gap:.6rem;
+    padding:1.25rem;
+    margin-top:auto;          /* push to bottom of drawer */
+    flex-shrink:0;
+    border-top:1px solid rgba(3,22,36,.07);
+    background:#fff
   }
-  .nav-phone{
-    display:flex;justify-content:center;
-    font-size:.9rem;padding:.6rem 0
+  .nav-menu .nav-phone{
+    display:flex;
+    justify-content:center;
+    font-size:.88rem;
+    padding:.55rem 0
   }
-  .nav-call-btn{
-    justify-content:center;padding:.75rem;font-size:.82rem
+  .nav-menu .nav-call-btn{
+    justify-content:center;
+    padding:.75rem;
+    font-size:.82rem;
+    text-align:center
   }
 }
 
@@ -1333,15 +1392,36 @@ textarea{resize:vertical;min-height:105px}
 }
 
 
-/* Desktop: hide the nav-cta inside the drawer, show the one outside */
+/* Desktop: hide in-drawer CTA, show standalone CTA, hide overlay */
 @media(min-width:861px){
-  .nav-menu .nav-cta{display:none}
-  #nav-cta-desktop{display:flex}
+  .nav-menu .nav-cta{display:none !important}
+  #nav-cta-desktop{display:flex !important}
   .nav-overlay{display:none !important}
+  /* Ensure drawer is fully hidden on desktop */
+  .nav-menu{
+    position:static;
+    transform:none;
+    visibility:visible;
+    display:flex;
+    overflow:visible;
+    padding-top:0;
+    background:transparent;
+    box-shadow:none;
+    flex-direction:row;
+    width:auto
+  }
 }
-/* Mobile: hide the desktop standalone nav-cta */
+
+
+/* ── Mobile header: fix position so drawer aligns perfectly ── */
 @media(max-width:860px){
-  #nav-cta-desktop{display:none}
+  .site-header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:1000
+  }
+  /* Compensate for fixed header height */
+  body{padding-top:68px}
 }
 
 /* ═══════════════════════════════════════════════════════
