@@ -3,17 +3,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── MOBILE NAV ────────────────────────────────────── */
-  document.addEventListener('click', e => {
-    const toggle = e.target.closest('.nav-toggle');
-    const menu   = document.querySelector('.nav-menu');
-    if (!toggle || !menu) return;
-    const open = menu.classList.toggle('open');
-    toggle.classList.toggle('open', open);
-    toggle.setAttribute('aria-expanded', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-
   // Close on outside click
   document.addEventListener('click', e => {
     const menu = document.querySelector('.nav-menu');

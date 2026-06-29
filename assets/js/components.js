@@ -7,6 +7,59 @@
 
   /* ── NAV ─────────────────────────────────────────── */
   const NAV_HTML = `
+<style id="mrrhino-nav-css">
+.site-header{position:sticky;top:0;z-index:1000;height:68px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(3,22,36,.08);box-shadow:0 1px 12px rgba(3,22,36,.06)}
+.nav-wrapper{display:flex;align-items:center;justify-content:space-between;height:100%;max-width:1200px;margin:0 auto;padding:0 1.5rem;gap:1rem;box-sizing:border-box}
+.nav-logo{display:flex;align-items:center;flex-shrink:0;text-decoration:none}
+.nav-logo img{height:42px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:0;flex:1;justify-content:center}
+.nav-item{position:relative}
+.nav-link{display:flex;align-items:center;gap:.28rem;padding:.45rem .7rem;font-size:.75rem;font-weight:700;color:#031624;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;border-radius:6px;transition:color .15s;background:none;border:none;font-family:inherit;cursor:pointer;text-decoration:none}
+.nav-link:hover,.nav-link.active{color:#C8688F}
+.nav-link .chevron{width:11px;height:11px;flex-shrink:0;transition:transform .2s}
+.nav-item:hover>.nav-link .chevron{transform:rotate(180deg)}
+.nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-6px);width:600px;background:#fff;border:1px solid rgba(3,22,36,.09);border-radius:14px;box-shadow:0 20px 60px rgba(3,22,36,.14),0 4px 16px rgba(3,22,36,.06);opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:1100;display:grid;grid-template-columns:1fr 1fr 1fr;padding:1.25rem;gap:.25rem}
+.nav-dropdown::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}
+.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.dropdown-group{padding:.4rem .6rem}
+.dropdown-label{display:block;padding:0 0 .4rem;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C8688F;border-bottom:1px solid rgba(3,22,36,.07);margin-bottom:.4rem}
+.nav-dropdown a{display:flex;align-items:center;gap:.35rem;padding:.32rem .2rem;font-size:.79rem;color:rgba(3,22,36,.72);border-radius:4px;transition:color .12s,padding-left .12s;text-decoration:none}
+.nav-dropdown a:hover{color:#C8688F;padding-left:4px}
+.nav-cta{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+.nav-phone{display:flex;align-items:center;gap:.3rem;font-weight:700;font-size:.8rem;color:#031624;text-decoration:none;white-space:nowrap;transition:color .15s}
+.nav-phone:hover{color:#C8688F}
+.nav-phone svg{color:#C8688F;flex-shrink:0}
+.nav-call-btn{display:flex;align-items:center;background:#C8688F;color:#fff;padding:.52rem 1.15rem;border-radius:50px;font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.07em;text-decoration:none;white-space:nowrap;transition:background .15s,transform .15s}
+.nav-call-btn:hover{background:#a84f74;transform:translateY(-1px)}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;padding:.45rem;border:none;background:none;cursor:pointer;width:40px;height:40px;border-radius:8px;flex-shrink:0}
+.nav-toggle span{display:block;width:22px;height:2px;background:#031624;border-radius:2px;transition:transform .22s ease,opacity .22s ease;transform-origin:center}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-overlay{position:fixed;inset:0;background:rgba(3,22,36,.45);z-index:998;opacity:0;visibility:hidden;transition:opacity .28s,visibility 0s linear .28s}
+.nav-overlay.active{opacity:1;visibility:visible;transition:opacity .28s,visibility 0s linear 0s}
+.nav-drawer{position:fixed;top:0;right:0;bottom:0;width:min(300px,85vw);background:#fff;z-index:999;overflow-y:auto;overflow-x:hidden;padding-top:68px;box-shadow:-6px 0 40px rgba(3,22,36,.2);transform:translateX(100%);visibility:hidden;transition:transform .28s cubic-bezier(.4,0,.2,1),visibility 0s linear .28s}
+.nav-drawer.open{transform:translateX(0);visibility:visible;transition:transform .28s cubic-bezier(.4,0,.2,1),visibility 0s linear 0s}
+.drawer-item{border-bottom:1px solid rgba(3,22,36,.06)}
+.drawer-link{display:flex;align-items:center;justify-content:space-between;padding:.95rem 1.25rem;font-size:.84rem;font-weight:700;color:#031624;text-transform:uppercase;letter-spacing:.07em;text-decoration:none;width:100%;box-sizing:border-box;background:none;border:none;font-family:inherit;cursor:pointer;transition:color .15s,background .15s}
+.drawer-link:hover{color:#C8688F;background:rgba(3,22,36,.03)}
+.drawer-link.active{color:#C8688F}
+.drawer-link .chevron{width:14px;height:14px;flex-shrink:0;transition:transform .22s}
+.drawer-item.open>.drawer-link .chevron{transform:rotate(180deg)}
+.drawer-sub{max-height:0;overflow:hidden;transition:max-height .3s ease;background:rgba(3,22,36,.025)}
+.drawer-item.open>.drawer-sub{max-height:800px}
+.drawer-sub-group{padding:.5rem 0;border-bottom:1px solid rgba(3,22,36,.05)}
+.drawer-sub-label{display:block;padding:.5rem 1.5rem .3rem;font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C8688F}
+.drawer-sub a{display:block;padding:.55rem 1.75rem;font-size:.83rem;color:rgba(3,22,36,.72);text-decoration:none;transition:color .12s,background .12s,padding-left .12s}
+.drawer-sub a:hover{color:#C8688F;background:rgba(200,104,143,.06);padding-left:2rem}
+.drawer-cta{padding:1.25rem;border-top:1px solid rgba(3,22,36,.07);display:flex;flex-direction:column;gap:.65rem}
+.drawer-phone{display:flex;align-items:center;justify-content:center;gap:.4rem;font-weight:700;font-size:.88rem;color:#031624;text-decoration:none;padding:.5rem 0}
+.drawer-phone svg{color:#C8688F}
+.drawer-phone:hover{color:#C8688F}
+.drawer-cta .nav-call-btn{justify-content:center;padding:.75rem;font-size:.82rem}
+@media(max-width:860px){.nav-links{display:none!important}.nav-cta{display:none!important}.nav-toggle{display:flex!important}.site-header{position:fixed!important;top:0;left:0;right:0}}
+@media(min-width:861px){.nav-drawer{display:none!important}.nav-overlay{display:none!important}.nav-toggle{display:none!important}}
+</style>
 <a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- Overlay (behind drawer) -->
