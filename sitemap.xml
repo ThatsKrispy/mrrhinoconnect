@@ -3,10 +3,11 @@
   <url><loc>https://mrrhinoconnect.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://mrrhinoconnect.com/about.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://mrrhinoconnect.com/services.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mrrhinoconnect.com/real-estate.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mrrhinoconnect.com/education.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://mrrhinoconnect.com/faq.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://mrrhinoconnect.com/news.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://mrrhinoconnect.com/contact.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <!-- Service pages -->
   <url><loc>https://mrrhinoconnect.com/services/managed-wifi.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://mrrhinoconnect.com/services/fiber-optic.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://mrrhinoconnect.com/services/cctv-security-cameras.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -24,20 +25,6 @@
   <url><loc>https://mrrhinoconnect.com/services/pots-line-replacements.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://mrrhinoconnect.com/services/electrical-cabling.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://mrrhinoconnect.com/services/electrical-low-voltage-wiring.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <!-- News articles -->
-  <url><loc>https://mrrhinoconnect.com/news/ev-charging-south-florida-condos-hoa.html</loc><lastmod>2025-06-10</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mrrhinoconnect.com/news/cctv-security-cameras-miami-commercial-property.html</loc><lastmod>2025-05-22</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mrrhinoconnect.com/news/fiber-optic-internet-south-florida-commercial-buildings.html</loc><lastmod>2025-05-08</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mrrhinoconnect.com/news/managed-wifi-south-florida-hotels-apartments.html</loc><lastmod>2025-04-29</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mrrhinoconnect.com/news/hvac-air-quality-south-florida-commercial-buildings.html</loc><lastmod>2025-04-14</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mrrhinoconnect.com/news/iot-smart-building-technology-miami-real-estate.html</loc><lastmod>2025-03-31</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mrrhinoconnect.com/news/solar-panels-south-florida-commercial-properties-roi.html</loc><lastmod>2025-03-17</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mrrhinoconnect.com/news/led-lighting-upgrade-south-florida-commercial-fpl-rebates.html</loc><lastmod>2025-02-28</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mrrhinoconnect.com/news/low-voltage-wiring-south-florida-new-construction.html</loc><lastmod>2025-02-12</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mrrhinoconnect.com/news/pots-line-replacement-south-florida-buildings.html</loc><lastmod>2025-01-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mrrhinoconnect.com/news/das-cellular-coverage-miami-high-rise-buildings.html</loc><lastmod>2025-01-13</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mrrhinoconnect.com/news/smart-building-technology-south-florida-competitive-advantage.html</loc><lastmod>2024-12-19</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mrrhinoconnect.com/news/ev-charging-stations-green-revolution.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://mrrhinoconnect.com/news/fiber-optic-revolution.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://mrrhinoconnect.com/news/innovative-parking-solutions.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://mrrhinoconnect.com/services/cybersecurity.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mrrhinoconnect.com/services/disaster-recovery.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
