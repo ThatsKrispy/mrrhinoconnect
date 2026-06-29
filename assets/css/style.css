@@ -928,25 +928,7 @@ textarea{resize:vertical;min-height:105px}
 }
 .consent-decline:hover{color:#fff;border-color:rgba(255,255,255,.4)}
 
-/* ── A11Y WIDGET ─────────────────────────── */
-  position:fixed;bottom:1.5rem;right:1.5rem;width:46px;height:46px;
-  border-radius:50%;background:var(--pink);color:#fff;border:none;
-  cursor:pointer;z-index:8900;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 16px rgba(200,104,143,.38);transition:all var(--t)
-}
-  position:fixed;bottom:5.5rem;right:1.5rem;width:255px;
-  background:#fff;border:1px solid rgba(3,22,36,.1);border-radius:12px;
-  box-shadow:var(--sh-lg);z-index:8900;overflow:hidden;display:none
-}
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.55rem .7rem;border-radius:6px;cursor:pointer;
-  border:1px solid rgba(3,22,36,.09);font-size:.8rem;color:var(--dark);
-  font-weight:600;transition:all var(--t);background:#fff;width:100%;text-align:left
-}
-  margin:0 .7rem .7rem;width:calc(100% - 1.4rem);padding:.45rem;
-  background:var(--light);border:1px solid rgba(3,22,36,.09);
-  border-radius:6px;font-size:.75rem;cursor:pointer;color:var(--text-muted);transition:all var(--t)
-}
+
 
 /* ── REVEAL ANIMATION ────────────────────── */
 @media (prefers-reduced-motion:no-preference){
@@ -1045,6 +1027,7 @@ textarea{resize:vertical;min-height:105px}
   .why-card h4{font-size:.8rem}
   .why-card p{font-size:.74rem}
 }
+@media(max-width:1024px){
   .smart-grid{grid-template-columns:1fr;gap:3rem}
   .smart-photo{height:320px;order:-1}
   .smart-features{grid-template-columns:1fr 1fr}
