@@ -8,7 +8,64 @@
   /* ── NAV ─────────────────────────────────────────── */
   const NAV_HTML = `
 <a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- Overlay (behind drawer) -->
 <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+
+<!-- Drawer (outside header — no CSS inheritance conflicts) -->
+<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="drawer-item"><a href="/" class="drawer-link">Home</a></div>
+  <div class="drawer-item"><a href="/about.html" class="drawer-link">About Us</a></div>
+
+  <div class="drawer-item" id="drawer-services">
+    <button class="drawer-link" aria-expanded="false" aria-controls="drawer-sub">
+      Services
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="drawer-sub" id="drawer-sub">
+      <div class="drawer-sub-group">
+        <span class="drawer-sub-label">Networking &amp; Connectivity</span>
+        <a href="/services/electrical-low-voltage-wiring.html">Electrical &amp; Low Voltage Wiring</a>
+        <a href="/services/managed-wifi.html">Managed WiFi for Common Areas</a>
+        <a href="/services/fiber-optic.html">Fiber Optic Circuit</a>
+        <a href="/services/pots-line-replacements.html">POTS Line Replacements</a>
+        <a href="/services/iptv.html">Internet Protocol TV (IPTV)</a>
+        <a href="/services/electrical-cabling.html">Electrical Cabling</a>
+        <a href="/services/das.html">Distributed Antenna System</a>
+      </div>
+      <div class="drawer-sub-group">
+        <span class="drawer-sub-label">Surveillance &amp; Security</span>
+        <a href="/services/cctv-security-cameras.html">CCTV &amp; Security Cameras</a>
+        <a href="/services/mobile-security-trailer.html">Mobile Security Trailer</a>
+        <a href="/services/iot-sensors-beacons.html">IoT Sensors and Beacons</a>
+      </div>
+      <div class="drawer-sub-group">
+        <span class="drawer-sub-label">Smart Building Systems</span>
+        <a href="/services/smart-buildings.html">Smart Buildings</a>
+        <a href="/services/solar-panels.html">Solar Panels</a>
+        <a href="/services/hvac.html">HVAC</a>
+        <a href="/services/ev-charging-stations.html">EV Charging Stations</a>
+        <a href="/services/digital-signage.html">Digital Signage</a>
+        <a href="/services/led-lighting.html">LED Lighting</a>
+        <a href="/services/air-quality-control.html">Air Quality Control</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="drawer-item"><a href="/faq.html" class="drawer-link">FAQ</a></div>
+  <div class="drawer-item"><a href="/news.html" class="drawer-link">News</a></div>
+  <div class="drawer-item"><a href="/contact.html" class="drawer-link">Contact</a></div>
+
+  <div class="drawer-cta">
+    <a href="tel:+13052491084" class="drawer-phone" aria-label="Call MrRhinoConnect at 305.249.1084">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      305.249.1084
+    </a>
+    <a href="/contact.html" class="nav-call-btn">Get Started</a>
+  </div>
+</nav>
+
+<!-- Header (logo + desktop nav + hamburger) -->
 <header class="site-header" role="banner">
   <div class="nav-wrapper">
 
@@ -16,16 +73,16 @@
       <img src="${LOGO}" alt="MrRhinoConnect logo" width="160" height="42" loading="eager" fetchpriority="high" />
     </a>
 
-    <nav class="nav-menu" id="nav-menu" role="navigation" aria-label="Main navigation">
+    <!-- Desktop nav links -->
+    <div class="nav-links" role="navigation" aria-label="Main navigation">
       <div class="nav-item"><a href="/" class="nav-link">Home</a></div>
       <div class="nav-item"><a href="/about.html" class="nav-link">About Us</a></div>
-
-      <div class="nav-item nav-item--services" id="nav-services">
-        <button class="nav-link" aria-haspopup="true" aria-expanded="false" aria-controls="nav-dropdown">
+      <div class="nav-item">
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false">
           Services
-          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="dropdown" id="nav-dropdown" role="menu" aria-label="Services submenu">
+        <div class="nav-dropdown" role="menu" aria-label="Services submenu">
           <div class="dropdown-group">
             <span class="dropdown-label">Networking &amp; Connectivity</span>
             <a href="/services/electrical-low-voltage-wiring.html" role="menuitem">Electrical &amp; Low Voltage Wiring</a>
@@ -54,29 +111,22 @@
           </div>
         </div>
       </div>
-
       <div class="nav-item"><a href="/faq.html" class="nav-link">FAQ</a></div>
       <div class="nav-item"><a href="/news.html" class="nav-link">News</a></div>
       <div class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></div>
+    </div>
 
-      <div class="nav-cta">
-        <a href="tel:+13052491084" class="nav-phone" aria-label="Call MrRhinoConnect at 305.249.1084">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-          305.249.1084
-        </a>
-        <a href="/contact.html" class="nav-call-btn">Get Started</a>
-      </div>
-    </nav>
-
-    <div class="nav-cta" id="nav-cta-desktop">
+    <!-- Desktop CTA -->
+    <div class="nav-cta">
       <a href="tel:+13052491084" class="nav-phone" aria-label="Call MrRhinoConnect at 305.249.1084">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
         305.249.1084
       </a>
       <a href="/contact.html" class="nav-call-btn">Get Started</a>
     </div>
 
-    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
+    <!-- Hamburger -->
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-drawer">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -84,89 +134,142 @@
 
   </div>
 </header>`;
+lectrical Cabling</a>
+            <a href="/services/das.html" role="menuitem">Distributed Antenna System</a>
+          </div>
+          <div class="dropdown-group">
+            <span class="dropdown-label">Surveillance &amp; Security</span>
+            <a href="/services/cctv-security-cameras.html" role="menuitem">CCTV &amp; Security Cameras</a>
+            <a href="/services/mobile-security-trailer.html" role="menuitem">Mobile Security Trailer</a>
+            <a href="/services/iot-sensors-beacons.html" role="menuitem">IoT Sensors and Beacons</a>
+          </div>
+          <div class="dropdown-group">
+            <span class="dropdown-label">Smart Building Systems</span>
+            <a href="/services/smart-buildings.html" role="menuitem">Smart Buildings</a>
+            <a href="/services/solar-panels.html" role="menuitem">Solar Panels</a>
+            <a href="/services/hvac.html" role="menuitem">HVAC</a>
+            <a href="/services/ev-charging-stations.html" role="menuitem">EV Charging Stations</a>
+            <a href="/services/digital-signage.html" role="menuitem">Digital Signage</a>
+            <a href="/services/led-lighting.html" role="menuitem">LED Lighting</a>
+            <a href="/services/air-quality-control.html" role="menuitem">Air Quality Control</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item"><a href="/faq.html" class="nav-link">FAQ</a></div>
+      <div class="nav-item"><a href="/news.html" class="nav-link">News</a></div>
+      <div class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></div>
+    </div>
+
+    <!-- Desktop CTA -->
+    <div class="nav-cta">
+      <a href="tel:+13052491084" class="nav-phone" aria-label="Call MrRhinoConnect at 305.249.1084">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        305.249.1084
+      </a>
+      <a href="/contact.html" class="nav-call-btn">Get Started</a>
+    </div>
+
+    <!-- Hamburger -->
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-drawer">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+
+  </div>
+</header>`;
+  /* ── ACTIVE NAV ─────────────────────────────────── */
+  const curPath = window.location.pathname.replace(/\/$/, '') || '/';
+  document.querySelectorAll('.nav-link, .drawer-link').forEach(link => {
+    const href = (link.getAttribute('href') || '').replace(/\/$/, '');
+    if (!href) return;
+    const isHome = (href === '/' || href === '/index.html') && curPath === '/';
+    const isMatch = href !== '/' && curPath.startsWith(href.replace('.html', ''));
+    if (isHome || isMatch) link.classList.add('active');
+  });
+
+  /* ── MOBILE DRAWER ────────────────────────────────── */
+  const toggle       = document.getElementById('nav-toggle');
+  const drawer       = document.getElementById('nav-drawer');
+  const overlay      = document.getElementById('nav-overlay');
+  const drawerServEl = document.getElementById('drawer-services');
+  const drawerServBtn = drawerServEl ? drawerServEl.querySelector('.drawer-link') : null;
+
+  if (!toggle || !drawer) return; // guard: only run if elements exist
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    overlay.classList.add('active');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close navigation menu');
+    document.body.style.overflow = 'hidden';
+    // Focus first link after animation
+    setTimeout(() => {
+      const first = drawer.querySelector('a, button');
+      if (first) first.focus();
+    }, 300);
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    overlay.classList.remove('active');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation menu');
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', () => {
+    drawer.classList.contains('open') ? closeDrawer() : openDrawer();
+  });
+
+  overlay.addEventListener('click', closeDrawer);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      closeDrawer();
+      toggle.focus();
+    }
+  });
+
+  // Services accordion in drawer
+  if (drawerServBtn && drawerServEl) {
+    drawerServBtn.addEventListener('click', () => {
+      const isOpen = drawerServEl.classList.toggle('open');
+      drawerServBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+  }
+
+  // Close drawer when any link inside it is clicked
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeDrawer);
+  });
+
+  // Close drawer on resize to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 860) closeDrawer();
+  });
+
+  // Trap focus inside drawer while open
+  drawer.addEventListener('keydown', e => {
+    if (e.key !== 'Tab') return;
+    const focusable = Array.from(drawer.querySelectorAll(
+      'a[href], button:not([disabled])'
+    )).filter(el => !el.closest('[aria-hidden="true"]'));
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
+  });
 
 
-  /* ── FOOTER ──────────────────────────────────────── */
-  const FOOTER_HTML = `
-<div class="newsletter-strip" role="complementary" aria-label="Newsletter signup">
-  <div class="newsletter-inner">
-    <h3>Get the Latest News &amp; Updates</h3>
-    <p>Stay informed on smart building tech, South Florida real estate trends, and MrRhinoConnect news.</p>
-    <form class="newsletter-form" onsubmit="return false;" aria-label="Newsletter signup form">
-      <label for="newsletter-email" class="sr-only">Email address for newsletter</label>
-      <input type="email" id="newsletter-email" placeholder="Your Email Address" aria-label="Email address for newsletter" required autocomplete="email" />
-      <button type="submit" class="btn btn-primary">Subscribe</button>
-    </form>
-  </div>
-</div>
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <img src="/assets/images/mrrhinoconnect-logo-v3.png" alt="MrRhinoConnect" width="160" height="42" loading="lazy" decoding="async" />
-      <p>Reach out to us today to explore innovative solutions tailored for your needs and elevate your property's potential with cutting-edge technology.</p>
-      <nav class="footer-socials" aria-label="Social media links">
-        <a href="https://www.facebook.com/MrRhinoConnect" class="footer-social" target="_blank" rel="noopener noreferrer" aria-label="MrRhinoConnect on Facebook (opens in new tab)">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-        </a>
-        <a href="https://twitter.com/MrRhinoConnect1" class="footer-social" target="_blank" rel="noopener noreferrer" aria-label="MrRhinoConnect on Twitter (opens in new tab)">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/MrRhinoConnect/" class="footer-social" target="_blank" rel="noopener noreferrer" aria-label="MrRhinoConnect on Instagram (opens in new tab)">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/mr-rhino-connect-5b058223a" class="footer-social" target="_blank" rel="noopener noreferrer" aria-label="MrRhinoConnect on LinkedIn (opens in new tab)">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
-      </nav>
-    </div>
-    <div class="footer-col">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about.html">About Us</a></li>
-        <li><a href="/services.html">Services</a></li>
-        <li><a href="/faq.html">FAQ</a></li>
-        <li><a href="/news.html">News</a></li>
-        <li><a href="/contact.html">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <ul>
-        <li><a href="/services/fiber-optic.html">Fiber Optic</a></li>
-        <li><a href="/services/managed-wifi.html">Managed WiFi</a></li>
-        <li><a href="/services/cctv-security-cameras.html">CCTV &amp; Security</a></li>
-        <li><a href="/services/ev-charging-stations.html">EV Charging</a></li>
-        <li><a href="/services/solar-panels.html">Solar Panels</a></li>
-        <li><a href="/services/smart-buildings.html">Smart Buildings</a></li>
-        <li><a href="/services/iptv.html">IPTV</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact Us</h4>
-      <ul class="footer-contact">
-        <li>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-          <a href="tel:+13052491084">305.249.1084</a>
-        </li>
-        <li>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <a href="mailto:Hello@MrRhinoConnect.com">Hello@MrRhinoConnect.com</a>
-        </li>
-        <li>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Miami, Florida</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>Copyright &copy; 2025 MrRhinoConnect. All rights reserved.</span>
-    <span>Built by <a href="https://thatskrispy.com" target="_blank" rel="noopener noreferrer">@ThatsKrispy</a></span>
-  </div>
-</footer>`;
 
-  /* ── CONSENT BANNER ──────────────────────────────── */
+    /* ── CONSENT BANNER ──────────────────────────────── */
   const CONSENT_HTML = `
 <div class="consent-banner" id="consent-banner" role="dialog" aria-modal="true" aria-label="Cookie consent" aria-describedby="consent-desc">
   <div class="consent-inner">
