@@ -1,3 +1,39 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter','Segoe UI',system-ui,sans-serif;color:#031624;background:#fff;line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font:inherit}
+
+/* ── Design tokens ───────────────────────── */
+:root{
+  --pink:       #C8688F;
+  --pink-dark:  #a84f74;
+  --pink-light: rgba(200,104,143,0.08);
+  --dark:       #031624;
+  --navy:       #272B36;
+  --blue:       #041827;
+  --light:      #F4F4F4;
+  --white:      #FFFFFF;
+  --border:     rgba(3,22,36,0.1);
+  --text-muted: rgba(3,22,36,0.58);
+
+  --font-display:'Oswald','Arial Narrow',Arial,sans-serif;
+  --font-body:'Inter','Segoe UI',system-ui,sans-serif;
+
+  --max:1200px;
+  --pad:5rem 1.5rem;
+  --r:8px;
+  --r-lg:14px;
+  --sh:0 2px 16px rgba(3,22,36,0.08);
+  --sh-lg:0 8px 40px rgba(3,22,36,0.14);
+  --t:.2s ease;
+}
+
+/* ── Typography ──────────────────────────── */
+
+
 /* ═══════════════════════════════════════════════════
    HEADER & NAVIGATION
    Desktop: sticky bar with inline links + dropdown
@@ -400,40 +436,7 @@
    ========================================== */
 
 /* ── Reset ───────────────────────────────── */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:'Inter','Segoe UI',system-ui,sans-serif;color:#031624;background:#fff;line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
-img{max-width:100%;height:auto;display:block}
-a{color:inherit;text-decoration:none}
-ul{list-style:none}
-button{cursor:pointer;border:none;background:none;font:inherit}
 
-/* ── Design tokens ───────────────────────── */
-:root{
-  --pink:       #C8688F;
-  --pink-dark:  #a84f74;
-  --pink-light: rgba(200,104,143,0.08);
-  --dark:       #031624;
-  --navy:       #272B36;
-  --blue:       #041827;
-  --light:      #F4F4F4;
-  --white:      #FFFFFF;
-  --border:     rgba(3,22,36,0.1);
-  --text-muted: rgba(3,22,36,0.58);
-
-  --font-display:'Oswald','Arial Narrow',Arial,sans-serif;
-  --font-body:'Inter','Segoe UI',system-ui,sans-serif;
-
-  --max:1200px;
-  --pad:5rem 1.5rem;
-  --r:8px;
-  --r-lg:14px;
-  --sh:0 2px 16px rgba(3,22,36,0.08);
-  --sh-lg:0 8px 40px rgba(3,22,36,0.14);
-  --t:.2s ease;
-}
-
-/* ── Typography ──────────────────────────── */
 h1,h2,h3,h4{font-family:var(--font-display);line-height:1.12;font-weight:700;color:var(--dark)}
 h1{font-size:clamp(2rem,5vw,3.4rem)}
 h2{font-size:clamp(1.65rem,3.5vw,2.5rem)}
