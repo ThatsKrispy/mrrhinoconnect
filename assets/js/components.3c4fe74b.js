@@ -1,4 +1,13 @@
-(function(){'use strict';const LOGO='/assets/images/mrrhinoconnect-logo-v3.png';const NAV_HTML=`
+/* MrRhinoConnect — components.js
+   Nav · Footer · Consent · ADA Widget
+   ThatsKrispy Agency Build */
+(function () {
+  'use strict';
+
+  const LOGO = '/assets/images/mrrhinoconnect-logo-v3.png';
+
+  /* ── NAV ──────────────────────────────────────────────── */
+  const NAV_HTML = `
 <style id="mrrhino-nav-css">
 .site-header{position:sticky;top:0;z-index:1000;height:68px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(3,22,36,.08);box-shadow:0 1px 12px rgba(3,22,36,.06)}
 .nav-wrapper{display:flex;align-items:center;justify-content:space-between;height:100%;max-width:1200px;margin:0 auto;padding:0 1.5rem;gap:1rem;box-sizing:border-box}
@@ -13,6 +22,7 @@
 .nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-6px);width:600px;background:#fff;border:1px solid rgba(3,22,36,.09);border-radius:14px;box-shadow:0 20px 60px rgba(3,22,36,.14);opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:1100;display:grid;grid-template-columns:1fr 1fr 1fr;padding:1.25rem;gap:.25rem}
 .nav-dropdown::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}
 .nav-item:hover>.nav-dropdown{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.dropdown-viewall{grid-column:1/-1}
 .dropdown-group{padding:.4rem .6rem}
 .dropdown-label{display:block;padding:0 0 .4rem;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C8688F;border-bottom:1px solid rgba(3,22,36,.07);margin-bottom:.4rem}
 .nav-dropdown a{display:flex;align-items:center;gap:.35rem;padding:.32rem .2rem;font-size:.79rem;color:rgba(3,22,36,.72);border-radius:4px;transition:color .12s,padding-left .12s;text-decoration:none}
@@ -68,16 +78,19 @@
 <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation" aria-hidden="true">
   <div class="drawer-item"><a href="/" class="drawer-link">Home</a></div>
   <div class="drawer-item"><a href="/about.html" class="drawer-link">About Us</a></div>
-  <div class="drawer-item" id="drawer-services">
-    <button class="drawer-link" aria-expanded="false" aria-controls="drawer-sub">
-      Services
+  <div class="drawer-item" id="drawer-realestate">
+    <button class="drawer-link" aria-expanded="false" aria-controls="drawer-sub-re">
+      Real Estate
       <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
     </button>
-    <div class="drawer-sub" id="drawer-sub">
+    <div class="drawer-sub" id="drawer-sub-re">
+      <div class="drawer-sub-group" style="border-bottom:1px solid rgba(3,22,36,.08)">
+        <a href="/real-estate.html" style="display:block;padding:.7rem 1.5rem;font-size:.83rem;font-weight:700;color:#031624;text-decoration:none">View All Real Estate Solutions →</a>
+      </div>
       <div class="drawer-sub-group">
         <span class="drawer-sub-label">Networking &amp; Connectivity</span>
-        <a href="/services/electrical-low-voltage-wiring.html">Electrical &amp; Low Voltage Wiring</a>
-        <a href="/services/managed-wifi.html">Managed WiFi for Common Areas</a>
+        <a href="/services/electrical-low-voltage-wiring.html">Low Voltage Wiring</a>
+        <a href="/services/managed-wifi.html">Managed WiFi</a>
         <a href="/services/fiber-optic.html">Fiber Optic Circuit</a>
         <a href="/services/pots-line-replacements.html">POTS Line Replacements</a>
         <a href="/services/iptv.html">Internet Protocol TV (IPTV)</a>
@@ -102,6 +115,26 @@
       </div>
     </div>
   </div>
+  <div class="drawer-item" id="drawer-education">
+    <button class="drawer-link" aria-expanded="false" aria-controls="drawer-sub-edu">
+      Education
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="drawer-sub" id="drawer-sub-edu">
+      <div class="drawer-sub-group" style="border-bottom:1px solid rgba(3,22,36,.08)">
+        <a href="/education.html" style="display:block;padding:.7rem 1.5rem;font-size:.83rem;font-weight:700;color:#031624;text-decoration:none">View All Education Solutions →</a>
+      </div>
+      <div class="drawer-sub-group">
+        <span class="drawer-sub-label">Cybersecurity</span>
+        <a href="/services/cybersecurity.html">Cybersecurity Solutions</a>
+      </div>
+      <div class="drawer-sub-group">
+        <span class="drawer-sub-label">Business Continuity</span>
+        <a href="/services/disaster-recovery.html">Disaster Recovery</a>
+      </div>
+    </div>
+  </div>
+  <div class="drawer-item"><a href="/services.html" class="drawer-link">Services</a></div>
   <div class="drawer-item"><a href="/faq.html" class="drawer-link">FAQ</a></div>
   <div class="drawer-item"><a href="/news.html" class="drawer-link">News</a></div>
   <div class="drawer-item"><a href="/contact.html" class="drawer-link">Contact</a></div>
@@ -122,15 +155,18 @@
       <div class="nav-item"><a href="/" class="nav-link">Home</a></div>
       <div class="nav-item"><a href="/about.html" class="nav-link">About Us</a></div>
       <div class="nav-item">
-        <button class="nav-link" aria-haspopup="true" aria-expanded="false">
-          Services
+        <a href="/real-estate.html" class="nav-link" aria-haspopup="true">
+          Real Estate
           <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="nav-dropdown" role="menu" aria-label="Services submenu">
+        </a>
+        <div class="nav-dropdown" role="menu" aria-label="Real Estate submenu" style="width:640px">
+          <div class="dropdown-group dropdown-viewall" style="border-bottom:1px solid rgba(3,22,36,.07);margin-bottom:.5rem;padding-bottom:.75rem">
+            <a href="/real-estate.html" role="menuitem" style="font-weight:700;color:#031624;font-size:.82rem">View All Real Estate Solutions →</a>
+          </div>
           <div class="dropdown-group">
             <span class="dropdown-label">Networking &amp; Connectivity</span>
-            <a href="/services/electrical-low-voltage-wiring.html" role="menuitem">Electrical &amp; Low Voltage Wiring</a>
-            <a href="/services/managed-wifi.html" role="menuitem">Managed WiFi for Common Areas</a>
+            <a href="/services/electrical-low-voltage-wiring.html" role="menuitem">Low Voltage Wiring</a>
+            <a href="/services/managed-wifi.html" role="menuitem">Managed WiFi</a>
             <a href="/services/fiber-optic.html" role="menuitem">Fiber Optic Circuit</a>
             <a href="/services/pots-line-replacements.html" role="menuitem">POTS Line Replacements</a>
             <a href="/services/iptv.html" role="menuitem">Internet Protocol TV (IPTV)</a>
@@ -155,6 +191,26 @@
           </div>
         </div>
       </div>
+      <div class="nav-item">
+        <a href="/education.html" class="nav-link" aria-haspopup="true">
+          Education
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-dropdown" role="menu" aria-label="Education submenu" style="width:420px;grid-template-columns:1fr 1fr">
+          <div class="dropdown-group dropdown-viewall" style="border-bottom:1px solid rgba(3,22,36,.07);margin-bottom:.5rem;padding-bottom:.75rem">
+            <a href="/education.html" role="menuitem" style="font-weight:700;color:#031624;font-size:.82rem">View All Education Solutions →</a>
+          </div>
+          <div class="dropdown-group">
+            <span class="dropdown-label">Cybersecurity</span>
+            <a href="/services/cybersecurity.html" role="menuitem">Cybersecurity Solutions</a>
+          </div>
+          <div class="dropdown-group">
+            <span class="dropdown-label">Business Continuity</span>
+            <a href="/services/disaster-recovery.html" role="menuitem">Disaster Recovery</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item"><a href="/services.html" class="nav-link">Services</a></div>
       <div class="nav-item"><a href="/faq.html" class="nav-link">FAQ</a></div>
       <div class="nav-item"><a href="/news.html" class="nav-link">News</a></div>
       <div class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></div>
@@ -172,7 +228,10 @@
       <span aria-hidden="true"></span>
     </button>
   </div>
-</header>`;const FOOTER_HTML=`
+</header>`;
+
+  /* ── FOOTER ──────────────────────────────────────────── */
+  const FOOTER_HTML = `
 <div class="newsletter-strip" role="complementary" aria-label="Newsletter signup">
   <div class="newsletter-inner">
     <h3>Get the Latest News &amp; Updates</h3>
@@ -249,7 +308,10 @@
     <span>Copyright &copy; 2025 MrRhinoConnect. All rights reserved.</span>
     <span>Built by <a href="https://thatskrispy.com" target="_blank" rel="noopener noreferrer">@ThatsKrispy</a></span>
   </div>
-</footer>`;const CONSENT_HTML=`
+</footer>`;
+
+  /* ── CONSENT BANNER ──────────────────────────────────── */
+  const CONSENT_HTML = `
 <div class="consent-banner" id="consent-banner" role="dialog" aria-modal="true" aria-label="Cookie consent" aria-describedby="consent-desc">
   <div class="consent-inner">
     <div class="consent-text">
@@ -260,7 +322,10 @@
       <button class="consent-decline" id="consent-decline">Decline</button>
     </div>
   </div>
-</div>`;const A11Y_HTML=`
+</div>`;
+
+  /* ── ADA WIDGET ──────────────────────────────────────── */
+  const A11Y_HTML = `
 <div id="ada-widget-wrap">
   <button id="ada-trigger" aria-label="Open accessibility menu" aria-expanded="false" aria-controls="ada-panel" aria-haspopup="dialog" title="Accessibility Options">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><circle cx="12" cy="5" r="2"/><path d="M12 7v5M8 9h8M9 22l1.5-5h3L15 22"/></svg>
@@ -313,17 +378,164 @@
     </button>
     <div class="ada-footer-note"><a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener noreferrer">WCAG 2.1 AA</a> accessibility tools</div>
   </div>
-</div>`;const navEl=document.getElementById('site-nav');const footEl=document.getElementById('site-footer');if(navEl)navEl.innerHTML=NAV_HTML;if(footEl)footEl.innerHTML=FOOTER_HTML;document.body.insertAdjacentHTML('beforeend',CONSENT_HTML);document.body.insertAdjacentHTML('beforeend',A11Y_HTML);const curPath=window.location.pathname.replace(/\/$/,'')||'/';document.querySelectorAll('.nav-link, .drawer-link').forEach(link=>{const href=(link.getAttribute('href')||'').replace(/\/$/,'');if(!href)return;const isHome=(href==='/'||href==='/index.html')&&curPath==='/';const isMatch=href!=='/'&&curPath.startsWith(href.replace('.html',''));if(isHome||isMatch)link.classList.add('active');});const toggle=document.getElementById('nav-toggle');const drawer=document.getElementById('nav-drawer');const overlay=document.getElementById('nav-overlay');const drawerServEl=document.getElementById('drawer-services');const drawerServBtn=drawerServEl?drawerServEl.querySelector('.drawer-link'):null;if(toggle&&drawer){function openDrawer(){drawer.classList.add('open');drawer.setAttribute('aria-hidden','false');overlay.classList.add('active');toggle.setAttribute('aria-expanded','true');toggle.setAttribute('aria-label','Close navigation menu');document.body.style.overflow='hidden';setTimeout(()=>{const f=drawer.querySelector('a, button');if(f)f.focus();},300);}
-function closeDrawer(){drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true');overlay.classList.remove('active');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation menu');document.body.style.overflow='';}
-toggle.addEventListener('click',()=>drawer.classList.contains('open')?closeDrawer():openDrawer());overlay.addEventListener('click',closeDrawer);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&drawer.classList.contains('open')){closeDrawer();toggle.focus();}});if(drawerServBtn){drawerServBtn.addEventListener('click',()=>{const isOpen=drawerServEl.classList.toggle('open');drawerServBtn.setAttribute('aria-expanded',String(isOpen));});}
-drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeDrawer));window.addEventListener('resize',()=>{if(window.innerWidth>860)closeDrawer();});}
-const banner=document.getElementById('consent-banner');if(banner&&!localStorage.getItem('mrrhino_consent')){banner.classList.add('visible');const fb=banner.querySelector('button');if(fb)setTimeout(()=>fb.focus(),400);}
-document.getElementById('consent-accept')?.addEventListener('click',()=>{localStorage.setItem('mrrhino_consent','accepted');banner.classList.remove('visible');});document.getElementById('consent-decline')?.addEventListener('click',()=>{localStorage.setItem('mrrhino_consent','declined');banner.classList.remove('visible');});const trigger=document.getElementById('ada-trigger');const panel=document.getElementById('ada-panel');const closeBtn=document.getElementById('ada-close');const resetBtn=document.getElementById('ada-reset');if(!trigger||!panel)return;const STORAGE_KEY='mrrhino_ada_v2';let state={fontSize:100,letterSpace:0,dyslexia:false,lineSpacing:false,contrast:false,invert:false,grayscale:false,saturation:false,links:false,focus:false,animations:false};try{Object.assign(state,JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}'));}catch(e){}
-function loadDyslexiaFont(){if(document.getElementById('ada-dyslexia-style'))return;const st=document.createElement('style');st.id='ada-dyslexia-style';st.textContent='body.ada-dyslexia,body.ada-dyslexia *{font-family:"Comic Sans MS","Comic Sans",cursive!important;word-spacing:.16em!important}';document.head.appendChild(st);}
-function applyState(){const b=document.body;document.documentElement.style.fontSize=state.fontSize===100?'':(state.fontSize/100*16)+'px';document.getElementById('ada-font-val').textContent=state.fontSize+'%';const spacingLabels=['Normal','Wide','Wider','Widest','Maximum'];const spacingVals=[0,0.05,0.1,0.15,0.2];let spStyle=document.getElementById('ada-spacing-style');if(!spStyle){spStyle=document.createElement('style');spStyle.id='ada-spacing-style';document.head.appendChild(spStyle);}
-spStyle.textContent=state.letterSpace>0?`body,body *{letter-spacing:${spacingVals[state.letterSpace]}em!important}`:'';document.getElementById('ada-space-val').textContent=spacingLabels[state.letterSpace];b.classList.toggle('ada-dyslexia',state.dyslexia);b.classList.toggle('ada-linespacing',state.lineSpacing);b.classList.toggle('ada-contrast',state.contrast);b.classList.toggle('ada-invert',state.invert);b.classList.toggle('ada-grayscale',state.grayscale);b.classList.toggle('ada-saturation',state.saturation);b.classList.toggle('ada-links',state.links);b.classList.toggle('ada-focus',state.focus);b.classList.toggle('ada-noanimation',state.animations);if(state.dyslexia)loadDyslexiaFont();[['ada-dyslexia','dyslexia'],['ada-linespacing','lineSpacing'],['ada-contrast','contrast'],['ada-invert','invert'],['ada-grayscale','grayscale'],['ada-saturation','saturation'],['ada-links','links'],['ada-focus','focus'],['ada-animations','animations']].forEach(([id,key])=>{const el=document.getElementById(id);if(!el)return;el.setAttribute('aria-pressed',String(state[key]));el.classList.toggle('ada-on',state[key]);const lbl=el.querySelector('.ada-toggle-status');if(lbl)lbl.textContent=state[key]?'On':'Off';});document.getElementById('ada-font-dec').disabled=state.fontSize<=100;document.getElementById('ada-font-inc').disabled=state.fontSize>=150;document.getElementById('ada-space-dec').disabled=state.letterSpace<=0;document.getElementById('ada-space-inc').disabled=state.letterSpace>=4;localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}
-function openPanel(){panel.hidden=false;trigger.setAttribute('aria-expanded','true');setTimeout(()=>{const f=panel.querySelector('button:not([disabled])');if(f)f.focus();},50);}
-function closePanel(){panel.hidden=true;trigger.setAttribute('aria-expanded','false');trigger.focus();}
-trigger.addEventListener('click',()=>panel.hidden?openPanel():closePanel());closeBtn.addEventListener('click',closePanel);panel.addEventListener('keydown',e=>{if(e.key==='Escape'){closePanel();return;}
-if(e.key!=='Tab')return;const focusable=Array.from(panel.querySelectorAll('button:not([disabled]),a[href]')).filter(el=>el.offsetParent!==null);if(!focusable.length)return;if(e.shiftKey&&document.activeElement===focusable[0]){e.preventDefault();focusable[focusable.length-1].focus();}
-else if(!e.shiftKey&&document.activeElement===focusable[focusable.length-1]){e.preventDefault();focusable[0].focus();}});document.addEventListener('click',e=>{if(!panel.hidden&&!panel.contains(e.target)&&!trigger.contains(e.target))closePanel();});document.getElementById('ada-font-inc').addEventListener('click',()=>{if(state.fontSize<150){state.fontSize+=10;applyState();}});document.getElementById('ada-font-dec').addEventListener('click',()=>{if(state.fontSize>100){state.fontSize-=10;applyState();}});document.getElementById('ada-space-inc').addEventListener('click',()=>{if(state.letterSpace<4){state.letterSpace++;applyState();}});document.getElementById('ada-space-dec').addEventListener('click',()=>{if(state.letterSpace>0){state.letterSpace--;applyState();}});[['ada-dyslexia','dyslexia'],['ada-linespacing','lineSpacing'],['ada-contrast','contrast'],['ada-invert','invert'],['ada-grayscale','grayscale'],['ada-saturation','saturation'],['ada-links','links'],['ada-focus','focus'],['ada-animations','animations']].forEach(([id,key])=>{document.getElementById(id)?.addEventListener('click',()=>{state[key]=!state[key];applyState();});});resetBtn.addEventListener('click',()=>{state={fontSize:100,letterSpace:0,dyslexia:false,lineSpacing:false,contrast:false,invert:false,grayscale:false,saturation:false,links:false,focus:false,animations:false};applyState();const ann=document.createElement('div');ann.setAttribute('role','status');ann.setAttribute('aria-live','polite');ann.className='sr-only';ann.textContent='All accessibility settings have been reset.';document.body.appendChild(ann);setTimeout(()=>ann.remove(),2000);});applyState();})();
+</div>`;
+
+  /* ── INJECT ──────────────────────────────────────────── */
+  const navEl  = document.getElementById('site-nav');
+  const footEl = document.getElementById('site-footer');
+  if (navEl)  navEl.innerHTML  = NAV_HTML;
+  if (footEl) footEl.innerHTML = FOOTER_HTML;
+  document.body.insertAdjacentHTML('beforeend', CONSENT_HTML);
+  document.body.insertAdjacentHTML('beforeend', A11Y_HTML);
+
+  /* ── ACTIVE NAV ──────────────────────────────────────── */
+  const curPath = window.location.pathname.replace(/\/$/, '') || '/';
+  document.querySelectorAll('.nav-link, .drawer-link').forEach(link => {
+    const href = (link.getAttribute('href') || '').replace(/\/$/, '');
+    if (!href) return;
+    const isHome  = (href === '/' || href === '/index.html') && curPath === '/';
+    const isMatch = href !== '/' && curPath.startsWith(href.replace('.html', ''));
+    if (isHome || isMatch) link.classList.add('active');
+  });
+
+  /* ── MOBILE DRAWER ───────────────────────────────────── */
+  const toggle  = document.getElementById('nav-toggle');
+  const drawer  = document.getElementById('nav-drawer');
+  const overlay = document.getElementById('nav-overlay');
+
+  if (toggle && drawer) {
+    function openDrawer() {
+      drawer.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+      overlay.classList.add('active');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close navigation menu');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => { const f = drawer.querySelector('a, button'); if (f) f.focus(); }, 300);
+    }
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+      overlay.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation menu');
+      document.body.style.overflow = '';
+    }
+    toggle.addEventListener('click', () => drawer.classList.contains('open') ? closeDrawer() : openDrawer());
+    overlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && drawer.classList.contains('open')) { closeDrawer(); toggle.focus(); } });
+    ['drawer-realestate', 'drawer-education'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const btn = el.querySelector('.drawer-link');
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const isOpen = el.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(isOpen));
+      });
+    });
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+    window.addEventListener('resize', () => { if (window.innerWidth > 860) closeDrawer(); });
+  }
+
+  /* ── CONSENT ─────────────────────────────────────────── */
+  const banner = document.getElementById('consent-banner');
+  if (banner && !localStorage.getItem('mrrhino_consent')) {
+    banner.classList.add('visible');
+    const fb = banner.querySelector('button');
+    if (fb) setTimeout(() => fb.focus(), 400);
+  }
+  document.getElementById('consent-accept')?.addEventListener('click', () => {
+    localStorage.setItem('mrrhino_consent', 'accepted');
+    banner.classList.remove('visible');
+  });
+  document.getElementById('consent-decline')?.addEventListener('click', () => {
+    localStorage.setItem('mrrhino_consent', 'declined');
+    banner.classList.remove('visible');
+  });
+
+  /* ── ADA WIDGET ──────────────────────────────────────── */
+  const trigger  = document.getElementById('ada-trigger');
+  const panel    = document.getElementById('ada-panel');
+  const closeBtn = document.getElementById('ada-close');
+  const resetBtn = document.getElementById('ada-reset');
+  if (!trigger || !panel) return;
+
+  const STORAGE_KEY = 'mrrhino_ada_v2';
+  let state = { fontSize:100, letterSpace:0, dyslexia:false, lineSpacing:false, contrast:false, invert:false, grayscale:false, saturation:false, links:false, focus:false, animations:false };
+  try { Object.assign(state, JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}')); } catch(e) {}
+
+  function loadDyslexiaFont() {
+    if (document.getElementById('ada-dyslexia-style')) return;
+    const st = document.createElement('style');
+    st.id = 'ada-dyslexia-style';
+    st.textContent = 'body.ada-dyslexia,body.ada-dyslexia *{font-family:"Comic Sans MS","Comic Sans",cursive!important;word-spacing:.16em!important}';
+    document.head.appendChild(st);
+  }
+
+  function applyState() {
+    const b = document.body;
+    document.documentElement.style.fontSize = state.fontSize === 100 ? '' : (state.fontSize / 100 * 16) + 'px';
+    document.getElementById('ada-font-val').textContent = state.fontSize + '%';
+    const spacingLabels = ['Normal','Wide','Wider','Widest','Maximum'];
+    const spacingVals   = [0, 0.05, 0.1, 0.15, 0.2];
+    let spStyle = document.getElementById('ada-spacing-style');
+    if (!spStyle) { spStyle = document.createElement('style'); spStyle.id = 'ada-spacing-style'; document.head.appendChild(spStyle); }
+    spStyle.textContent = state.letterSpace > 0 ? `body,body *{letter-spacing:${spacingVals[state.letterSpace]}em!important}` : '';
+    document.getElementById('ada-space-val').textContent = spacingLabels[state.letterSpace];
+    b.classList.toggle('ada-dyslexia',    state.dyslexia);
+    b.classList.toggle('ada-linespacing', state.lineSpacing);
+    b.classList.toggle('ada-contrast',    state.contrast);
+    b.classList.toggle('ada-invert',      state.invert);
+    b.classList.toggle('ada-grayscale',   state.grayscale);
+    b.classList.toggle('ada-saturation',  state.saturation);
+    b.classList.toggle('ada-links',       state.links);
+    b.classList.toggle('ada-focus',       state.focus);
+    b.classList.toggle('ada-noanimation', state.animations);
+    if (state.dyslexia) loadDyslexiaFont();
+    [['ada-dyslexia','dyslexia'],['ada-linespacing','lineSpacing'],['ada-contrast','contrast'],['ada-invert','invert'],['ada-grayscale','grayscale'],['ada-saturation','saturation'],['ada-links','links'],['ada-focus','focus'],['ada-animations','animations']].forEach(([id, key]) => {
+      const el = document.getElementById(id); if (!el) return;
+      el.setAttribute('aria-pressed', String(state[key]));
+      el.classList.toggle('ada-on', state[key]);
+      const lbl = el.querySelector('.ada-toggle-status'); if (lbl) lbl.textContent = state[key] ? 'On' : 'Off';
+    });
+    document.getElementById('ada-font-dec').disabled = state.fontSize <= 100;
+    document.getElementById('ada-font-inc').disabled = state.fontSize >= 150;
+    document.getElementById('ada-space-dec').disabled = state.letterSpace <= 0;
+    document.getElementById('ada-space-inc').disabled = state.letterSpace >= 4;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function openPanel() {
+    panel.hidden = false; trigger.setAttribute('aria-expanded','true');
+    setTimeout(() => { const f = panel.querySelector('button:not([disabled])'); if (f) f.focus(); }, 50);
+  }
+  function closePanel() { panel.hidden = true; trigger.setAttribute('aria-expanded','false'); trigger.focus(); }
+
+  trigger.addEventListener('click', () => panel.hidden ? openPanel() : closePanel());
+  closeBtn.addEventListener('click', closePanel);
+  panel.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closePanel(); return; }
+    if (e.key !== 'Tab') return;
+    const focusable = Array.from(panel.querySelectorAll('button:not([disabled]),a[href]')).filter(el => el.offsetParent !== null);
+    if (!focusable.length) return;
+    if (e.shiftKey && document.activeElement === focusable[0]) { e.preventDefault(); focusable[focusable.length-1].focus(); }
+    else if (!e.shiftKey && document.activeElement === focusable[focusable.length-1]) { e.preventDefault(); focusable[0].focus(); }
+  });
+  document.addEventListener('click', e => { if (!panel.hidden && !panel.contains(e.target) && !trigger.contains(e.target)) closePanel(); });
+  document.getElementById('ada-font-inc').addEventListener('click', () => { if (state.fontSize < 150) { state.fontSize += 10; applyState(); } });
+  document.getElementById('ada-font-dec').addEventListener('click', () => { if (state.fontSize > 100) { state.fontSize -= 10; applyState(); } });
+  document.getElementById('ada-space-inc').addEventListener('click', () => { if (state.letterSpace < 4) { state.letterSpace++; applyState(); } });
+  document.getElementById('ada-space-dec').addEventListener('click', () => { if (state.letterSpace > 0) { state.letterSpace--; applyState(); } });
+  [['ada-dyslexia','dyslexia'],['ada-linespacing','lineSpacing'],['ada-contrast','contrast'],['ada-invert','invert'],['ada-grayscale','grayscale'],['ada-saturation','saturation'],['ada-links','links'],['ada-focus','focus'],['ada-animations','animations']].forEach(([id, key]) => {
+    document.getElementById(id)?.addEventListener('click', () => { state[key] = !state[key]; applyState(); });
+  });
+  resetBtn.addEventListener('click', () => {
+    state = { fontSize:100, letterSpace:0, dyslexia:false, lineSpacing:false, contrast:false, invert:false, grayscale:false, saturation:false, links:false, focus:false, animations:false };
+    applyState();
+    const ann = document.createElement('div'); ann.setAttribute('role','status'); ann.setAttribute('aria-live','polite'); ann.className = 'sr-only'; ann.textContent = 'All accessibility settings have been reset.';
+    document.body.appendChild(ann); setTimeout(() => ann.remove(), 2000);
+  });
+  applyState();
+
+})();

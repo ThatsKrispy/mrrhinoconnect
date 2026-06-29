@@ -134,6 +134,7 @@
       </div>
     </div>
   </div>
+  <div class="drawer-item"><a href="/services.html" class="drawer-link">Services</a></div>
   <div class="drawer-item"><a href="/faq.html" class="drawer-link">FAQ</a></div>
   <div class="drawer-item"><a href="/news.html" class="drawer-link">News</a></div>
   <div class="drawer-item"><a href="/contact.html" class="drawer-link">Contact</a></div>
@@ -209,6 +210,7 @@
           </div>
         </div>
       </div>
+      <div class="nav-item"><a href="/services.html" class="nav-link">Services</a></div>
       <div class="nav-item"><a href="/faq.html" class="nav-link">FAQ</a></div>
       <div class="nav-item"><a href="/news.html" class="nav-link">News</a></div>
       <div class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></div>
