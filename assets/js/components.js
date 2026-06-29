@@ -1,72 +1,94 @@
 (function(){'use strict';const LOGO='/assets/images/mrrhinoconnect-logo-v3.png';const NAV_HTML=`
 <style id="mrrhino-nav-css">
-.site-header{position:sticky;top:0;z-index:1000;height:68px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(3,22,36,.08);box-shadow:0 1px 12px rgba(3,22,36,.06)}
-.nav-wrapper{display:flex;align-items:center;justify-content:space-between;height:100%;max-width:1200px;margin:0 auto;padding:0 1.5rem;gap:1rem;box-sizing:border-box}
-.nav-logo{display:flex;align-items:center;flex-shrink:0;text-decoration:none}
-.nav-logo img{height:42px;width:auto;display:block}
-.nav-links{display:flex;align-items:center;gap:0;flex:1;justify-content:center}
+/* ── Reset / Base ── */
+.site-header{position:sticky;top:0;z-index:1000;height:72px;background:#fff;border-bottom:1px solid rgba(3,22,36,.09);box-shadow:0 1px 16px rgba(3,22,36,.07)}
+.nav-wrapper{display:flex;align-items:center;height:100%;max-width:1260px;margin:0 auto;padding:0 2rem;gap:2rem}
+.nav-logo{display:flex;align-items:center;flex-shrink:0;text-decoration:none;margin-right:auto}
+.nav-logo img{height:40px;width:auto;display:block}
+
+/* ── Desktop links ── */
+.nav-links{display:flex;align-items:center;gap:.25rem}
 .nav-item{position:relative}
-.nav-link{display:flex;align-items:center;gap:.28rem;padding:.45rem .55rem;font-size:.72rem;font-weight:700;color:#031624;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;border-radius:6px;transition:color .15s;background:none;border:none;font-family:inherit;cursor:pointer;text-decoration:none}
+.nav-link{display:flex;align-items:center;gap:.25rem;padding:.5rem .75rem;font-size:.73rem;font-weight:700;color:rgba(3,22,36,.7);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap;border-radius:6px;transition:color .15s;background:none;border:none;font-family:inherit;cursor:pointer;text-decoration:none}
 .nav-link:hover,.nav-link.active{color:#C8688F}
-.nav-link .chevron{width:11px;height:11px;flex-shrink:0;transition:transform .2s}
-.nav-item:hover>.nav-link .chevron{transform:rotate(180deg)}
-.nav-dropdown{position:absolute;top:calc(100% + 4px);right:-140px;transform:translateY(-6px);width:700px;background:#fff;border:1px solid rgba(3,22,36,.09);border-radius:12px;box-shadow:0 16px 48px rgba(3,22,36,.13);opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:1100;display:grid;grid-template-columns:1fr 1fr 1fr;padding:.75rem;gap:0}
-.nav-dropdown::before{content:'';position:absolute;top:-6px;left:0;right:0;height:6px}
-.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:auto;transform:translateY(0)}
-.dropdown-viewall{grid-column:1/-1;padding:.3rem .5rem .6rem;border-bottom:1px solid rgba(3,22,36,.07);margin-bottom:.25rem}
-.dropdown-group{padding:.5rem .65rem;border-right:1px solid rgba(3,22,36,.06)}
-.dropdown-group:last-child{border-right:none}
-.dropdown-label{display:block;padding:0 0 .4rem;font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C8688F;border-bottom:1px solid rgba(3,22,36,.07);margin-bottom:.35rem;white-space:nowrap}
-.nav-dropdown a{display:block;padding:.28rem .3rem;font-size:.76rem;color:rgba(3,22,36,.68);border-radius:4px;transition:color .12s,background .12s,padding-left .12s;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.nav-dropdown a:hover{color:#C8688F;background:rgba(200,104,143,.06);padding-left:6px}
-.nav-cta{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
-.nav-phone{display:flex;align-items:center;gap:.3rem;font-weight:700;font-size:.8rem;color:#031624;text-decoration:none;white-space:nowrap;transition:color .15s}
+.nav-link svg.chevron{width:10px;height:10px;flex-shrink:0;transition:transform .2s;stroke:#C8688F}
+.nav-item:hover>.nav-link svg.chevron{transform:rotate(180deg)}
+
+/* ── Dropdown ── */
+.nav-dropdown{display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);width:560px;background:#fff;border:1px solid rgba(3,22,36,.09);border-radius:14px;box-shadow:0 20px 50px rgba(3,22,36,.12);z-index:1100;padding:1.25rem;gap:0}
+.nav-dropdown::before{content:'';position:absolute;top:-12px;left:0;right:0;height:12px}
+.nav-item:hover>.nav-dropdown{display:grid;grid-template-columns:1fr 1fr}
+.dropdown-header{grid-column:1/-1;padding:.1rem .5rem .75rem;border-bottom:1px solid rgba(3,22,36,.07);margin-bottom:.75rem}
+.dropdown-header a{font-size:.78rem;font-weight:700;color:#031624;text-decoration:none;transition:color .15s}
+.dropdown-header a:hover{color:#C8688F}
+.dropdown-col{padding:0 .75rem}
+.dropdown-col:first-of-type{border-right:1px solid rgba(3,22,36,.07)}
+.dropdown-col-label{display:block;font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#C8688F;margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid rgba(3,22,36,.06)}
+.dropdown-col a{display:block;padding:.32rem .2rem;font-size:.78rem;color:rgba(3,22,36,.68);text-decoration:none;transition:color .15s,padding-left .12s;white-space:nowrap}
+.dropdown-col a:hover{color:#C8688F;padding-left:4px}
+.dropdown-col a.sector-link{font-weight:700;color:#031624;margin-bottom:.3rem}
+.dropdown-col a.sector-link:hover{color:#C8688F}
+
+/* ── CTA ── */
+.nav-cta{display:flex;align-items:center;gap:.75rem;flex-shrink:0;margin-left:auto}
+.nav-phone{display:flex;align-items:center;gap:.3rem;font-weight:700;font-size:.78rem;color:#031624;text-decoration:none;white-space:nowrap;transition:color .15s}
 .nav-phone:hover{color:#C8688F}
 .nav-phone svg{color:#C8688F;flex-shrink:0}
-.nav-call-btn{display:flex;align-items:center;background:#C8688F;color:#fff;padding:.52rem 1.15rem;border-radius:50px;font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.07em;text-decoration:none;white-space:nowrap;transition:background .15s,transform .15s}
-.nav-call-btn:hover{background:#a84f74;transform:translateY(-1px)}
+.btn-nav{display:inline-flex;align-items:center;background:#C8688F;color:#fff;padding:.55rem 1.25rem;border-radius:50px;font-weight:700;font-size:.73rem;text-transform:uppercase;letter-spacing:.07em;text-decoration:none;white-space:nowrap;transition:background .15s,transform .12s}
+.btn-nav:hover{background:#a84f74;transform:translateY(-1px)}
+
+/* ── Hamburger ── */
 .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;padding:.45rem;border:none;background:none;cursor:pointer;width:40px;height:40px;border-radius:8px;flex-shrink:0}
-.nav-toggle span{display:block;width:22px;height:2px;background:#031624;border-radius:2px;transition:transform .22s ease,opacity .22s ease;transform-origin:center}
+.nav-toggle span{display:block;width:22px;height:2px;background:#031624;border-radius:2px;transition:transform .22s,opacity .22s;transform-origin:center}
 .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;transform:scaleX(0)}
 .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ── Overlay ── */
 .nav-overlay{position:fixed;inset:0;background:rgba(3,22,36,.45);z-index:998;opacity:0;visibility:hidden;transition:opacity .28s,visibility 0s linear .28s}
-.nav-overlay.active{opacity:1;visibility:visible;transition:opacity .28s,visibility 0s linear 0s}
-.nav-drawer{position:fixed;top:0;right:0;bottom:0;width:min(300px,85vw);background:#fff;z-index:999;overflow-y:auto;overflow-x:hidden;padding-top:68px;box-shadow:-6px 0 40px rgba(3,22,36,.2);transform:translateX(100%);visibility:hidden;transition:transform .28s cubic-bezier(.4,0,.2,1),visibility 0s linear .28s}
-.nav-drawer.open{transform:translateX(0);visibility:visible;transition:transform .28s cubic-bezier(.4,0,.2,1),visibility 0s linear 0s}
+.nav-overlay.active{opacity:1;visibility:visible;transition:opacity .28s,visibility 0s}
+
+/* ── Mobile drawer ── */
+.nav-drawer{position:fixed;top:0;right:0;bottom:0;width:min(320px,88vw);background:#fff;z-index:999;overflow-y:auto;padding-top:72px;box-shadow:-6px 0 40px rgba(3,22,36,.18);transform:translateX(100%);visibility:hidden;transition:transform .28s cubic-bezier(.4,0,.2,1),visibility 0s linear .28s}
+.nav-drawer.open{transform:translateX(0);visibility:visible;transition:transform .28s cubic-bezier(.4,0,.2,1),visibility 0s}
 .drawer-item{border-bottom:1px solid rgba(3,22,36,.06)}
-.drawer-item:last-child{border-bottom:none}
-.drawer-link{display:flex;align-items:center;justify-content:space-between;padding:.95rem 1.25rem;font-size:.84rem;font-weight:700;color:#031624;text-transform:uppercase;letter-spacing:.07em;text-decoration:none;width:100%;box-sizing:border-box;background:none;border:none;font-family:inherit;cursor:pointer;transition:color .15s,background .15s}
-.drawer-link:hover,.drawer-link.active{color:#C8688F;background:rgba(3,22,36,.03)}
-.drawer-link .chevron{width:14px;height:14px;flex-shrink:0;transition:transform .22s}
-.drawer-item.open>.drawer-link .chevron{transform:rotate(180deg)}
-.drawer-sub{max-height:0;overflow:hidden;transition:max-height .3s ease;background:rgba(3,22,36,.025)}
-.drawer-item.open>.drawer-sub{max-height:800px}
+.drawer-link{display:flex;align-items:center;justify-content:space-between;width:100%;padding:1rem 1.25rem;font-size:.82rem;font-weight:700;color:#031624;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;background:none;border:none;font-family:inherit;cursor:pointer;box-sizing:border-box;transition:color .15s,background .15s}
+.drawer-link:hover,.drawer-link.active{color:#C8688F;background:rgba(200,104,143,.04)}
+.drawer-link svg.chevron{width:14px;height:14px;flex-shrink:0;transition:transform .22s}
+.drawer-item.open>.drawer-link svg.chevron{transform:rotate(180deg)}
+.drawer-sub{max-height:0;overflow:hidden;transition:max-height .32s ease;background:rgba(3,22,36,.02)}
+.drawer-item.open>.drawer-sub{max-height:900px}
 .drawer-sub-group{padding:.5rem 0;border-bottom:1px solid rgba(3,22,36,.05)}
 .drawer-sub-group:last-child{border-bottom:none}
-.drawer-sub-label{display:block;padding:.5rem 1.5rem .3rem;font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C8688F}
-.drawer-sub a{display:block;padding:.55rem 1.75rem;font-size:.83rem;color:rgba(3,22,36,.72);text-decoration:none;transition:color .12s,background .12s,padding-left .12s}
-.drawer-sub a:hover{color:#C8688F;background:rgba(200,104,143,.06);padding-left:2rem}
-.drawer-cta{padding:1.25rem;border-top:1px solid rgba(3,22,36,.07);display:flex;flex-direction:column;gap:.65rem}
-.drawer-phone{display:flex;align-items:center;justify-content:center;gap:.4rem;font-weight:700;font-size:.88rem;color:#031624;text-decoration:none;padding:.5rem 0}
-.drawer-phone svg{color:#C8688F}
-.drawer-phone:hover{color:#C8688F}
-.drawer-cta .nav-call-btn{justify-content:center;padding:.75rem;font-size:.82rem}
+.drawer-sub-label{display:block;padding:.5rem 1.5rem .35rem;font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C8688F}
+.drawer-sub a{display:block;padding:.5rem 1.75rem;font-size:.82rem;color:rgba(3,22,36,.7);text-decoration:none;transition:color .12s,padding-left .12s}
+.drawer-sub a:hover{color:#C8688F;padding-left:2rem}
+.drawer-sub a.all-link{font-weight:700;color:#031624}
+.drawer-sub a.all-link:hover{color:#C8688F}
+.drawer-cta{padding:1.25rem;display:flex;flex-direction:column;gap:.65rem;border-top:1px solid rgba(3,22,36,.07)}
+.drawer-cta-phone{display:flex;align-items:center;justify-content:center;gap:.4rem;font-weight:700;font-size:.88rem;color:#031624;text-decoration:none;padding:.4rem 0;transition:color .15s}
+.drawer-cta-phone svg{color:#C8688F}
+.drawer-cta-phone:hover{color:#C8688F}
+.drawer-cta .btn-nav{justify-content:center;padding:.8rem}
+
+/* ── Breakpoints ── */
 @media(max-width:1024px){
-  .nav-links{display:none!important}
-  .nav-cta{display:none!important}
-  .nav-toggle{display:flex!important}
-  .site-header{position:fixed!important;top:0;left:0;right:0}
-  body{padding-top:68px}
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .nav-toggle{display:flex}
+  .site-header{position:fixed;top:0;left:0;right:0}
+  body{padding-top:72px}
 }
 @media(min-width:1025px){
-  .nav-drawer{display:none!important}
-  .nav-overlay{display:none!important}
-  .nav-toggle{display:none!important}
+  .nav-drawer{display:none}
+  .nav-overlay{display:none}
+  .nav-toggle{display:none}
 }
 </style>
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+
+<!-- ── MOBILE DRAWER ── -->
 <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation" aria-hidden="true">
   <div class="drawer-item"><a href="/" class="drawer-link">Home</a></div>
   <div class="drawer-item"><a href="/about.html" class="drawer-link">About Us</a></div>
@@ -76,12 +98,12 @@
       <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
     </button>
     <div class="drawer-sub" id="drawer-sub-solutions">
-      <div class="drawer-sub-group" style="border-bottom:1px solid rgba(3,22,36,.08)">
-        <a href="/services.html" style="display:block;padding:.7rem 1.5rem;font-size:.83rem;font-weight:700;color:#031624;text-decoration:none">View All Solutions →</a>
+      <div class="drawer-sub-group">
+        <a href="/services.html" class="all-link" style="display:block;padding:.75rem 1.5rem;font-size:.83rem;font-weight:700;color:#031624;text-decoration:none;border-bottom:1px solid rgba(3,22,36,.07)">View All Solutions →</a>
       </div>
       <div class="drawer-sub-group">
         <span class="drawer-sub-label">Real Estate</span>
-        <a href="/real-estate.html">All Real Estate Solutions</a>
+        <a href="/real-estate.html" class="all-link">All Real Estate Solutions</a>
         <a href="/services/fiber-optic.html">Fiber Optic Circuit</a>
         <a href="/services/managed-wifi.html">Managed WiFi</a>
         <a href="/services/cctv-security-cameras.html">CCTV &amp; Security Cameras</a>
@@ -102,29 +124,31 @@
       </div>
       <div class="drawer-sub-group">
         <span class="drawer-sub-label">Education</span>
-        <a href="/education.html">All Education Solutions</a>
+        <a href="/education.html" class="all-link">All Education Solutions</a>
         <a href="/services/cybersecurity.html">Cybersecurity Solutions</a>
         <a href="/services/disaster-recovery.html">Disaster Recovery</a>
       </div>
     </div>
   </div>
-    <div class="drawer-item"><a href="/faq.html" class="drawer-link">FAQ</a></div>
   <div class="drawer-item"><a href="/news.html" class="drawer-link">News</a></div>
+  <div class="drawer-item"><a href="/faq.html" class="drawer-link">FAQ</a></div>
   <div class="drawer-item"><a href="/contact.html" class="drawer-link">Contact</a></div>
   <div class="drawer-cta">
-    <a href="tel:+13052491084" class="drawer-phone" aria-label="Call MrRhinoConnect">
+    <a href="tel:+13052491084" class="drawer-cta-phone" aria-label="Call MrRhinoConnect at 305.249.1084">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
       305.249.1084
     </a>
-    <a href="/contact.html" class="nav-call-btn">Get Started</a>
+    <a href="/contact.html" class="btn-nav">Get a Free Quote</a>
   </div>
 </nav>
+
+<!-- ── DESKTOP HEADER ── -->
 <header class="site-header" role="banner">
   <div class="nav-wrapper">
     <a href="/" class="nav-logo" aria-label="MrRhinoConnect homepage">
       <img src="${LOGO}" alt="MrRhinoConnect logo" width="160" height="42" loading="eager" fetchpriority="high" />
     </a>
-    <div class="nav-links" role="navigation" aria-label="Main navigation">
+    <nav class="nav-links" role="navigation" aria-label="Main navigation">
       <div class="nav-item"><a href="/" class="nav-link">Home</a></div>
       <div class="nav-item"><a href="/about.html" class="nav-link">About Us</a></div>
       <div class="nav-item">
@@ -132,40 +156,40 @@
           Solutions
           <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
-        <div class="nav-dropdown" role="menu" aria-label="Solutions submenu" style="width:680px;grid-template-columns:2fr 1fr">
-          <div class="dropdown-viewall">
-            <a href="/services.html" role="menuitem" style="font-weight:700;color:#031624;font-size:.8rem">View All Solutions →</a>
+        <div class="nav-dropdown" role="menu" aria-label="Solutions menu">
+          <div class="dropdown-header">
+            <a href="/services.html" role="menuitem">View All 19+ Solutions →</a>
           </div>
-          <div class="dropdown-group" style="border-right:1px solid rgba(3,22,36,.07)">
-            <span class="dropdown-label">Real Estate</span>
-            <a href="/real-estate.html" role="menuitem" style="font-weight:600;color:#031624">All Real Estate Solutions →</a>
+          <div class="dropdown-col">
+            <span class="dropdown-col-label">Real Estate</span>
+            <a href="/real-estate.html" class="sector-link" role="menuitem">All Real Estate Solutions →</a>
             <a href="/services/fiber-optic.html" role="menuitem">Fiber Optic Circuit</a>
             <a href="/services/managed-wifi.html" role="menuitem">Managed WiFi</a>
-            <a href="/services/cctv-security-cameras.html" role="menuitem">CCTV &amp; Security Cameras</a>
+            <a href="/services/cctv-security-cameras.html" role="menuitem">CCTV &amp; Security</a>
             <a href="/services/ev-charging-stations.html" role="menuitem">EV Charging Stations</a>
             <a href="/services/solar-panels.html" role="menuitem">Solar Panels</a>
             <a href="/services/smart-buildings.html" role="menuitem">Smart Buildings</a>
             <a href="/services/hvac.html" role="menuitem">HVAC</a>
-            <a href="/real-estate.html" role="menuitem" style="font-size:.72rem;color:#C8688F;font-weight:600">+ 10 more services →</a>
+            <a href="/real-estate.html" role="menuitem" style="color:#C8688F;font-size:.72rem;font-weight:600">+ 10 more →</a>
           </div>
-          <div class="dropdown-group">
-            <span class="dropdown-label">Education</span>
-            <a href="/education.html" role="menuitem" style="font-weight:600;color:#031624">All Education Solutions →</a>
+          <div class="dropdown-col">
+            <span class="dropdown-col-label">Education</span>
+            <a href="/education.html" class="sector-link" role="menuitem">All Education Solutions →</a>
             <a href="/services/cybersecurity.html" role="menuitem">Cybersecurity Solutions</a>
             <a href="/services/disaster-recovery.html" role="menuitem">Disaster Recovery</a>
           </div>
         </div>
       </div>
-            <div class="nav-item"><a href="/faq.html" class="nav-link">FAQ</a></div>
       <div class="nav-item"><a href="/news.html" class="nav-link">News</a></div>
+      <div class="nav-item"><a href="/faq.html" class="nav-link">FAQ</a></div>
       <div class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></div>
-    </div>
+    </nav>
     <div class="nav-cta">
       <a href="tel:+13052491084" class="nav-phone" aria-label="Call MrRhinoConnect at 305.249.1084">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
         305.249.1084
       </a>
-      <a href="/contact.html" class="nav-call-btn">Get Started</a>
+      <a href="/contact.html" class="btn-nav">Get a Free Quote</a>
     </div>
     <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-drawer">
       <span aria-hidden="true"></span>
@@ -210,9 +234,11 @@
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about.html">About Us</a></li>
-        <li><a href="/services.html">Services</a></li>
-        <li><a href="/faq.html">FAQ</a></li>
+        <li><a href="/services.html">All Solutions</a></li>
+        <li><a href="/real-estate.html">Real Estate</a></li>
+        <li><a href="/education.html">Education</a></li>
         <li><a href="/news.html">News</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
         <li><a href="/contact.html">Contact</a></li>
       </ul>
     </div>
