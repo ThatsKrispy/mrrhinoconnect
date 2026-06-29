@@ -6,7 +6,7 @@
 .nav-logo img{height:42px;width:auto;display:block}
 .nav-links{display:flex;align-items:center;gap:0;flex:1;justify-content:center}
 .nav-item{position:relative}
-.nav-link{display:flex;align-items:center;gap:.28rem;padding:.45rem .7rem;font-size:.75rem;font-weight:700;color:#031624;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;border-radius:6px;transition:color .15s;background:none;border:none;font-family:inherit;cursor:pointer;text-decoration:none}
+.nav-link{display:flex;align-items:center;gap:.28rem;padding:.45rem .55rem;font-size:.72rem;font-weight:700;color:#031624;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;border-radius:6px;transition:color .15s;background:none;border:none;font-family:inherit;cursor:pointer;text-decoration:none}
 .nav-link:hover,.nav-link.active{color:#C8688F}
 .nav-link .chevron{width:11px;height:11px;flex-shrink:0;transition:transform .2s}
 .nav-item:hover>.nav-link .chevron{transform:rotate(180deg)}
@@ -52,14 +52,14 @@
 .drawer-phone svg{color:#C8688F}
 .drawer-phone:hover{color:#C8688F}
 .drawer-cta .nav-call-btn{justify-content:center;padding:.75rem;font-size:.82rem}
-@media(max-width:860px){
+@media(max-width:1024px){
   .nav-links{display:none!important}
   .nav-cta{display:none!important}
   .nav-toggle{display:flex!important}
   .site-header{position:fixed!important;top:0;left:0;right:0}
   body{padding-top:68px}
 }
-@media(min-width:861px){
+@media(min-width:1025px){
   .nav-drawer{display:none!important}
   .nav-overlay{display:none!important}
   .nav-toggle{display:none!important}
@@ -70,64 +70,45 @@
 <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation" aria-hidden="true">
   <div class="drawer-item"><a href="/" class="drawer-link">Home</a></div>
   <div class="drawer-item"><a href="/about.html" class="drawer-link">About Us</a></div>
-  <div class="drawer-item" id="drawer-realestate">
-    <button class="drawer-link" aria-expanded="false" aria-controls="drawer-sub-re">
-      Real Estate
+  <div class="drawer-item" id="drawer-solutions">
+    <button class="drawer-link" aria-expanded="false" aria-controls="drawer-sub-solutions">
+      Solutions
       <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
     </button>
-    <div class="drawer-sub" id="drawer-sub-re">
+    <div class="drawer-sub" id="drawer-sub-solutions">
       <div class="drawer-sub-group" style="border-bottom:1px solid rgba(3,22,36,.08)">
-        <a href="/real-estate.html" style="display:block;padding:.7rem 1.5rem;font-size:.83rem;font-weight:700;color:#031624;text-decoration:none">View All Real Estate Solutions →</a>
+        <a href="/services.html" style="display:block;padding:.7rem 1.5rem;font-size:.83rem;font-weight:700;color:#031624;text-decoration:none">View All Solutions →</a>
       </div>
       <div class="drawer-sub-group">
-        <span class="drawer-sub-label">Networking &amp; Connectivity</span>
-        <a href="/services/electrical-low-voltage-wiring.html">Low Voltage Wiring</a>
-        <a href="/services/managed-wifi.html">Managed WiFi</a>
+        <span class="drawer-sub-label">Real Estate</span>
+        <a href="/real-estate.html">All Real Estate Solutions</a>
         <a href="/services/fiber-optic.html">Fiber Optic Circuit</a>
-        <a href="/services/pots-line-replacements.html">POTS Line Replacements</a>
-        <a href="/services/iptv.html">Internet Protocol TV (IPTV)</a>
-        <a href="/services/electrical-cabling.html">Electrical Cabling</a>
-        <a href="/services/das.html">Distributed Antenna System</a>
-      </div>
-      <div class="drawer-sub-group">
-        <span class="drawer-sub-label">Surveillance &amp; Security</span>
+        <a href="/services/managed-wifi.html">Managed WiFi</a>
         <a href="/services/cctv-security-cameras.html">CCTV &amp; Security Cameras</a>
-        <a href="/services/mobile-security-trailer.html">Mobile Security Trailer</a>
-        <a href="/services/iot-sensors-beacons.html">IoT Sensors and Beacons</a>
-      </div>
-      <div class="drawer-sub-group">
-        <span class="drawer-sub-label">Smart Building Systems</span>
-        <a href="/services/smart-buildings.html">Smart Buildings</a>
-        <a href="/services/solar-panels.html">Solar Panels</a>
-        <a href="/services/hvac.html">HVAC</a>
         <a href="/services/ev-charging-stations.html">EV Charging Stations</a>
+        <a href="/services/solar-panels.html">Solar Panels</a>
+        <a href="/services/smart-buildings.html">Smart Buildings</a>
+        <a href="/services/hvac.html">HVAC</a>
         <a href="/services/digital-signage.html">Digital Signage</a>
         <a href="/services/led-lighting.html">LED Lighting</a>
+        <a href="/services/das.html">DAS Solutions</a>
+        <a href="/services/iptv.html">IPTV Services</a>
+        <a href="/services/electrical-low-voltage-wiring.html">Low Voltage Wiring</a>
+        <a href="/services/electrical-cabling.html">Electrical Cabling</a>
+        <a href="/services/mobile-security-trailer.html">Mobile Security Trailer</a>
+        <a href="/services/iot-sensors-beacons.html">IoT Sensors &amp; Beacons</a>
         <a href="/services/air-quality-control.html">Air Quality Control</a>
-      </div>
-    </div>
-  </div>
-  <div class="drawer-item" id="drawer-education">
-    <button class="drawer-link" aria-expanded="false" aria-controls="drawer-sub-edu">
-      Education
-      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-    </button>
-    <div class="drawer-sub" id="drawer-sub-edu">
-      <div class="drawer-sub-group" style="border-bottom:1px solid rgba(3,22,36,.08)">
-        <a href="/education.html" style="display:block;padding:.7rem 1.5rem;font-size:.83rem;font-weight:700;color:#031624;text-decoration:none">View All Education Solutions →</a>
+        <a href="/services/pots-line-replacements.html">POTS Line Replacements</a>
       </div>
       <div class="drawer-sub-group">
-        <span class="drawer-sub-label">Cybersecurity</span>
+        <span class="drawer-sub-label">Education</span>
+        <a href="/education.html">All Education Solutions</a>
         <a href="/services/cybersecurity.html">Cybersecurity Solutions</a>
-      </div>
-      <div class="drawer-sub-group">
-        <span class="drawer-sub-label">Business Continuity</span>
         <a href="/services/disaster-recovery.html">Disaster Recovery</a>
       </div>
     </div>
   </div>
-  <div class="drawer-item"><a href="/services.html" class="drawer-link">Services</a></div>
-  <div class="drawer-item"><a href="/faq.html" class="drawer-link">FAQ</a></div>
+    <div class="drawer-item"><a href="/faq.html" class="drawer-link">FAQ</a></div>
   <div class="drawer-item"><a href="/news.html" class="drawer-link">News</a></div>
   <div class="drawer-item"><a href="/contact.html" class="drawer-link">Contact</a></div>
   <div class="drawer-cta">
@@ -147,63 +128,35 @@
       <div class="nav-item"><a href="/" class="nav-link">Home</a></div>
       <div class="nav-item"><a href="/about.html" class="nav-link">About Us</a></div>
       <div class="nav-item">
-        <a href="/real-estate.html" class="nav-link" aria-haspopup="true">
-          Real Estate
+        <a href="/services.html" class="nav-link" aria-haspopup="true">
+          Solutions
           <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
-        <div class="nav-dropdown" role="menu" aria-label="Real Estate submenu" style="width:640px">
-          <div class="dropdown-group dropdown-viewall" style="border-bottom:1px solid rgba(3,22,36,.07);margin-bottom:.5rem;padding-bottom:.75rem">
-            <a href="/real-estate.html" role="menuitem" style="font-weight:700;color:#031624;font-size:.82rem">View All Real Estate Solutions →</a>
+        <div class="nav-dropdown" role="menu" aria-label="Solutions submenu" style="width:680px;grid-template-columns:2fr 1fr">
+          <div class="dropdown-viewall">
+            <a href="/services.html" role="menuitem" style="font-weight:700;color:#031624;font-size:.8rem">View All Solutions →</a>
           </div>
-          <div class="dropdown-group">
-            <span class="dropdown-label">Networking &amp; Connectivity</span>
-            <a href="/services/electrical-low-voltage-wiring.html" role="menuitem">Low Voltage Wiring</a>
-            <a href="/services/managed-wifi.html" role="menuitem">Managed WiFi</a>
+          <div class="dropdown-group" style="border-right:1px solid rgba(3,22,36,.07)">
+            <span class="dropdown-label">Real Estate</span>
+            <a href="/real-estate.html" role="menuitem" style="font-weight:600;color:#031624">All Real Estate Solutions →</a>
             <a href="/services/fiber-optic.html" role="menuitem">Fiber Optic Circuit</a>
-            <a href="/services/pots-line-replacements.html" role="menuitem">POTS Line Replacements</a>
-            <a href="/services/iptv.html" role="menuitem">Internet Protocol TV (IPTV)</a>
-            <a href="/services/electrical-cabling.html" role="menuitem">Electrical Cabling</a>
-            <a href="/services/das.html" role="menuitem">Distributed Antenna System</a>
-          </div>
-          <div class="dropdown-group">
-            <span class="dropdown-label">Surveillance &amp; Security</span>
+            <a href="/services/managed-wifi.html" role="menuitem">Managed WiFi</a>
             <a href="/services/cctv-security-cameras.html" role="menuitem">CCTV &amp; Security Cameras</a>
-            <a href="/services/mobile-security-trailer.html" role="menuitem">Mobile Security Trailer</a>
-            <a href="/services/iot-sensors-beacons.html" role="menuitem">IoT Sensors and Beacons</a>
-          </div>
-          <div class="dropdown-group">
-            <span class="dropdown-label">Smart Building Systems</span>
-            <a href="/services/smart-buildings.html" role="menuitem">Smart Buildings</a>
-            <a href="/services/solar-panels.html" role="menuitem">Solar Panels</a>
-            <a href="/services/hvac.html" role="menuitem">HVAC</a>
             <a href="/services/ev-charging-stations.html" role="menuitem">EV Charging Stations</a>
-            <a href="/services/digital-signage.html" role="menuitem">Digital Signage</a>
-            <a href="/services/led-lighting.html" role="menuitem">LED Lighting</a>
-            <a href="/services/air-quality-control.html" role="menuitem">Air Quality Control</a>
-          </div>
-        </div>
-      </div>
-      <div class="nav-item">
-        <a href="/education.html" class="nav-link" aria-haspopup="true">
-          Education
-          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </a>
-        <div class="nav-dropdown" role="menu" aria-label="Education submenu" style="width:420px;grid-template-columns:1fr 1fr">
-          <div class="dropdown-group dropdown-viewall" style="border-bottom:1px solid rgba(3,22,36,.07);margin-bottom:.5rem;padding-bottom:.75rem">
-            <a href="/education.html" role="menuitem" style="font-weight:700;color:#031624;font-size:.82rem">View All Education Solutions →</a>
+            <a href="/services/solar-panels.html" role="menuitem">Solar Panels</a>
+            <a href="/services/smart-buildings.html" role="menuitem">Smart Buildings</a>
+            <a href="/services/hvac.html" role="menuitem">HVAC</a>
+            <a href="/real-estate.html" role="menuitem" style="font-size:.72rem;color:#C8688F;font-weight:600">+ 10 more services →</a>
           </div>
           <div class="dropdown-group">
-            <span class="dropdown-label">Cybersecurity</span>
+            <span class="dropdown-label">Education</span>
+            <a href="/education.html" role="menuitem" style="font-weight:600;color:#031624">All Education Solutions →</a>
             <a href="/services/cybersecurity.html" role="menuitem">Cybersecurity Solutions</a>
-          </div>
-          <div class="dropdown-group">
-            <span class="dropdown-label">Business Continuity</span>
             <a href="/services/disaster-recovery.html" role="menuitem">Disaster Recovery</a>
           </div>
         </div>
       </div>
-      <div class="nav-item"><a href="/services.html" class="nav-link">Services</a></div>
-      <div class="nav-item"><a href="/faq.html" class="nav-link">FAQ</a></div>
+            <div class="nav-item"><a href="/faq.html" class="nav-link">FAQ</a></div>
       <div class="nav-item"><a href="/news.html" class="nav-link">News</a></div>
       <div class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></div>
     </div>
